@@ -2,6 +2,27 @@
 DROP TABLE IF EXISTS categories;
 DROP TABLE IF EXISTS items;
 
+-- ユーザーテーブル
+CREATE TABLE users
+(
+	id SERIAL PRIMARY KEY,
+	name TEXT,
+	addres TEXT,
+	email TEXT,
+	tel TEXT,
+	password TEXT,
+	birthday DATE
+)
+
+-- イベントテーブル
+CREATE TABLE events
+(
+	id SERIAL PRIMARY KEY,
+	user_id INTEGER,
+	name TEXT,
+	event_date DATE,
+)
+
 -- カテゴリーテーブル
 CREATE TABLE categories
 (
