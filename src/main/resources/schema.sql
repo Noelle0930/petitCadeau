@@ -1,18 +1,21 @@
--- テーブル削除
+DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS events;
 DROP TABLE IF EXISTS categories;
 DROP TABLE IF EXISTS items;
+DROP TABLE IF EXISTS orders;
+DROP TABLE IF EXISTS order_details;
 
 -- ユーザーテーブル
 CREATE TABLE users
 (
 	id SERIAL PRIMARY KEY,
 	name TEXT,
-	addres TEXT,
+	address TEXT,
 	email TEXT,
 	tel TEXT,
 	password TEXT,
 	birthday DATE
-)
+);
 
 -- イベントテーブル
 CREATE TABLE events
@@ -20,8 +23,8 @@ CREATE TABLE events
 	id SERIAL PRIMARY KEY,
 	user_id INTEGER,
 	name TEXT,
-	event_date DATE,
-)
+	event_date DATE
+);
 
 -- カテゴリーテーブル
 CREATE TABLE categories
