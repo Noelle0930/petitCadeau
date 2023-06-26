@@ -32,35 +32,7 @@ public class EventController {
 
 		List<Event> eventList = eventRepository.findByUserId(userId);
 		
-//		DayOfWeek day = eventList.getEventdate().getDayOfWeek();
-//
-//		String dayJpn = "";
-//		switch (day) {
-//		case MONDAY:
-//			dayJpn = "(月)";
-//			break;
-//		case TUESDAY:
-//			dayJpn = "(火)";
-//			break;
-//		case WEDNESDAY:
-//			dayJpn = "(水)";
-//			break;
-//		case THURSDAY:
-//			dayJpn = "(木)";
-//			break;
-//		case FRIDAY:
-//			dayJpn = "(金)";
-//			break;
-//		case SATURDAY:
-//			dayJpn = "(土)";
-//			break;
-//		case SUNDAY:
-//			dayJpn = "(日)";
-//			break;
-//		}
 		model.addAttribute("list", eventList);
-		
-//		model.addAttribute("day", dayJpn);
 
 		return "events";
 	}

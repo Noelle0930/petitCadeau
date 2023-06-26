@@ -17,8 +17,10 @@
 		</tr>
 		<tr th:each="list : ${list}">
 			<td>[[${list.eventDate.getMonthValue()}]]</td>
-			<td th:text="${list.eventDate.getDayOfMonth()} + ${day}"></td>
-			<td>[[${list.name}]]</td>
+			<td>[[${list.eventDate.getDayOfMonth()}]]
+				[[${#temporals.dayOfWeekName(list.eventDate)}]]
+			</td>
+			<td><a th:href="|/items/${list.id}|">[[${list.name}]]</a></td>
 		</tr>
 	</table>
 	
