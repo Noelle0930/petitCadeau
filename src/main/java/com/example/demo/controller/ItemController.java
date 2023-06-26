@@ -57,6 +57,12 @@ public class ItemController {
 				
 				model.addAttribute("items", itemList);
 				model.addAttribute("maxPrice", maxPrice);
+				model.addAttribute("categoryId", categoryId == null ? "" : categoryId);
+				
+				/*
+				 * 三項演算子
+				 * 変数 = 条件 ? 値１ : 値２
+				 */
 		
 
 		return "items";
