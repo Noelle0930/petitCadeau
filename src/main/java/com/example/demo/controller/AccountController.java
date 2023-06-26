@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import java.time.LocalDate;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,7 +55,35 @@ public class AccountController {
 			page = "redirect:/events";
 		}
 		
-		
 		return page;
 	}
+	
+	@GetMapping("/account/add")
+	public String createUser() {
+		return "addUser";
+	}
+	
+	@PostMapping("/account/add")
+	public String storeUser(
+			@RequestParam(name = "name") String name,
+			@RequestParam(name = "address") String address,
+			@RequestParam(name = "email") String email,
+			@RequestParam(name = "tel") String tel,
+			@RequestParam(name = "password") String password,
+			@RequestParam(name = "birthday") LocalDate birthday,
+			Model model) {
+		
+		User user = new User(name, address, email, tel, password, birthday);
+		userRepository.save(user);
+		
+		return "redirect:/login";
+	}
 }
+
+
+
+
+
+
+
+

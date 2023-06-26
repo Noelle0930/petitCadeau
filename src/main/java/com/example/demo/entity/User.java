@@ -28,4 +28,17 @@ public class User {
 	private String password;
 	
 	private LocalDate birthday;
+	
+	public User() {
+		
+	}
+	
+	public User(String name, String address, String email, String tel, String password, LocalDate birthday) {
+		this.name = name;
+		this.address = address;
+		this.email = email;
+		this.tel = tel;
+		this.password = password;
+		this.birthday = birthday;
+	}
 }
