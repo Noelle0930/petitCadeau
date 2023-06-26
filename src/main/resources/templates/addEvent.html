@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>イベント登録</title>
+</head>
+
+<body>
+	<h1>イベント登録</h1>
+
+	<form action="/events/add" method="post">
+		<table border="1">
+			<tr>
+				<th>イベント名</th>
+				<td><input type="text" name="name"></td>
+			</tr>
+			<tr>
+				<th>イベント日</th>
+				<td><input type="date" name="eventDate"></td>
+			</tr>
+		</table>
+		<button>登録</button>
+	</form>
+
+</body>
+
+</html>

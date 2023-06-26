@@ -25,4 +25,14 @@ public class Event {
 	
 	@Column(name = "event_date")
 	private LocalDate eventDate;
+	
+	public Event() {
+		
+	}
+	
+	public Event(Integer userId, String name, LocalDate eventDate) {
+		this.userId = userId;
+		this.name = name;
+		this.eventDate = eventDate;
+	}
 }
