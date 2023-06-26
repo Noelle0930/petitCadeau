@@ -54,6 +54,7 @@ public class AccountController {
 			page = "redirect:/events";
 		}
 		
+		
 		return page;
 	}
 }
