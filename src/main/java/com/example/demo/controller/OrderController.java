@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.model.Account;
 import com.example.demo.model.Cart;
@@ -38,21 +40,22 @@ public class OrderController {
 	
 	
 
-//	// 注文内容およびお客様情報内容の確認画面を表示
-//	@PostMapping("/order/confirm")
-//	public String confirm(
-//			@RequestParam("name") String name,
-//			@RequestParam("address") String address,
-//			@RequestParam("tel") String tel,
-//			@RequestParam("email") String email,
-//			Model model) {
-//
-//		// お客様情報をまとめる
-//		Customer customer = new Customer(name, address, tel, email);
-//		model.addAttribute("customer", customer);
-//
-//		return "orderConfirm";
-//	}
+	// 注文内容およびお客様情報内容の確認画面を表示
+	@PostMapping({"/order/confirmme","/order/confirmyou"})
+	public String confirm(
+			@RequestParam("name") String name,
+			@RequestParam("address") String address,
+			@RequestParam("tel") String tel,
+			@RequestParam("email") String email,
+			Model model) {
+
+		model.addAttribute("name", name);
+		model.addAttribute("address", address);
+		model.addAttribute("tel", tel);
+		model.addAttribute("email", email);
+		
+		return "orderConfirm";
+	}
 //
 //	// 注文する
 //	@PostMapping("/order")
