@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Order</title>
+</head>
+
+<body>
+	<h1>注文確認・配送情報入力</h1>
+	<hr>
+	<main>
+		<h3>ご注文商品</h3>
+		<table border="1">
+			<tr>
+				<th>NO</th>
+				<th>商品名</th>
+				<th>値段</th>
+				<th>個数</th>
+				<th>小計</th>
+			</tr>
+			<tr th:each="item : ${@cart.items}">
+				<td th:text="${item.id}"></td>
+				<td th:text="${item.name}"></td>
+				<td th:text="${item.price}"></td>
+				<td th:text="${item.quantity}"></td>
+				<td th:text="${item.price * item.quantity}"></td>
+			</tr>
+			<tr>
+				<td align="right" colspan="5" th:text="'総計：'+${@cart.totalPrice}"></td>
+
+			</tr>
+		</table>
+
+		<hr>
+		<h3>配送方法</h3>
+		<form action="/order/confirm" method="post">
+			●自分の住所に送る場合
+			<table border="1">
+				<tr>
+					<th>お名前</th>
+					<td th:text="${name}"></td>
+				</tr>
+				<tr>
+					<th>住所</th>
+					<td th:text="${address}"></td>
+				</tr>
+				<tr>
+					<th>お支払方法</th>
+					<td>
+						<input type="radio" name="payment1" value="payment" checked>着払い
+						<input type="radio" name="payment1" value="payment">クレジット
+						<input type="radio" name="payment1" value="payment">コンビニ支払い
+					</td>
+				</tr>
+				<tr>
+					<th>メッセージ</th>
+					<td>
+						<textarea name="message"></textarea>
+					</td>
+				</tr>
+			</table>
+			<br>
+			●相手の住所に送る場合
+			<table border="1">
+				<tr>
+					<th>宛名</th>
+					<td>
+						<input type="text" name="name">
+					</td>
+				</tr>
+				<tr>
+					<th>送り先住所</th>
+					<td>
+						<input type="text" name="address">
+					</td>
+				</tr>
+				<tr>
+					<th>お支払方法</th>
+					<td>
+						<input type="radio" name="payment2" value="payment" checked>クレジット
+						<input type="radio" name="payment2" value="payment">コンビニ支払い
+					</td>
+				</tr>
+				<tr>
+					<th>メッセージ</th>
+					<td>
+						<textarea name="message"></textarea>
+					</td>
+				</tr>
+			</table>
+
+			<button>この内容で注文</button>
+		</form>
+	</main>
+
+</body>
+
+</html>
