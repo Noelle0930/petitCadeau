@@ -31,4 +31,6 @@ public class Order {
 	private Integer totalPrice;
 	
 	private String message;
+	
+	private String payment;
 }
