@@ -49,7 +49,8 @@ CREATE TABLE orders
   ordered_on DATE,
   send_address TEXT,
   total_price INTEGER,
-  message TEXT
+  message TEXT,
+  payment TEXT
 );
 
 -- 注文詳細テーブル
