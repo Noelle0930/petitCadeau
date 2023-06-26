@@ -5,7 +5,19 @@
 <title>商品一覧</title>
 </head>
 <body>
-	<form>
+	<h1>商品一覧</h1>
+	<hr>
+	
+		<a href="/items">全商品</a>
+		<a th:each="c:${categories}" th:href="'/items?categoryId='+${c.id}">
+			<span th:text="${c.name}" style="padding-left: 10px;"></span>
+		</a>
+		<br><br>
+		<form action="/items" method="get">
+		<input type="text" name="maxPrice" th:value="${maxPrice}" placeholder="価格">
+		円以下
+		<button>検索</button>
+		</form>
 			<table border="1">
 			<tr>
 				<th>NO</th>
@@ -20,6 +32,6 @@
 				
 			</tr>
 		</table>
-</form>
+
 </body>
 </html>

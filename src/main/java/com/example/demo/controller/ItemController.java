@@ -6,9 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import com.example.demo.entity.Category;
 import com.example.demo.entity.Item;
 import com.example.demo.model.Account;
+import com.example.demo.repository.CategoryRepository;
 import com.example.demo.repository.ItemRepository;
 
 @Controller
@@ -17,20 +20,45 @@ public class ItemController {
 	@Autowired
 	Account account;
 
-
+	@Autowired
+	CategoryRepository categoryRepository;
+	
 	@Autowired
 	ItemRepository itemRepository;
 
 	// 商品一覧表示
 	@GetMapping("/items")
 	public String index(
+			@RequestParam(value = "categoryId", required = false) Integer categoryId,
+			@RequestParam(value = "maxPrice", required = false) Integer maxPrice,
 			Model model) {
 
-		// 全カテゴリー一覧を取得(本、DVD、ゲーム)
-		List<Item> itemList = itemRepository.findAll();
-		model.addAttribute("items", itemList);
 
+		        // 全カテゴリー一覧を取得
+				List<Category> categoryList = categoryRepository.findAll();
+				model.addAttribute("categories", categoryList);
+
+				// 商品一覧情報の取得
+				List<Item> itemList = null;
+				
+				if (categoryId != null&&maxPrice!=null) {//カテゴリあり、価格あり
+					itemList = itemRepository.findByPriceLessThanEqualAndCategoryId(maxPrice,categoryId);
+					
+				} else if (categoryId != null&&maxPrice==null){//カテゴリあり、価格なし
+					itemList = itemRepository.findByCategoryId(categoryId);
+					
+				} else if (categoryId == null&&maxPrice!=null) {//カテゴリなし、価格あり
+					itemList = itemRepository.findByPriceLessThanEqual(maxPrice);
+					
+				} else if (categoryId == null&&maxPrice==null) {//カテゴリなし、価格なし
+					itemList = itemRepository.findAll();
+					
+				} 
+				
+				model.addAttribute("items", itemList);
+				model.addAttribute("maxPrice", maxPrice);
 		
+
 		return "items";
 	}
 	
