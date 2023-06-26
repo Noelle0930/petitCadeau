@@ -20,4 +20,5 @@ INSERT INTO users(name,address,tel,email,password,birthday) VALUES('田中太郎
 
 -- イベントテーブルデータ
 INSERT INTO events (user_id, name, event_date) VALUES (1,'田中さん誕生日', '2023-07-26');
+INSERT INTO events (user_id, name, event_date) VALUES (1,'佐藤さん誕生日', '2023-07-30');
 INSERT INTO events (user_id, name, event_date) VALUES (2,'結婚記念日', '2023-08-11');

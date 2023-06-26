@@ -49,6 +49,7 @@ public class AccountController {
 			m.addAttribute("message", message);
 		} else {
 			User user = login.get();
+			account.setId(user.getId());
 			account.setName(user.getName());	
 			page = "redirect:/events";
 		}
