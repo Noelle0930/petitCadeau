@@ -51,7 +51,10 @@ public class AccountController {
 		} else {
 			User user = login.get();
 			account.setId(user.getId());
-			account.setName(user.getName());	
+			account.setName(user.getName());
+			account.setAddress(user.getAddress());
+			account.setEmail(user.getEmail());
+			account.setTel(user.getTel());	
 			page = "redirect:/events";
 		}
 		
