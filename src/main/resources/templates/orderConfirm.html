@@ -32,6 +32,7 @@
 		<hr>
 		<h3>お客様情報</h3>
 		
+		<th:block th:if="${sendTo} == me">
 		●自分の住所に送る場合
 			<table border="1">
 				<tr>
@@ -70,7 +71,9 @@
 				</tr>
 			</table>
 			<br>
+			</th:block>
 			
+			<th:block th:if="${sendTo} == you">
 			●相手の住所に送る場合
 			<table border="1">
 				<tr>
@@ -100,6 +103,7 @@
 			
 			<button>この内容で注文</button>
 		</form>
+		</th:block>
 	</main>
 	
 </body>

@@ -17,18 +17,7 @@
 		</tr>
 		<tr th:each="list : ${list}">
 			<td>[[${list.eventDate.getMonthValue()}]]</td>
-			<td>[[${list.eventDate.getDayOfMonth()}]]
-<!--				[[${list.eventDate.getDayOfWeek()}]]-->
-				<th:block th:switch="${list.eventDate.getDayOfWeek()}">
-					<p th:case="DayOfWeek.SUNDAY" th:text="日曜日"></p>
-					<p th:case="MONDAY" th:text="月曜日"></p>
-					<p th:case="TUESDAY" th:text="火曜日"></p>
-					<p th:case="WEDNESDAY" th:text="水曜日"></p>
-					<p th:case="THURSDAY" th:text="木曜日"></p>
-					<p th:case="FRIDAY" th:text="金曜日"></p>
-					<p th:case="SATURDAY" th:text="土曜日"></p>
-				</th:block>
-			</td>
+			<td th:text="${list.eventDate.getDayOfMonth()} + ${day}"></td>
 			<td>[[${list.name}]]</td>
 		</tr>
 	</table>

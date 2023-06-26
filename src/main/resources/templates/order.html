@@ -34,13 +34,13 @@
 		<hr>
 		<h3>配送方法</h3>
 		<form action="/order/confirmme" method="post">
+			<input type="hidden" name="sendTo" value="me">
 			●自分の住所に送る場合
 			<table border="1">
 				<tr>
 					<th>お名前</th>
 					<td th:text="${name}"></td>
 					<input type="hidden" name="name" th:value="${name}">
-					<input type="hidden" name="sendTo" value="me">
 				</tr>
 				<tr>
 					<th>メールアドレス</th>
@@ -74,15 +74,16 @@
 			</table>
 			<button>最終確認する</button>
 			<br>
+			</form>
 			
 			<form action="/order/confirmyou" method="post">
+				<input type="hidden" name="sendTo" value="you">
 			●相手の住所に送る場合
 			<table border="1">
 				<tr>
 					<th>宛名</th>
 					<td>
 						<input type="text" name="name">
-						<input type="hidden" name="sendTo" value="you">
 					</td>
 				</tr>
 				<tr>

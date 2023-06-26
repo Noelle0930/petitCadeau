@@ -45,14 +45,16 @@ public class OrderController {
 	public String confirm(
 			@RequestParam("name") String name,
 			@RequestParam("address") String address,
-			@RequestParam("tel") String tel,
-			@RequestParam("email") String email,
+//			@RequestParam("tel") String tel,
+//			@RequestParam("email") String email,
+			@RequestParam("sendTo") String sendTo,
 			Model model) {
 
 		model.addAttribute("name", name);
 		model.addAttribute("address", address);
-		model.addAttribute("tel", tel);
-		model.addAttribute("email", email);
+//		model.addAttribute("tel", tel);
+//		model.addAttribute("email", email);
+		model.addAttribute("sendTo", sendTo);
 		
 		return "orderConfirm";
 	}
