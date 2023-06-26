@@ -45,20 +45,22 @@ public class OrderController {
 	public String confirm(
 			@RequestParam("name") String name,
 			@RequestParam("address") String address,
-//			@RequestParam("tel") String tel,
-//			@RequestParam("email") String email,
+			@RequestParam(name="payment1",required=false) String payment1,
+			@RequestParam(name="payment2",required=false) String payment2,
+			@RequestParam("message") String message,
 			@RequestParam("sendTo") String sendTo,
 			Model model) {
 
 		model.addAttribute("name", name);
 		model.addAttribute("address", address);
-//		model.addAttribute("tel", tel);
-//		model.addAttribute("email", email);
+		model.addAttribute("payment1", payment1);
+		model.addAttribute("payment2", payment2);
+		model.addAttribute("message", message);
 		model.addAttribute("sendTo", sendTo);
 		
 		return "orderConfirm";
 	}
-//
+
 //	// 注文する
 //	@PostMapping("/order")
 //	public String order(

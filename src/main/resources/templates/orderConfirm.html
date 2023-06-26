@@ -30,25 +30,14 @@
 			</tr>
 		</table>
 		<hr>
-		<h3>お客様情報</h3>
+		<h3>配送情報</h3>
 		
 		<th:block th:if="${sendTo} == me">
-		●自分の住所に送る場合
 			<table border="1">
 				<tr>
 					<th>お名前</th>
 					<td th:text="${name}"></td>
 					<input type="hidden" name="name" th:value="${name}">
-				</tr>
-				<tr>
-					<th>メールアドレス</th>
-					<td th:text="${email}"></td>
-					<input type="hidden" name="email" th:value="${email}">
-				</tr>
-				<tr>
-					<th>電話番号</th>
-					<td th:text="${tel}"></td>
-					<input type="hidden" name="tel" th:value="${tel}">
 				</tr>
 				<tr>
 					<th>住所</th>
@@ -57,16 +46,13 @@
 				</tr>
 				<tr>
 					<th>お支払方法</th>
-					<td>
-						<input type="radio" name="payment1" value="payment" checked>着払い
-						<input type="radio" name="payment1" value="payment">クレジット
-						<input type="radio" name="payment1" value="payment">コンビニ支払い
-					</td>
+						<span><td th:if="${payment1}=='cash'">着払い</td></span>
+						<span><td th:if="${payment1}=='credit'">クレジット払い</td></span>
+					    <span><td th:if="${payment1}=='conbini'">コンビニ払い</td></span>
 				</tr>
 				<tr>
 					<th>メッセージ</th>
-					<td>
-						<textarea name="message"></textarea>
+					<td th:text="${message}">
 					</td>
 				</tr>
 			</table>
@@ -74,7 +60,6 @@
 			</th:block>
 			
 			<th:block th:if="${sendTo} == you">
-			●相手の住所に送る場合
 			<table border="1">
 				<tr>
 					<th>宛名</th>
@@ -88,20 +73,18 @@
 				</tr>
 				<tr>
 					<th>お支払方法</th>
-					<td>
-						<input type="radio" name="payment2" value="payment" checked>クレジット
-						<input type="radio" name="payment2" value="payment">コンビニ支払い
-					</td>
+					<span><td th:if="${payment2}=='credit'">クレジット払い</td></span>
+					<span><td th:if="${payment2}=='conbini'">コンビニ払い</td></span>
 				</tr>
 				<tr>
 					<th>メッセージ</th>
-					<td>
-						<textarea name="message"></textarea>
+					<td th:text="${message}">
 					</td>
 				</tr>
 			</table>
 			
-			<button>この内容で注文</button>
+			<form action="order" method="post">
+			<button>この内容で確定する</button>
 		</form>
 		</th:block>
 	</main>
