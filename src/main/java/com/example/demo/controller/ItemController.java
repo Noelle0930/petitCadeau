@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.entity.Category;
@@ -28,9 +27,8 @@ public class ItemController {
 	ItemRepository itemRepository;
 
 	// 商品一覧表示
-	@GetMapping({"/items", "/items/{id}"})
+	@GetMapping("/items")
 	public String index(
-			@PathVariable("id") Integer id,
 			@RequestParam(value = "categoryId", required = false) Integer categoryId,
 			@RequestParam(value = "maxPrice", required = false) Integer maxPrice,
 			Model model) {
@@ -60,7 +58,6 @@ public class ItemController {
 				model.addAttribute("items", itemList);
 				model.addAttribute("maxPrice", maxPrice);
 				model.addAttribute("categoryId", categoryId == null ? "" : categoryId);
-				model.addAttribute("id", id);
 				
 				/*
 				 * 三項演算子

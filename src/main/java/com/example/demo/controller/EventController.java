@@ -23,7 +23,6 @@ public class EventController {
 	@Autowired
 	Account account;
 	
-	
 
 	@GetMapping("/events")
 	public String index(Model model) {

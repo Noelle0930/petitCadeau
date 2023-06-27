@@ -1,5 +1,7 @@
 package com.example.demo.controller;
 
+import java.time.LocalDate;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -7,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.example.demo.entity.Order;
 import com.example.demo.model.Account;
 import com.example.demo.model.Cart;
 import com.example.demo.repository.OrderDetailRepository;
@@ -61,49 +64,51 @@ public class OrderController {
 		return "orderConfirm";
 	}
 
-//	// 注文する
-//	@PostMapping("/order")
-//	public String order(
-//			@RequestParam("name") String name,
-//			@RequestParam("address") String address,
-//			@RequestParam("tel") String tel,
-//			@RequestParam("email") String email,
-//			Model model) {
-//
-//		// 1. お客様情報をDBに格納する
-//		Customer customer = new Customer(name, address, tel, email);
-//		//↑の時はまだidはnull、↓saveしたらidが割り振られる
-//		customerRepository.save(customer);
-//
-//		// 2. 注文情報をDBに格納する
-//		Order order = new Order(
-//				customer.getId(),
-//				LocalDate.now(),
-//				cart.getTotalPrice());
-//		orderRepository.save(order);//orderのidを取得
-//
-//		// 3. 注文詳細情報をDBに格納する
-//		List<Item> itemList = cart.getItems();//カートの中の商品を取得
-//		List<OrderDetail> orderDetails = new ArrayList<>();
-//		
-//		for (Item item : itemList) {
-//			orderDetails.add(
-//					new OrderDetail(
-//							order.getId(),
-//							item.getId(),//itemクラスからidを取得
-//							item.getQuantity()//itemクラスから数量を取得
-//					)
-//			);
-//		}
-//		
-//		orderDetailRepository.saveAll(orderDetails);//すべての商品を取得
-//
-//		// セッションスコープのカート情報をクリアする
-//		cart.clear();
-//
-//		// 画面返却用注文番号を設定する
-//		model.addAttribute("orderNumber", order.getId());
-//
-//		return "ordered";
-//	}
+	// 注文を確定する
+	@PostMapping("/order")
+	public String order(
+			@RequestParam(name = "address", required=false) String address,
+			@RequestParam(name="payment1",required=false) String payment1,
+			@RequestParam(name="payment2",required=false) String payment2,
+			@RequestParam("message") String message,
+			Model model) {
+
+		String payment;
+		
+		if (payment1.isEmpty())
+		
+		// 2. 注文情報をDBに格納する
+		Order order = new Order(
+				1,
+				LocalDate.now(),
+				address,
+				cart.getTotalPrice(),
+				messaage,
+				payment);
+		orderRepository.save(order);//orderのidを取得
+
+		// 3. 注文詳細情報をDBに格納する
+		List<Item> itemList = cart.getItems();//カートの中の商品を取得
+		List<OrderDetail> orderDetails = new ArrayList<>();
+		
+		for (Item item : itemList) {
+			orderDetails.add(
+					new OrderDetail(
+							order.getId(),
+							item.getId(),//itemクラスからidを取得
+							item.getQuantity()//itemクラスから数量を取得
+					)
+			);
+		}
+		
+		orderDetailRepository.saveAll(orderDetails);//すべての商品を取得
+
+		// セッションスコープのカート情報をクリアする
+		cart.clear();
+
+		// 画面返却用注文番号を設定する
+		model.addAttribute("orderNumber", order.getId());
+
+		return "ordered";
+	}
 }

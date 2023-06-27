@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
-<meta charset="UTF-8">
-<title>Confirmation</title>
+	<meta charset="UTF-8">
+	<title>Confirmation</title>
 </head>
+
 <body>
 	<h1>注文最終確認</h1>
 	<hr>
@@ -31,63 +33,83 @@
 		</table>
 		<hr>
 		<h3>配送情報</h3>
-		
+
 		<th:block th:if="${sendTo} == me">
-			<table border="1">
-				<tr>
-					<th>お名前</th>
-					<td th:text="${name}"></td>
-					<input type="hidden" name="name" th:value="${name}">
-				</tr>
-				<tr>
-					<th>住所</th>
-					<td th:text="${address}"></td>
-					<input type="hidden" name="address" th:value="${address}">
-				</tr>
-				<tr>
-					<th>お支払方法</th>
-						<span><td th:if="${payment1}=='cash'">着払い</td></span>
-						<span><td th:if="${payment1}=='credit'">クレジット払い</td></span>
-					    <span><td th:if="${payment1}=='conbini'">コンビニ払い</td></span>
-				</tr>
-				<tr>
-					<th>メッセージ</th>
-					<td th:text="${message}">
-					</td>
-				</tr>
-			</table>
-			<br>
-			</th:block>
-			
-			<th:block th:if="${sendTo} == you">
-			<table border="1">
-				<tr>
-					<th>宛名</th>
-					<td th:text="${name}">
-					</td>
-				</tr>
-				<tr>
-					<th>送り先住所</th>
-					<td th:text="${address}">
-					</td>
-				</tr>
-				<tr>
-					<th>お支払方法</th>
-					<span><td th:if="${payment2}=='credit'">クレジット払い</td></span>
-					<span><td th:if="${payment2}=='conbini'">コンビニ払い</td></span>
-				</tr>
-				<tr>
-					<th>メッセージ</th>
-					<td th:text="${message}">
-					</td>
-				</tr>
-			</table>
-			
-			<form action="order" method="post">
-			<button>この内容で確定する</button>
-		</form>
+			<form action="/order" method="post">
+				<table border="1">
+					<tr>
+						<th>お名前</th>
+						<td th:text="${name}"></td>
+						<input type="hidden" name="name" th:value="${name}">
+					</tr>
+					<tr>
+						<th>住所</th>
+						<td th:text="${address}"></td>
+						<input type="hidden" name="address" th:value="${address}">
+					</tr>
+					<tr>
+						<th>お支払方法</th>
+						<span>
+							<td th:if="${payment1}=='cash'">着払い</td>
+						</span>
+						<span>
+							<td th:if="${payment1}=='credit'">クレジット払い</td>
+						</span>
+						<span>
+							<td th:if="${payment1}=='conbini'">コンビニ払い</td>
+						</span>
+						<input type="hidden" name="payment1" th:value="${payment1}">
+					</tr>
+					<tr>
+						<th>メッセージ</th>
+						<td th:text="${message}">
+						</td>
+						<input type="hidden" name="message" th:value="${message}">
+					</tr>
+				</table>
+
+
+				<button>この内容で確定する</button>
+		</th:block>
+
+		<th:block th:if="${sendTo} == you">
+			<form action="/order" method="post">
+				<table border="1">
+					<tr>
+						<th>宛名</th>
+						<td th:text="${name}">
+						</td>
+					</tr>
+					<tr>
+						<th>送り先住所</th>
+						<td th:text="${address}">
+						</td>
+						<input type="hidden" name="address" th:value="${address}">
+					</tr>
+					<tr>
+						<th>お支払方法</th>
+						<span>
+							<td th:if="${payment2}=='credit'">クレジット払い</td>
+						</span>
+						<span>
+							<td th:if="${payment2}=='conbini'">コンビニ払い</td>
+						</span>
+						<input type="hidden" name="payment2" th:value="${payment2}">
+					</tr>
+					<tr>
+						<th>メッセージ</th>
+						<td th:text="${message}">
+						</td>
+						<input type="hidden" name="message" th:value="${message}">
+					</tr>
+				</table>
+
+
+				<button>この内容で確定する</button>
+			</form>
 		</th:block>
 	</main>
-	
+
 </body>
+
 </html>

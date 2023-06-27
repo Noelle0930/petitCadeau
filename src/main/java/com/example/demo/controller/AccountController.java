@@ -28,8 +28,9 @@ public class AccountController {
 	@Autowired
 	UserRepository userRepository;
 	
-	@GetMapping("/login")
+	@GetMapping({"/login","/"})
 	public String index() {
+		session.invalidate();
 		return "login";
 	}
 	

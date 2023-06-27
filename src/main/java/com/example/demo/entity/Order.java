@@ -33,4 +33,17 @@ public class Order {
 	private String message;
 	
 	private String payment;
+	
+	public Order() {
+		
+	}
+	
+	public Order(Integer eventId, LocalDate orderOn, String sendAddress, Integer totalPrice, String message, String payment) {
+		this.eventId = eventId;
+		this.orderOn = orderOn;
+		this.sendAddress = sendAddress;
+		this.totalPrice = totalPrice;
+		this.message = message;
+		this.payment = payment;
+	}
 }

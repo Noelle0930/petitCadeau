@@ -11,16 +11,18 @@
 	
 	<table border="1">
 		<tr>
+			<th></th>
 			<th>月</th>
 			<th>日</th>
 			<th>イベント名</th>
 		</tr>
-		<tr th:each="list : ${list}">
+		<tr th:each="list,row : ${list}">
+			<td>[[${row.count}]]</td>
 			<td>[[${list.eventDate.getMonthValue()}]]</td>
 			<td>[[${list.eventDate.getDayOfMonth()}]]
 				[[${#temporals.dayOfWeekName(list.eventDate)}]]
 			</td>
-			<td><a th:href="|/items/${list.id}|">[[${list.name}]]</a></td>
+			<td><a href="/items">[[${list.name}]]</a></td>
 		</tr>
 	</table>
 	
