@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.example.demo.entity.Event;
 import com.example.demo.entity.User;
 import com.example.demo.model.Account;
+import com.example.demo.repository.EventRepository;
 import com.example.demo.repository.UserRepository;
 
 import jakarta.servlet.http.HttpSession;
@@ -29,8 +31,11 @@ public class AccountController {
 
 	@Autowired
 	UserRepository userRepository;
+	
+	@Autowired
+	EventRepository eventRepository;
 
-	@GetMapping({ "/login", "/" })
+	@GetMapping({ "/login", "/", "/logout" })
 	public String index() {
 		session.invalidate();
 		return "login";
@@ -60,7 +65,7 @@ public class AccountController {
 			account.setTel(user.getTel());
 			page = "redirect:/events";
 		}
-		
+
 		m.addAttribute("email", email);
 
 		return page;
@@ -78,52 +83,55 @@ public class AccountController {
 			@RequestParam(name = "email", defaultValue = "") String email,
 			@RequestParam(name = "tel", defaultValue = "") String tel,
 			@RequestParam(name = "password", defaultValue = "") String password,
-			@RequestParam(name = "birthday", required=false) LocalDate birthday,
+			@RequestParam(name = "birthday", required = false) LocalDate birthday,
 			Model model) {
 
-		Optional <User> record= userRepository.findByEmail(email);
-		
-		List<String> error=new ArrayList<>();
-		
-		if(name.equals("")) {
-			error.add("名前は必須です");	
-		}
-	 if(address.equals("")) {
-		 error.add("住所は必須です");
-		}
-	 if(tel.equals("")) {
-		 error.add("電話番号は必須です");
-		}
-	 if(email.equals("")){
-		 error.add("メールアドレスは必須です");	
-		}
-	 if(record.isEmpty()==false) {
-		 error.add("登録済みメールアドレスは登録できません");
-	    }
-	 if(password.equals("")){
-		 error.add("パスワードは必須です");	
-		}
-	 if(birthday==null) {
-		 error.add("誕生日は必須です");
-	 }
-	 
-	    model.addAttribute("name",name);
-		model.addAttribute("address",address);
-		model.addAttribute("tel",tel);
-		model.addAttribute("email",email);
-		model.addAttribute("password",password);
-		model.addAttribute("birthday",birthday);
-	    model.addAttribute("List",error);
-		
-	    if(error.size()==0) {
-	    	
-	    
-		User user = new User(name, address, email, tel, password, birthday);
-		userRepository.save(user);
+		Optional<User> record = userRepository.findByEmail(email);
 
-		return "redirect:/login";
-	    }
-	    
-	    return "/addUser";
-}
+		List<String> error = new ArrayList<>();
+
+		if (name.equals("")) {
+			error.add("名前は必須です");
+		}
+		if (address.equals("")) {
+			error.add("住所は必須です");
+		}
+		if (tel.equals("")) {
+			error.add("電話番号は必須です");
+		}
+		if (email.equals("")) {
+			error.add("メールアドレスは必須です");
+		}
+		if (record.isEmpty() == false) {
+			error.add("登録済みメールアドレスは登録できません");
+		}
+		if (password.equals("")) {
+			error.add("パスワードは必須です");
+		}
+		if (birthday == null) {
+			error.add("誕生日は必須です");
+		}
+
+		model.addAttribute("name", name);
+		model.addAttribute("address", address);
+		model.addAttribute("tel", tel);
+		model.addAttribute("email", email);
+		model.addAttribute("password", password);
+		model.addAttribute("birthday", birthday);
+		model.addAttribute("List", error);
+
+		if (error.size() == 0) {
+			User user = new User(name, address, email, tel, password, birthday);
+			userRepository.save(user);
+
+			Integer userId = user.getId();
+
+			Event event = new Event(userId, "Happy Birthday!!", birthday);
+			eventRepository.save(event);
+			
+			return "redirect:/login";
+		}
+
+		return "/addUser";
+	}
 }
