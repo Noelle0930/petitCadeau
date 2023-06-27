@@ -10,6 +10,7 @@
 	<h1>イベント登録</h1>
 
 	<form action="/events/add" method="post">
+		<th:block th:each="item:${List}"><font color="red">[[${item}]]<br></font></th:block>
 		<table border="1">
 			<tr>
 				<th>イベント名</th>
