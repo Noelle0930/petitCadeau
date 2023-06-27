@@ -56,6 +56,14 @@ public class EventController {
 			error.add("日付を指定してください");
 		}
 
+	LocalDate now = LocalDate.now();
+		
+		if(eventDate !=null) {
+			if (eventDate.isBefore(now)||eventDate.compareTo(now)==0) {
+				error.add("イベント日は翌日以降を指定してください");	
+			}
+		}
+		
 		model.addAttribute("List", error);
 
 		if (error.size() == 0) {
