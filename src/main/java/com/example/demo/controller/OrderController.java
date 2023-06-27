@@ -1,6 +1,8 @@
 package com.example.demo.controller;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,7 +11,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.example.demo.entity.Item;
 import com.example.demo.entity.Order;
+import com.example.demo.entity.OrderDetail;
 import com.example.demo.model.Account;
 import com.example.demo.model.Cart;
 import com.example.demo.repository.OrderDetailRepository;
@@ -73,9 +77,13 @@ public class OrderController {
 			@RequestParam("message") String message,
 			Model model) {
 
-		String payment;
+		String payment = null;
 		
-		if (payment1.isEmpty())
+		if (payment1 != null) {
+			payment = payment1;
+		} else if (payment2 != null) {
+			payment = payment2;
+		}
 		
 		// 2. 注文情報をDBに格納する
 		Order order = new Order(
@@ -83,7 +91,7 @@ public class OrderController {
 				LocalDate.now(),
 				address,
 				cart.getTotalPrice(),
-				messaage,
+				message,
 				payment);
 		orderRepository.save(order);//orderのidを取得
 
@@ -106,8 +114,6 @@ public class OrderController {
 		// セッションスコープのカート情報をクリアする
 		cart.clear();
 
-		// 画面返却用注文番号を設定する
-		model.addAttribute("orderNumber", order.getId());
 
 		return "ordered";
 	}

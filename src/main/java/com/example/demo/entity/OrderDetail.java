@@ -23,4 +23,14 @@ public class OrderDetail {
 	private Integer itemId;
 	
 	private Integer quantity;
+	
+	public OrderDetail() {
+		
+	}
+	
+	public OrderDetail(Integer orderId, Integer itemId, Integer quantity) {
+		this.orderId = orderId;
+		this.itemId = itemId;
+		this.quantity = quantity;
+	}
 }

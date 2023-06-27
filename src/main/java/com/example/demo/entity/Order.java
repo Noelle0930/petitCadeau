@@ -21,8 +21,8 @@ public class Order {
 	@Column(name = "event_id")
 	private Integer eventId;
 	
-	@Column(name = "order_on")
-	private LocalDate orderOn;
+	@Column(name = "ordered_on")
+	private LocalDate orderedOn;
 	
 	@Column(name = "send_address")
 	private String sendAddress;
@@ -38,9 +38,9 @@ public class Order {
 		
 	}
 	
-	public Order(Integer eventId, LocalDate orderOn, String sendAddress, Integer totalPrice, String message, String payment) {
+	public Order(Integer eventId, LocalDate orderedOn, String sendAddress, Integer totalPrice, String message, String payment) {
 		this.eventId = eventId;
-		this.orderOn = orderOn;
+		this.orderedOn = orderedOn;
 		this.sendAddress = sendAddress;
 		this.totalPrice = totalPrice;
 		this.message = message;
