@@ -34,8 +34,13 @@ public class AccountController {
 	
 	@Autowired
 	EventRepository eventRepository;
+	
+	@GetMapping("/")
+	 public String start() {
+		 return "top";
+	 }
 
-	@GetMapping({ "/login", "/", "/logout" })
+	@GetMapping({ "/login", "/logout" })
 	public String index() {
 		session.invalidate();
 		return "login";
