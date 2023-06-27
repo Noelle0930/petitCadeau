@@ -18,33 +18,33 @@ import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class AccountController {
-	
+
 	@Autowired
 	HttpSession session;
-	
+
 	@Autowired
 	Account account;
-	
+
 	@Autowired
 	UserRepository userRepository;
-	
-	@GetMapping({"/login","/"})
+
+	@GetMapping({ "/login", "/" })
 	public String index() {
 		session.invalidate();
 		return "login";
 	}
-	
+
 	@PostMapping("/login")
 	public String login(
-			@RequestParam(name="email", required=false) String email,
-			@RequestParam(name="password", required=false) String password,
+			@RequestParam(name = "email", required = false) String email,
+			@RequestParam(name = "password", required = false) String password,
 			Model m) {
-		
+
 		Optional<User> login = userRepository.findByEmailAndPassword(email, password);
-		
+
 		String page;
 		String message = null;
-		
+
 		if (login.isEmpty()) {
 			message = "メールアドレスとパスワードが一致しませんでした";
 			page = "login";
@@ -55,18 +55,20 @@ public class AccountController {
 			account.setName(user.getName());
 			account.setAddress(user.getAddress());
 			account.setEmail(user.getEmail());
-			account.setTel(user.getTel());	
+			account.setTel(user.getTel());
 			page = "redirect:/events";
 		}
 		
+		m.addAttribute("email", email);
+
 		return page;
 	}
-	
+
 	@GetMapping("/account/add")
 	public String createUser() {
 		return "addUser";
 	}
-	
+
 	@PostMapping("/account/add")
 	public String storeUser(
 			@RequestParam(name = "name") String name,
@@ -76,18 +78,10 @@ public class AccountController {
 			@RequestParam(name = "password") String password,
 			@RequestParam(name = "birthday") LocalDate birthday,
 			Model model) {
-		
+
 		User user = new User(name, address, email, tel, password, birthday);
 		userRepository.save(user);
-		
+
 		return "redirect:/login";
 	}
 }
-
-
-
-
-
-
-
-

@@ -35,13 +35,13 @@ public class CartController {
 
 		// 商品コードをキーに商品情報を取得する
 		Item item = itemRepository.findById(itemId).get();
-		
+
 		// 商品オブジェクトに個数をセット
 		item.setQuantity(quantity);
-		
+
 		// カートに追加//Cartクラスのaddメソッド
 		cart.add(item);
-		
+
 		// 「/cart」にリダイレクト
 		return "redirect:/cart";
 	}
@@ -52,7 +52,7 @@ public class CartController {
 
 		// カート情報から削除
 		cart.delete(itemId);
-		
+
 		// 「/cart」にリダイレクト
 		return "redirect:/cart";
 	}

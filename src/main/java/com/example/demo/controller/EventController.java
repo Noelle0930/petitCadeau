@@ -23,15 +23,14 @@ public class EventController {
 
 	@Autowired
 	Account account;
-	
 
 	@GetMapping("/events")
 	public String index(Model model) {
 
-		Integer userId = account.getId();		
+		Integer userId = account.getId();
 
 		List<Event> eventList = eventRepository.findByUserId(userId);
-		
+
 		model.addAttribute("list", eventList);
 
 		return "events";
@@ -44,30 +43,30 @@ public class EventController {
 
 	@PostMapping("/events/add")
 	public String eventStore(
-			@RequestParam(name = "name" ,defaultValue="") String name,
-			@RequestParam(name = "eventDate",required=false) LocalDate eventDate,
+			@RequestParam(name = "name", defaultValue = "") String name,
+			@RequestParam(name = "eventDate", required = false) LocalDate eventDate,
 			Model model) {
 
-		List<String> error=new ArrayList<>();
-		
-		if(name.equals("")) {
+		List<String> error = new ArrayList<>();
+
+		if (name.equals("")) {
 			error.add("イベント名を入力してください");
 		}
-		if(eventDate==null) {
+		if (eventDate == null) {
 			error.add("日付を指定してください");
 		}
-		
-		model.addAttribute("List",error);
-		
-		if(error.size()==0) {
-		Integer userId = account.getId();
-		
-		Event event = new Event(userId, name, eventDate);
-		eventRepository.save(event);
-		
-		return "redirect:/events";
+
+		model.addAttribute("List", error);
+
+		if (error.size() == 0) {
+			Integer userId = account.getId();
+
+			Event event = new Event(userId, name, eventDate);
+			eventRepository.save(event);
+
+			return "redirect:/events";
 		}
-		
+
 		return "/addEvent";
 	}
 }
