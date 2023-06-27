@@ -35,4 +35,9 @@ public class Event {
 		this.name = name;
 		this.eventDate = eventDate;
 	}
+	
+	public Event(String name,LocalDate eventDate) {
+		this.name = name;
+		this.eventDate = eventDate;
+	}
 }

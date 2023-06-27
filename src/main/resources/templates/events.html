@@ -23,6 +23,8 @@
 				[[${#temporals.dayOfWeekName(list.eventDate)}]]
 			</td>
 			<td><a th:href="|/items/${list.id}|">[[${list.name}]]</a></td>
+			<td><form th:action="|/events/${list.id}/edit|" method="get">
+				<button>編集</button></form></td>
 		</tr>
 	</table>
 	

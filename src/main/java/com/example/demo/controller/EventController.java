@@ -3,11 +3,13 @@ package com.example.demo.controller;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -78,5 +80,41 @@ public class EventController {
 		}
 
 		return "/addEvent";
+	}
+	
+	@GetMapping("/events/{id}/edit")
+	public String edit(
+			@PathVariable(name="id", required=false)Integer id,
+			Model model
+			) {
+		
+		Event event=null;
+		
+		Optional <Event> record= eventRepository.findById(id);
+		
+		if(record.isEmpty()==false) {
+			event=record.get();
+		}
+		
+		if(event==null) {
+			return "redirect:/events";
+		}
+		
+		model.addAttribute("event", event);
+		
+		return "editEvent";
+	}
+	
+	@PostMapping("/events/{id}/edit")
+	public String update(
+			@RequestParam(name = "name", defaultValue = "") String name,
+			@RequestParam(name = "eventDate", required = false) LocalDate eventDate	
+			) {
+		
+		Event event = new Event(name,eventDate);
+		
+		eventRepository.save(event);
+		
+		return "redirect:/events";
 	}
 }
