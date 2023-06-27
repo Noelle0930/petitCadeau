@@ -16,6 +16,7 @@ import com.example.demo.entity.Order;
 import com.example.demo.entity.OrderDetail;
 import com.example.demo.model.Account;
 import com.example.demo.model.Cart;
+import com.example.demo.model.Event;
 import com.example.demo.repository.OrderDetailRepository;
 import com.example.demo.repository.OrderRepository;
 
@@ -27,6 +28,9 @@ public class OrderController {
 
 	@Autowired
 	Account account;
+	
+	@Autowired
+	Event event;
 
 	@Autowired
 	OrderRepository orderRepository;
@@ -85,7 +89,7 @@ public class OrderController {
 
 		// 2. 注文情報をDBに格納する
 		Order order = new Order(
-				1,
+				event.getId(),
 				LocalDate.now(),
 				address,
 				cart.getTotalPrice(),

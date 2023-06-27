@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.example.demo.entity.Category;
 import com.example.demo.entity.Item;
 import com.example.demo.model.Account;
+import com.example.demo.model.Event;
 import com.example.demo.repository.CategoryRepository;
 import com.example.demo.repository.ItemRepository;
 
@@ -20,16 +21,18 @@ public class ItemController {
 
 	@Autowired
 	Account account;
+	
+	@Autowired
+	Event event;
 
 	@Autowired
 	CategoryRepository categoryRepository;
 
 	@Autowired
 	ItemRepository itemRepository;
-
-	// 商品一覧表示
-	@GetMapping("/items")
-	public String index(
+	
+	@GetMapping("/items/{id}")
+	public String index2(
 			@PathVariable("id") Integer id,
 			@RequestParam(value = "categoryId", required = false) Integer categoryId,
 			@RequestParam(value = "maxPrice", required = false) Integer maxPrice,
@@ -55,6 +58,8 @@ public class ItemController {
 			itemList = itemRepository.findAll();
 
 		}
+		
+		event.setId(id);
 
 		model.addAttribute("items", itemList);
 		model.addAttribute("maxPrice", maxPrice);

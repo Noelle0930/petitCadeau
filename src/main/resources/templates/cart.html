@@ -36,7 +36,7 @@
 			<td></td>
 		</tr>
 	</table>
-	<a href="/items/${id}">商品一覧へ</a>
+	<a th:href="|/items/${@event.id}|">商品一覧へ</a>
 	<br>
 	<form action="/order" method="get">
 		<button>注文を確認する</button>

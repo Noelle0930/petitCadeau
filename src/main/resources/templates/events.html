@@ -22,7 +22,7 @@
 			<td>[[${list.eventDate.getDayOfMonth()}]]
 				[[${#temporals.dayOfWeekName(list.eventDate)}]]
 			</td>
-			<td><a href="/items">[[${list.name}]]</a></td>
+			<td><a th:href="|/items/${list.id}|">[[${list.name}]]</a></td>
 		</tr>
 	</table>
 	
