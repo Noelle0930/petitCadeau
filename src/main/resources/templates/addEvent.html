@@ -14,14 +14,16 @@
 		<table border="1">
 			<tr>
 				<th>イベント名</th>
-				<td><input type="text" name="name"></td>
+				<td><input type="text" name="name" th:value="${name}"></td>
 			</tr>
 			<tr>
 				<th>イベント日</th>
-				<td><input type="date" name="eventDate"></td>
+				<td><input type="date" name="eventDate" th:value="${eventDate}"></td>
 			</tr>
 		</table>
 		<button>登録</button>
+		<br>
+		 <a href="/events">イベント一覧へ</a>
 	</form>
 
 </body>

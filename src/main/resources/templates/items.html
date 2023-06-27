@@ -8,6 +8,7 @@
 
 <body>
 	<h1>商品一覧</h1>
+	<header th:replace="header"></header>
 	<hr>
 
 	<a th:href="|/items/${@event.id}|">全商品</a>
@@ -40,6 +41,7 @@
 			</td>
 		</tr>
 	</table>
+	<a href="/events">イベント一覧へ</a>
 </body>
 
 </html>

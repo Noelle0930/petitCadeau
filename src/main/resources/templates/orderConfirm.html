@@ -8,6 +8,7 @@
 
 <body>
 	<h1>注文最終確認</h1>
+	<header th:replace="header"></header>
 	<hr>
 	<main>
 		<h3>下記の内容で注文を行いますか？</h3>
@@ -31,6 +32,7 @@
 				<td align="right" colspan="5" th:text="'総計：'+${@cart.totalPrice}"></td>
 			</tr>
 		</table>
+		<a href="/cart">カートを見る</a>
 		<hr>
 		<h3>配送情報</h3>
 

@@ -64,6 +64,8 @@ public class EventController {
 			}
 		}
 		
+		model.addAttribute("name",name);
+		model.addAttribute("eventDate", eventDate);
 		model.addAttribute("List", error);
 
 		if (error.size() == 0) {
