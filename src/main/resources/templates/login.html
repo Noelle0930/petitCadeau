@@ -4,31 +4,40 @@
 <head>
 	<meta charset="UTF-8">
 	<title>ログイン</title>
+	<link rel="stylesheet" type="text/css" href="/css/styleAfter.css">
 </head>
 
 <body>
-	<h1>ログイン</h1>
+	<span class="contents-frame">
+		<header>
+			<div class="theme">Petit Cadeau</div>
+			</div>
+		</header>
 
-	<th:if="${message}">
-		<a style="color:red" th:text="${message}"></a>
-		</th:if>
+		<div class="contents">
+			<h1>ログイン</h1>
 
-		<form action="/login" method="post">
-			<table border="1">
-				<tr>
-					<th>メールアドレス</th>
-					<td><input type="text" name="email" th:value="${email}"></td>
-				</tr>
-				<tr>
-					<th>パスワード</th>
-					<td><input type="text" name="password"></td>
-				</tr>
-			</table>
-			<button>ログイン</button>
-		</form>
+			<th:if="${message}">
+				<a style="color:red" th:text="${message}"></a>
+				</th:if>
 
-	<a href="/account/add">新規会員登録</a>
+				<form action="/login" method="post">
+					<table border="1">
+						<tr>
+							<th>メールアドレス</th>
+							<td><input type="text" name="email" th:value="${email}"></td>
+						</tr>
+						<tr>
+							<th>パスワード</th>
+							<td><input type="text" name="password"></td>
+						</tr>
+					</table>
+					<button>ログイン</button>
+				</form>
 
+				<a href="/account/add">新規会員登録</a>
+		</div>
+	</span>
 </body>
 
 </html>

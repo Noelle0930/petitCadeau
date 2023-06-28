@@ -4,114 +4,121 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Confirmation</title>
+	<link rel="stylesheet" type="text/css" href="/css/styleAfter.css">
 </head>
 
 <body>
-	<h1>注文最終確認</h1>
-	<header th:replace="header"></header>
-	<hr>
-	<main>
-		<h3>下記の内容で注文を行いますか？</h3>
-		<h3>ご注文商品</h3>
-		<table border="1">
-			<tr>
-				<th>NO</th>
-				<th>商品名</th>
-				<th>値段</th>
-				<th>個数</th>
-				<th>小計</th>
-			</tr>
-			<tr th:each="item : ${@cart.items}">
-				<td th:text="${item.id}"></td>
-				<td th:text="${item.name}"></td>
-				<td th:text="${item.price}"></td>
-				<td th:text="${item.quantity}"></td>
-				<td th:text="${item.price * item.quantity}"></td>
-			</tr>
-			<tr>
-				<td align="right" colspan="5" th:text="'総計：'+${@cart.totalPrice}"></td>
-			</tr>
-		</table>
-		<a href="/cart">カートを見る</a>
-		<hr>
-		<h3>配送情報</h3>
+	<div class="contents-frame">
+		<header>
+			<div class="theme">Petit Cadeau</div>
+		</header>
 
-		<th:block th:if="${sendTo} == me">
-			<form action="/order" method="post">
+		<div class="contents">
+			<h1>注文最終確認</h1>
+			<hr>
+			<main>
+				<h3>下記の内容で注文を行いますか？</h3>
+				<h3>ご注文商品</h3>
 				<table border="1">
 					<tr>
-						<th>お名前</th>
-						<td th:text="${name}"></td>
-						<input type="hidden" name="name" th:value="${name}">
+						<th>NO</th>
+						<th>商品名</th>
+						<th>値段</th>
+						<th>個数</th>
+						<th>小計</th>
+					</tr>
+					<tr th:each="item : ${@cart.items}">
+						<td th:text="${item.id}"></td>
+						<td th:text="${item.name}"></td>
+						<td th:text="${item.price}"></td>
+						<td th:text="${item.quantity}"></td>
+						<td th:text="${item.price * item.quantity}"></td>
 					</tr>
 					<tr>
-						<th>住所</th>
-						<td th:text="${address}"></td>
-						<input type="hidden" name="address" th:value="${address}">
-					</tr>
-					<tr>
-						<th>お支払方法</th>
-						<span>
-							<td th:if="${payment1}=='cash'">着払い</td>
-						</span>
-						<span>
-							<td th:if="${payment1}=='credit'">クレジット払い</td>
-						</span>
-						<span>
-							<td th:if="${payment1}=='conbini'">コンビニ払い</td>
-						</span>
-						<input type="hidden" name="payment1" th:value="${payment1}">
-					</tr>
-					<tr>
-						<th>メッセージ</th>
-						<td th:text="${message}">
-						</td>
-						<input type="hidden" name="message" th:value="${message}">
+						<td align="right" colspan="5" th:text="'総計：'+${@cart.totalPrice}"></td>
 					</tr>
 				</table>
+				<a href="/cart">カートを見る</a>
+				<hr>
+				<h3>配送情報</h3>
+
+				<th:block th:if="${sendTo} == me">
+					<form action="/order" method="post">
+						<table border="1">
+							<tr>
+								<th>お名前</th>
+								<td th:text="${name}"></td>
+								<input type="hidden" name="name" th:value="${name}">
+							</tr>
+							<tr>
+								<th>住所</th>
+								<td th:text="${address}"></td>
+								<input type="hidden" name="address" th:value="${address}">
+							</tr>
+							<tr>
+								<th>お支払方法</th>
+								<span>
+									<td th:if="${payment1}=='cash'">着払い</td>
+								</span>
+								<span>
+									<td th:if="${payment1}=='credit'">クレジット払い</td>
+								</span>
+								<span>
+									<td th:if="${payment1}=='conbini'">コンビニ払い</td>
+								</span>
+								<input type="hidden" name="payment1" th:value="${payment1}">
+							</tr>
+							<tr>
+								<th>メッセージ</th>
+								<td th:text="${message}">
+								</td>
+								<input type="hidden" name="message" th:value="${message}">
+							</tr>
+						</table>
 
 
-				<button>この内容で確定する</button>
-		</th:block>
+						<button>この内容で確定する</button>
+				</th:block>
 
-		<th:block th:if="${sendTo} == you">
-			<form action="/order" method="post">
-				<table border="1">
-					<tr>
-						<th>宛名</th>
-						<td th:text="${name}">
-						</td>
-					</tr>
-					<tr>
-						<th>送り先住所</th>
-						<td th:text="${address}">
-						</td>
-						<input type="hidden" name="address" th:value="${address}">
-					</tr>
-					<tr>
-						<th>お支払方法</th>
-						<span>
-							<td th:if="${payment2}=='credit'">クレジット払い</td>
-						</span>
-						<span>
-							<td th:if="${payment2}=='conbini'">コンビニ払い</td>
-						</span>
-						<input type="hidden" name="payment2" th:value="${payment2}">
-					</tr>
-					<tr>
-						<th>メッセージ</th>
-						<td th:text="${message}">
-						</td>
-						<input type="hidden" name="message" th:value="${message}">
-					</tr>
-				</table>
+				<th:block th:if="${sendTo} == you">
+					<form action="/order" method="post">
+						<table border="1">
+							<tr>
+								<th>宛名</th>
+								<td th:text="${name}">
+								</td>
+							</tr>
+							<tr>
+								<th>送り先住所</th>
+								<td th:text="${address}">
+								</td>
+								<input type="hidden" name="address" th:value="${address}">
+							</tr>
+							<tr>
+								<th>お支払方法</th>
+								<span>
+									<td th:if="${payment2}=='credit'">クレジット払い</td>
+								</span>
+								<span>
+									<td th:if="${payment2}=='conbini'">コンビニ払い</td>
+								</span>
+								<input type="hidden" name="payment2" th:value="${payment2}">
+							</tr>
+							<tr>
+								<th>メッセージ</th>
+								<td th:text="${message}">
+								</td>
+								<input type="hidden" name="message" th:value="${message}">
+							</tr>
+						</table>
 
 
-				<button>この内容で確定する</button>
-			</form>
-		</th:block>
-	</main>
-
+						<button>この内容で確定する</button>
+					</form>
+				</th:block>
+			</main>
+		</div>
+	</div>
 </body>
 
 </html>

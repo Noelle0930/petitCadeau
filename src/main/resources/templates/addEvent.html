@@ -4,28 +4,37 @@
 <head>
 	<meta charset="UTF-8">
 	<title>イベント登録</title>
+	<link rel="stylesheet" type="text/css" href="/css/styleAfter.css">
 </head>
 
 <body>
-	<h1>イベント登録</h1>
+	<div class="contents-frame">
+		<header>
+			<div class="theme">Petit Cadeau</div>
+		</header>
 
-	<form action="/events/add" method="post">
-		<th:block th:each="item:${List}"><font color="red">[[${item}]]<br></font></th:block>
-		<table border="1">
-			<tr>
-				<th>イベント名</th>
-				<td><input type="text" name="name" th:value="${name}"></td>
-			</tr>
-			<tr>
-				<th>イベント日</th>
-				<td><input type="date" name="eventDate" th:value="${eventDate}"></td>
-			</tr>
-		</table>
-		<button>登録</button>
-		<br>
-		 <a href="/events">イベント一覧へ</a>
-	</form>
+		<div class="contents">
+			<h1>イベント登録</h1>
 
-</body>
+			<form action="/events/add" method="post">
+				<th:block th:each="item:${List}">
+					<font color="red">[[${item}]]<br></font>
+				</th:block>
+				<table border="1">
+					<tr>
+						<th>イベント名</th>
+						<td><input type="text" name="name" th:value="${name}"></td>
+					</tr>
+					<tr>
+						<th>イベント日</th>
+						<td><input type="date" name="eventDate" th:value="${eventDate}"></td>
+					</tr>
+				</table>
+				<button>登録</button>
+				<br>
+				<a href="/events">イベント一覧へ</a>
+			</form>
+		</div>
+		< </body>
 
 </html>

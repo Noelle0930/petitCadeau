@@ -1,21 +1,40 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-<meta charset="UTF-8">
-<title>イベント編集</title>
-</head>
-<body>
-	<form th:action="|/events/${event.id}/edit|" method="post">
-	<h1>イベント編集</h1>
-    <table border="1">
 
-		<tr><th>イベント名</th><td><input type="text" name="name" th:value="${event.name}"></td></tr>
-		<tr><th>イベント日</th><td><input type="date" name="eventDate" th:value="${event.eventDate}"></td></tr>
-	
-			</table>
-	<br>
-	<input type="submit" value="更新">
-	
-	
+<head>
+	<meta charset="UTF-8">
+	<title>イベント編集</title>
+	<link rel="stylesheet" type="text/css" href="/css/styleAfter.css">
+</head>
+
+<body>
+	<div class="contents-frame">
+		<header>
+			<div class="theme">Petit Cadeau</div>
+		</header>
+
+		<div class="contents">
+			<form th:action="|/events/${event.id}/edit|" method="post">
+				<h1>イベント編集</h1>
+				<table border="1">
+
+					<tr>
+						<th>イベント名</th>
+						<td><input type="text" name="name" th:value="${event.name}"></td>
+					</tr>
+					<tr>
+						<th>イベント日</th>
+						<td><input type="date" name="eventDate" th:value="${event.eventDate}"></td>
+					</tr>
+
+				</table>
+				<br>
+				<input type="submit" value="更新">
+			</form>
+		</div>
+	</div>
+
+
 </body>
+
 </html>

@@ -1,0 +1,51 @@
+body {
+	margin: 0;
+}
+
+.contents-frame {
+	background-image: url(background.jpg);
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: 100% 100%;
+	margin: 0;
+}
+
+.contents-frame::before {
+	background: inherit;
+	content: '';
+	filter: blur(6px);
+	position: absolute;
+	top: 5px;
+	right: 5px;
+	bottom: 5px;
+	left: 5px;
+}
+
+header {
+	position: absolute;
+	background-color: cadetblue;
+	padding: 20px;
+	min-width: 100%;
+}
+
+.theme {
+	display: inline-block;
+	font-family: 'Segoe Script', sans-serif;
+	font-size: 40px;
+	padding: 10px;
+}
+
+.account {
+	display: inline-block;
+	text-align: right;
+	padding: 10px;
+	margin-left: 800px;
+}
+
+.contents {
+	position: absolute;
+	margin-top: 200px;
+	margin-left: 300px;
+}
+

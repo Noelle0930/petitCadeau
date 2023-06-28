@@ -4,44 +4,52 @@
 <head>
 	<meta charset="UTF-8">
 	<title>商品一覧</title>
+	<link rel="stylesheet" type="text/css" href="/css/styleAfter.css">
 </head>
 
 <body>
-	<h1>商品一覧</h1>
-	<header th:replace="header"></header>
-	<hr>
+	<div class="contents-frame">
+		<header>
+			<div class="theme">Petit Cadeau</div>
+		</header>
 
-	<a th:href="|/items/${@event.id}|">全商品</a>
-	<a th:each="c:${categories}" th:href="|/items/${@event.id}?categoryId=${c.id}">
-		<span th:text="${c.name}" style="padding-left: 10px;"></span>
-	</a>
-	<br><br>
-	<form th:action="|/items/${@event.id}|" method="get">
-		<input type="hidden" name="categoryId" th:value="${categoryId}">
-		<input type="text" name="maxPrice" th:value="${maxPrice}" placeholder="価格">
-		円以下
-		<button>検索</button>
-	</form>
-	<table border="1">
-		<tr>
-			<th>NO</th>
-			<th>商品名</th>
-			<th>値段</th>
-			<th></th>
-		</tr>
-		<tr th:each="item : ${items}">
-			<td th:text="${item.id}"></td>
-			<td><a th:href="|/items/${item.id}|" th:text="${item.name}"></a></td>
-			<td th:text="${item.price}"></td>
-			<td>
-				<form action="/cart/add" method="post">
-					<input type="hidden" name="itemId" th:value="${item.id}">
-					<button>カートに追加</button>
-				</form>
-			</td>
-		</tr>
-	</table>
-	<a href="/events">イベント一覧へ</a>
+		<div class="contents">
+			<h1>商品一覧</h1>
+			<hr>
+
+			<a th:href="|/items/${@event.id}|">全商品</a>
+			<a th:each="c:${categories}" th:href="|/items/${@event.id}?categoryId=${c.id}">
+				<span th:text="${c.name}" style="padding-left: 10px;"></span>
+			</a>
+			<br><br>
+			<form th:action="|/items/${@event.id}|" method="get">
+				<input type="hidden" name="categoryId" th:value="${categoryId}">
+				<input type="text" name="maxPrice" th:value="${maxPrice}" placeholder="価格">
+				円以下
+				<button>検索</button>
+			</form>
+			<table border="1">
+				<tr>
+					<th>NO</th>
+					<th>商品名</th>
+					<th>値段</th>
+					<th></th>
+				</tr>
+				<tr th:each="item : ${items}">
+					<td th:text="${item.id}"></td>
+					<td><a th:href="|/items/${item.id}|" th:text="${item.name}"></a></td>
+					<td th:text="${item.price}"></td>
+					<td>
+						<form action="/cart/add" method="post">
+							<input type="hidden" name="itemId" th:value="${item.id}">
+							<button>カートに追加</button>
+						</form>
+					</td>
+				</tr>
+			</table>
+			<a href="/events">イベント一覧へ</a>
+		</div>
+	</div>
 </body>
 
 </html>
