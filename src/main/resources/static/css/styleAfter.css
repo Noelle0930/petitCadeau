@@ -49,3 +49,7 @@ header {
 	margin-left: 300px;
 }
 
+table{
+	border-collapse: collapse;
+	border-color: black;
+}
