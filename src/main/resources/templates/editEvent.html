@@ -8,8 +8,10 @@
 	<form th:action="|/events/${event.id}/edit|" method="post">
 	<h1>イベント編集</h1>
     <table border="1">
-		
+
 		<tr><th>イベント名</th><td><input type="text" name="name" th:value="${event.name}"></td></tr>
+		<tr><th>イベント日</th><td><input type="date" name="eventDate" th:value="${event.eventDate}"></td></tr>
+	
 			</table>
 	<br>
 	<input type="submit" value="更新">

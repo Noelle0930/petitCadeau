@@ -107,13 +107,23 @@ public class EventController {
 	
 	@PostMapping("/events/{id}/edit")
 	public String update(
+			@PathVariable(name="id", required=false)Integer id,
 			@RequestParam(name = "name", defaultValue = "") String name,
 			@RequestParam(name = "eventDate", required = false) LocalDate eventDate	
 			) {
 		
-		Event event = new Event(name,eventDate);
+		Event event = new Event(id, account.getId(), name,eventDate);
 		
 		eventRepository.save(event);
+		
+		return "redirect:/events";
+	}
+	
+	@PostMapping("/events/{id}/delete")
+	public String delete(
+			@PathVariable(name="id", required=false) Integer id
+			) {
+		eventRepository.deleteById(id);
 		
 		return "redirect:/events";
 	}

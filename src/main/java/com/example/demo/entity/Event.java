@@ -30,14 +30,22 @@ public class Event {
 		
 	}
 	
-	public Event(Integer userId, String name, LocalDate eventDate) {
+	//更新用コンストラクタ
+	public Event(Integer id, Integer userId,String name, LocalDate eventDate) {
+		this.id = id;
 		this.userId = userId;
 		this.name = name;
 		this.eventDate = eventDate;
 	}
 	
-	public Event(String name,LocalDate eventDate) {
+	public Event(Integer userId,String name, LocalDate eventDate) {
+		this.userId = userId;
 		this.name = name;
 		this.eventDate = eventDate;
 	}
+	
+//	public Event(String name,LocalDate eventDate) {
+//		this.name = name;
+//		this.eventDate = eventDate;
+//	}
 }
