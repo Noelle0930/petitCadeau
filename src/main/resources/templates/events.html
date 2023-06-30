@@ -29,19 +29,21 @@
 					<td><a class="event-name" th:href="|/items/${list.id}|">[[${list.name}]]</a></td>
 					<td>
 						<form th:action="|/events/${list.id}/edit|" method="get">
-							<button>編集</button>
+							<button class="button">編集</button>
 						</form>
 					</td>
 					<td>
 						<form th:action="|/events/${list.id}/delete|" method="post">
-							<button>削除</button>
+							<button class="button">削除</button>
 						</form>
 					</td>
 				</tr>
 			</table>
 		</div>
-
-		<a href="/events/add">新規イベント登録</a>
+		<br>
+		<br>
+		<br>
+		<a class="btn_12" href="/events/add">　新規イベント登録</a>
 	</div>
 </body>
 

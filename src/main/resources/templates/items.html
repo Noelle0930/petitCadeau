@@ -30,13 +30,11 @@
 			</form>
 			<table border="1">
 				<tr>
-					<th>NO</th>
 					<th>商品名</th>
 					<th>値段</th>
 					<th></th>
 				</tr>
 				<tr th:each="item : ${items}">
-					<td th:text="${item.id}"></td>
 					<td><a th:href="|/items/${item.id}|" th:text="${item.name}"></a></td>
 					<td th:text="${item.price}"></td>
 					<td>
