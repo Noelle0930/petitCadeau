@@ -4,32 +4,39 @@
 <head>
 	<meta charset="UTF-8">
 	<title>イベント編集</title>
-	<link rel="stylesheet" type="text/css" href="/css/styleAfter.css">
+	<link rel="stylesheet" type="text/css" href="/css/editEvent.css">
 </head>
 
 <body>
 	<div class="contents-frame">
 		<header>
 			<div class="theme">Petit Cadeau</div>
+			<div class="account">
+			<span th:text="${@account.name}+' さんがログイン中'"></span>
+			<br>
+			<a href="/login">ログアウト</a>
+		</div>
 		</header>
 
 		<div class="contents">
 			<form th:action="|/events/${event.id}/edit|" method="post">
 				<h1>イベント編集</h1>
-				<table border="1">
+				<table border="0">
 
 					<tr>
 						<th>イベント名</th>
-						<td><input type="text" name="name" th:value="${event.name}"></td>
+						<td><div class="cp_iptxt">
+	<label class="ef"><input type="text" name="name" th:value="${event.name}"></label></div></td>
 					</tr>
 					<tr>
 						<th>イベント日</th>
-						<td><input type="date" name="eventDate" th:value="${event.eventDate}"></td>
+						<td><div class="cp_iptxt">
+	<label class="ef"><input type="date" name="eventDate" th:value="${event.eventDate}"></label></div></td>
 					</tr>
 
 				</table>
 				<br>
-				<input type="submit" value="更新">
+				<input type="submit" value="更新" class="button">
 			</form>
 		</div>
 	</div>

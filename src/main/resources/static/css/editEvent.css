@@ -1,0 +1,106 @@
+body {
+	background-image: url(background-bokashi.png);
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: 100% 100%;
+	margin: 0;
+}
+
+header {
+	display: flex;
+	background-color: rgb(255, 208, 253);
+	padding: 10px;
+	min-width: 97.4%;
+}
+
+.theme {
+	display: inline-block;
+	font-family: 'Segoe Script', sans-serif;
+	font-size: 40px;
+	padding: 10px;
+	margin-right: auto;
+}
+
+.account {
+	display: inline-block;
+	text-align: right;
+	padding: 10px;
+}
+
+.contents {
+	text-align: center;
+	background-color: rgba(255,255,255,0.9);
+	font-family: 'Yu Mincho Light', 'YuMincho', 'Yu Mincho', '游明朝体', sans-serif;
+
+	width: 700px;
+	margin-top: 50px;
+	margin-right: auto;
+	margin-left: auto;
+	padding: 50px 20px 50px 20px;
+	border-radius: 10px;
+
+}
+
+
+table {
+	margin-top: 15px;
+	margin-left:auto;
+	margin-right: auto;
+}
+
+
+
+.cp_iptxt {
+	position: relative;
+	width: 80%;
+	margin: 1px 3%;
+	padding-left:10px;
+}
+.cp_iptxt input[type='text'] {
+	font: 15px/22px sans-serif;
+	box-sizing: border-box;
+	width: 100%;
+	padding: 0.3em;
+	transition: 0.3s;
+	letter-spacing: 1px;
+	color: rgb(0, 0, 0);
+	border: none;
+	border-bottom: 2px solid #1b2538;
+	background: transparent;
+}
+.ef input[type='text']:focus {
+	border-bottom: 2px solid #da3c41;
+	outline: none;
+}
+
+.button {
+	display: inline-block;
+	border-radius: 10px;
+	/* 角丸       */
+	font-size: 12pt;
+	/* 文字サイズ */
+	text-align: center;
+	/* 文字位置   */
+	cursor: pointer;
+	/* カーソル   */
+	padding: 10px 10px;
+	/* 余白       */
+	background: rgb(255, 255, 255);
+	/* 背景色     */
+	color: rgb(0, 0, 0);
+	/* 文字色     */
+	line-height: 1em;
+	/* 1行の高さ  */
+	transition: .3s;
+	/* なめらか変化 */
+	border: 2px solid rgb(0, 0, 0);
+	/* 枠の指定 */
+}
+
+.button:hover {
+	color: rgb(255, 255, 255);
+	/* 背景色     */
+	background: rgb(0, 0, 0);
+	/* 文字色     */
+}
