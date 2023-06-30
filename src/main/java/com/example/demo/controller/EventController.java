@@ -58,15 +58,15 @@ public class EventController {
 			error.add("日付を指定してください");
 		}
 
-	LocalDate now = LocalDate.now();
-		
-		if(eventDate !=null) {
-			if (eventDate.isBefore(now)||eventDate.compareTo(now)==0) {
-				error.add("イベント日は翌日以降を指定してください");	
+		LocalDate now = LocalDate.now();
+
+		if (eventDate != null) {
+			if (eventDate.isBefore(now) || eventDate.compareTo(now) == 0) {
+				error.add("イベント日は翌日以降を指定してください");
 			}
 		}
-		
-		model.addAttribute("name",name);
+
+		model.addAttribute("name", name);
 		model.addAttribute("eventDate", eventDate);
 		model.addAttribute("List", error);
 
@@ -81,50 +81,47 @@ public class EventController {
 
 		return "/addEvent";
 	}
-	
+
 	@GetMapping("/events/{id}/edit")
 	public String edit(
-			@PathVariable(name="id", required=false)Integer id,
-			Model model
-			) {
-		
-		Event event=null;
-		
-		Optional <Event> record= eventRepository.findById(id);
-		
-		if(record.isEmpty()==false) {
-			event=record.get();
+			@PathVariable(name = "id", required = false) Integer id,
+			Model model) {
+
+		Event event = null;
+
+		Optional<Event> record = eventRepository.findById(id);
+
+		if (record.isEmpty() == false) {
+			event = record.get();
 		}
-		
-		if(event==null) {
+
+		if (event == null) {
 			return "redirect:/events";
 		}
-		
+
 		model.addAttribute("event", event);
-		
+
 		return "editEvent";
 	}
-	
+
 	@PostMapping("/events/{id}/edit")
 	public String update(
-			@PathVariable(name="id", required=false)Integer id,
+			@PathVariable(name = "id", required = false) Integer id,
 			@RequestParam(name = "name", defaultValue = "") String name,
-			@RequestParam(name = "eventDate", required = false) LocalDate eventDate	
-			) {
-		
-		Event event = new Event(id, account.getId(), name,eventDate);
-		
+			@RequestParam(name = "eventDate", required = false) LocalDate eventDate) {
+
+		Event event = new Event(id, account.getId(), name, eventDate);
+
 		eventRepository.save(event);
-		
+
 		return "redirect:/events";
 	}
-	
+
 	@PostMapping("/events/{id}/delete")
 	public String delete(
-			@PathVariable(name="id", required=false) Integer id
-			) {
+			@PathVariable(name = "id", required = false) Integer id) {
 		eventRepository.deleteById(id);
-		
+
 		return "redirect:/events";
 	}
 }

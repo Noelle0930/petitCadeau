@@ -8,32 +8,25 @@
 </head>
 
 <body>
-	<div class="contents-frame">
-		<header>
-			<div class="theme">Petit Cadeau</div>
-			<div class="account">
-				<span th:text="${@account.name}+' さんがログイン中'"></span>
-				<br>
-				<a href="/login">ログアウト</a>
-			</div>
-		</header>
+	<header>
+		<div class="theme">Petit Cadeau</div>
+		<div class="account">
+			<span th:text="${@account.name}+' さんがログイン中'"></span>
+			<br>
+			<a href="/login">ログアウト</a>
+		</div>
+	</header>
 
-		<div class="contents">
-			<h1>イベント一覧</h1>
-			<table border="1">
-				<tr>
-					<th>月</th>
-					<th>日</th>
-					<th>イベント名</th>
-					<th>編集</th>
-					<th>削除</th>
-				</tr>
+	<div class="contents">
+		<div class="event-block">
+			<h1 class="event-title">イベント一覧</h1>
+			<table class="event-body">
 				<tr th:each="list : ${list}">
-					<td>[[${list.eventDate.getMonthValue()}]]</td>
-					<td>[[${list.eventDate.getDayOfMonth()}]]
+					<td th:with="month = ${list.eventDate.getMonthValue()}, date = ${list.eventDate.getDayOfMonth()}">
+						[[${month.toString().length() == 1 ? '0' + month : month}]]月[[${date.toString().length() == 1 ? '0' + date : date}]]日
 						[[${#temporals.dayOfWeekName(list.eventDate)}]]
 					</td>
-					<td><a th:href="|/items/${list.id}|">[[${list.name}]]</a></td>
+					<td><a class="event-name" th:href="|/items/${list.id}|">[[${list.name}]]</a></td>
 					<td>
 						<form th:action="|/events/${list.id}/edit|" method="get">
 							<button>編集</button>
@@ -46,11 +39,10 @@
 					</td>
 				</tr>
 			</table>
-
-			<a href="/events/add">新規イベント登録</a>
 		</div>
-	</div>
 
+		<a href="/events/add">新規イベント登録</a>
+	</div>
 </body>
 
 </html>

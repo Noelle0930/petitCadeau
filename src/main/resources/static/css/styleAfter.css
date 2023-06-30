@@ -8,7 +8,8 @@ body {
 }
 
 header {
-	background-color: blue;
+	display: flex;
+	background-color: rgb(250, 189, 251);
 	padding: 20px;
 	min-width: 97.4%;
 }
@@ -18,11 +19,59 @@ header {
 	font-family: 'Segoe Script', sans-serif;
 	font-size: 40px;
 	padding: 10px;
+	margin-right: auto;
 }
 
 .account {
 	display: inline-block;
 	text-align: right;
 	padding: 10px;
-	margin-left: 800px;
+}
+
+.event-block {
+	display: flex;
+	width: 700px;
+	margin-top: 50px;
+	margin-right: auto;
+	margin-left: auto;
+	padding: 50px 150px 50px 60px;
+	background-color: rgba(255, 255, 255, 0.9);
+	border-radius: 10px;
+}
+
+.event-title {
+	white-space: nowrap;
+	font-size: 35px;
+}
+
+.event-body {
+	padding-top: 30px;
+	margin-left: 80px;
+}
+
+table {
+	white-space: nowrap;
+	border-collapse: collapse;
+	margin-top: 15px;
+}
+
+tr {
+	border-color: gray;
+	border-bottom: solid 1px;
+}
+
+td {
+	padding: 10px;
+	font-size: 20px;
+}
+
+.event-name {
+	display: inline-block;
+	padding: 0.3em;
+	transition: .3s;
+	transform: scale(1);
+	color: #F4511E;
+}
+.event-name:hover {
+	transform: scale(1.05);
 }
