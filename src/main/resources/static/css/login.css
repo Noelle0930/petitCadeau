@@ -1,36 +1,63 @@
-
-
-
-table{
-	margin-top: 200px;
-	position:absolute;
-	border-collapse: collapse;
-	border-color: black;
+body {
+	background-image: url(background-bokashi.png);
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: 100% 100%;
+	margin: 0;
 }
 
-.wrap {
-	display: flex; /*--横並び指定--*/	
+header {
+	background-color: blue;
+	padding: 20px;
+	min-width: 97.4%;
 }
 
-.wrap.contents1 {
-	position: absolute;
-	margin-top: 300px;
-	margin-left: 200px;
+.theme {
+	display: inline-block;
+	font-family: 'Segoe Script', sans-serif;
+	font-size: 40px;
+	padding: 10px;
 }
 
-.wrap.contents1::after{
-	position: absolute; /*--positionを追加--*/
-	top: 0;
-	left: 100%;
-	margin: 0 1rem;
-	content: "";
-	width: 10px; /*--縦線の太さ(幅)--*/
-	height: 100%;
-	background-color: #333; /*--縦線の色--*/
+.account {
+	display: inline-block;
+	text-align: right;
+	padding: 10px;
+	margin-left: 800px;
 }
 
-.wrap.contents2 {
-	position:relative;
-	margin-top: 300px;
-	margin-left: 500px;
-}
+
+/*table{*/
+/*	margin-top: 200px;*/
+/*	position:absolute;*/
+/*	border-collapse: collapse;*/
+/*	border-color: black;*/
+/*}*/
+
+/*.wrap {*/
+/*	display: flex; --横並び指定--	*/
+/*}*/
+
+/*.wrap.contents1 {*/
+/*	position: absolute;*/
+/*	margin-top: 300px;*/
+/*	margin-left: 200px;*/
+/*}*/
+
+/*.wrap.contents1::after{*/
+/*	position: absolute; --positionを追加--*/
+/*	top: 0;*/
+/*	left: 100%;*/
+/*	margin: 0 1rem;*/
+/*	content: "";*/
+/*	width: 10px; --縦線の太さ(幅)--*/
+/*	height: 100%;*/
+/*	background-color: #333; --縦線の色--*/
+/*}*/
+
+/*.wrap.contents2 {*/
+/*	position:relative;*/
+/*	margin-top: 300px;*/
+/*	margin-left: 500px;*/
+/*}*/

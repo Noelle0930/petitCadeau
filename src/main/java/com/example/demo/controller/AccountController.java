@@ -40,10 +40,10 @@ public class AccountController {
 		 return "top";
 	 }
 
-	@GetMapping({ "/login2", "/logout" })
+	@GetMapping({ "/login", "/logout" })
 	public String index() {
 		session.invalidate();
-		return "login2";
+		return "login";
 	}
 
 	@PostMapping("/login")
