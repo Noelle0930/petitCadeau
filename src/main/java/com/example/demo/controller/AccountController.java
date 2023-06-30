@@ -137,6 +137,6 @@ public class AccountController {
 			return "redirect:/login";
 		}
 
-		return "/addUser";
+		return "/login";
 	}
 }
