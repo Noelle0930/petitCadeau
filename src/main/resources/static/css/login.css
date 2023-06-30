@@ -8,8 +8,9 @@ body {
 }
 
 header {
-	background-color: blue;
-	padding: 20px;
+	display: flex;
+	background-color: rgb(250, 189, 251);
+	padding: 10px;
 	min-width: 97.4%;
 }
 
@@ -35,9 +36,63 @@ header {
 /*	border-color: black;*/
 /*}*/
 
-/*.wrap {*/
-/*	display: flex; --横並び指定--	*/
-/*}*/
+.wrap {
+	display: flex;
+	margin-top: 80px;
+	font-family: 'Yu Mincho Light', 'YuMincho', 'Yu Mincho', '游明朝体', sans-serif;
+}
+
+.contents1,.contents2 {
+	display: inline-block;
+}
+
+.contents1 {
+	position:relative;
+	
+	margin-right: auto;
+	margin-left: 200px;
+	background-color: rgba(255,255,255,0.9);
+	border-radius: 10px;
+	padding: 20px 40px 20px 40px;
+}
+
+.contents1::after {
+  position:absolute;
+  margin: 0 7rem;
+  content: "";
+  width: 2px;
+  top:0%;
+  height: 400px;
+  background-color:gray;
+  left: 100%;
+}
+
+.contents2 {
+	margin-right: 200px;
+	background-color: rgba(255,255,255,0.9);
+	border-radius: 10px;
+    padding: 20px 40px 20px 40px;
+}
+
+.button {
+	margin-left:120px;
+  display       : inline-block;
+  border-radius : 10px;          /* 角丸       */
+  font-size     : 14pt;        /* 文字サイズ */
+  text-align    : center;      /* 文字位置   */
+  cursor        : pointer;     /* カーソル   */
+  padding       : 10px 10px;   /* 余白       */
+  background    : #99ccff;     /* 背景色     */
+  color         : #ffffff;     /* 文字色     */
+  line-height   : 1em;         /* 1行の高さ  */
+  transition    : .3s;         /* なめらか変化 */
+  border        : 2px solid #99ccff;    /* 枠の指定 */
+}
+
+.button:hover {
+  color         : #99ccff;     /* 背景色     */
+  background    : #ffffff;     /* 文字色     */
+}
 
 /*.wrap.contents1 {*/
 /*	position: absolute;*/
@@ -46,14 +101,14 @@ header {
 /*}*/
 
 /*.wrap.contents1::after{*/
-/*	position: absolute; --positionを追加--*/
+/*	position: absolute;*/
 /*	top: 0;*/
 /*	left: 100%;*/
 /*	margin: 0 1rem;*/
 /*	content: "";*/
-/*	width: 10px; --縦線の太さ(幅)--*/
+/*	width: 10px;*/
 /*	height: 100%;*/
-/*	background-color: #333; --縦線の色--*/
+/*	background-color: #333;*/
 /*}*/
 
 /*.wrap.contents2 {*/

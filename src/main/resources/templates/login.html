@@ -20,7 +20,7 @@
 				<a style="color:red" th:text="${message}"></a>
 				</th:if>
 
-				<form action="/login" method="post">
+				<form action="/login" name="login" method="post">
 					<table border="1">
 						<tr>
 							<th>メールアドレス</th>
@@ -31,7 +31,8 @@
 							<td><input type="text" name="password"></td>
 						</tr>
 					</table>
-					<button>ログイン</button>
+					<br>
+				<input type="submit" value="Login" class="button">
 				</form>
 		</div>
 
@@ -67,7 +68,8 @@
 						<td><input type="date" name="birthday" th:value="${birthday}"></td>
 					</tr>
 				</table>
-				<button>登録</button>
+				<br>
+				<input type="submit" value="Sign" class="button">
 			</form>
 		</div>
 	</div>
