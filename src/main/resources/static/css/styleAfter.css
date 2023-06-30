@@ -7,6 +7,8 @@ body {
 	margin: 0;
 }
 
+/*---------------------------------------------------------------*/
+
 header {
 	display: flex;
 	background-color: rgb(255, 208, 253);
@@ -28,11 +30,12 @@ header {
 	padding: 10px;
 }
 
-.contents {
-	text-align: center;
-}
+
+/*---------------------------------------------------------------*/
+
 
 .event-block {
+	text-align: center;
 	display: flex;
 	width: 700px;
 	margin-top: 50px;

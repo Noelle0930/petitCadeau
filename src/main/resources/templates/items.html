@@ -4,24 +4,26 @@
 <head>
 	<meta charset="UTF-8">
 	<title>商品一覧</title>
-	<link rel="stylesheet" type="text/css" href="/css/styleAfter.css">
+	<link rel="stylesheet" type="text/css" href="/css/styleItems.css">
 </head>
 
 <body>
-	<div class="contents-frame">
-		<header>
-			<div class="theme">Petit Cadeau</div>
-		</header>
+	<header>
+		<div class="theme">Petit Cadeau</div>
+	</header>
 
-		<div class="contents">
+	<div class="event-block">
+		<div class="block-right">
 			<h1>商品一覧</h1>
-			<hr>
+		</div>
 
+		<!--		<a th:href="|/items/${@event.id}|">全商品</a>-->
+		<!--		<a th:each="c:${categories}" th:href="|/items/${@event.id}?categoryId=${c.id}">-->
+		<!--			<span th:text="${c.name}" style="padding-left: 10px;"></span>-->
+		<!--		</a>-->
+		<br><br>
+		<div class="block-left">
 			<a th:href="|/items/${@event.id}|">全商品</a>
-			<a th:each="c:${categories}" th:href="|/items/${@event.id}?categoryId=${c.id}">
-				<span th:text="${c.name}" style="padding-left: 10px;"></span>
-			</a>
-			<br><br>
 			<form th:action="|/items/${@event.id}|" method="get">
 				<input type="hidden" name="categoryId" th:value="${categoryId}">
 				<input type="text" name="maxPrice" th:value="${maxPrice}" placeholder="価格">
@@ -30,11 +32,13 @@
 			</form>
 			<table border="1">
 				<tr>
+					<th>カテゴリID</th>
 					<th>商品名</th>
 					<th>値段</th>
 					<th></th>
 				</tr>
 				<tr th:each="item : ${items}">
+					<td th:text="${item.categoryId}"></td>
 					<td><a th:href="|/items/${item.id}|" th:text="${item.name}"></a></td>
 					<td th:text="${item.price}"></td>
 					<td>
@@ -45,9 +49,10 @@
 					</td>
 				</tr>
 			</table>
-			<a href="/events">イベント一覧へ</a>
 		</div>
 	</div>
+	<a href="/events">イベント一覧へ</a>
+
 </body>
 
 </html>
