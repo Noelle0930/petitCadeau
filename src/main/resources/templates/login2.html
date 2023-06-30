@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>ログイン</title>
+	<link rel="stylesheet" type="text/css" href="/css/login.css">
+</head>
+
+<body>
+
+	<div class="wrap">
+		<div class="contents1">
+			<h1>ログイン</h1>
+
+			<th:if="${message}">
+				<a style="color:red" th:text="${message}"></a>
+				</th:if>
+
+				<form action="/login" method="post">
+					<table border="1">
+						<tr>
+							<th>メールアドレス</th>
+							<td><input type="text" name="email" th:value="${email}"></td>
+						</tr>
+						<tr>
+							<th>パスワード</th>
+							<td><input type="text" name="password"></td>
+						</tr>
+					<button>ログイン</button>
+					</table>
+				</form>
+		</div>
+
+		<div class="contents2">
+			<form action="/account/add" method="post">
+			<h1>会員登録</h1>
+				<th:block th:each="item:${List}">
+					<font color="red">[[${item}]]<br></font>
+				</th:block>
+				<table border="1">
+					<tr>
+						<th>名前</th>
+						<td><input type="text" name="name" th:value="${name}"></td>
+					</tr>
+					<tr>
+						<th>住所</th>
+						<td><input type="text" name="address" th:value="${address}"></td>
+					</tr>
+					<tr>
+						<th>メールアドレス</th>
+						<td><input type="text" name="email" th:value="${email}"></td>
+					</tr>
+					<tr>
+						<th>電話番号</th>
+						<td><input type="text" name="tel" th:value="${tel}"></td>
+					</tr>
+					<tr>
+						<th>パスワード</th>
+						<td><input type="text" name="password" th:value="${password}"></td>
+					</tr>
+					<tr>
+						<th>誕生日</th>
+						<td><input type="date" name="birthday" th:value="${birthday}"></td>
+					</tr>
+				<button>登録</button>
+				</table>
+			</form>
+		</div>
+	</div>
+</body>
+
+</html>
