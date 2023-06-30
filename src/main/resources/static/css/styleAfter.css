@@ -1,9 +1,5 @@
 body {
-	margin: 0;
-}
-
-.contents-frame {
-	background-image: url(background.jpg);
+	background-image: url(background-bokashi.png);
 	background-position: center center;
 	background-repeat: no-repeat;
 	background-attachment: fixed;
@@ -11,22 +7,10 @@ body {
 	margin: 0;
 }
 
-.contents-frame::before {
-	background: inherit;
-	content: '';
-	filter: blur(6px);
-	position: absolute;
-	top: 5px;
-	right: 5px;
-	bottom: 5px;
-	left: 5px;
-}
-
 header {
-	position: absolute;
-	background-color: cadetblue;
+	background-color: blue;
 	padding: 20px;
-	min-width: 100%;
+	min-width: 97.4%;
 }
 
 .theme {
@@ -41,15 +25,4 @@ header {
 	text-align: right;
 	padding: 10px;
 	margin-left: 800px;
-}
-
-.contents {
-	position: absolute;
-	margin-top: 200px;
-	margin-left: 300px;
-}
-
-table{
-	border-collapse: collapse;
-	border-color: black;
 }
