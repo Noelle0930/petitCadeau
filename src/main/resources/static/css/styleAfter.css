@@ -25,6 +25,8 @@ header {
 }
 
 .account {
+	font-family: 'Yu Mincho Light', 'YuMincho', 'Yu Mincho', '游明朝体', sans-serif;
+    font-weight: bold;
 	display: inline-block;
 	text-align: right;
 	padding: 10px;
@@ -47,6 +49,8 @@ header {
 }
 
 .event-title {
+	font-family: 'Yu Mincho Light', 'YuMincho', 'Yu Mincho', '游明朝体', sans-serif;
+
 	white-space: nowrap;
 	font-size: 35px;
 }
@@ -57,6 +61,8 @@ header {
 }
 
 table {
+	font-family: 'Yu Mincho Light', 'YuMincho', 'Yu Mincho', '游明朝体', sans-serif;
+    font-weight: bold;
 	white-space: nowrap;
 	border-collapse: collapse;
 	margin-top: 15px;
@@ -85,6 +91,8 @@ td {
 }
 
 .button {
+	font-family: 'Yu Mincho Light', 'YuMincho', 'Yu Mincho', '游明朝体', sans-serif;
+    font-weight: bold;
 	display: inline-block;
 	border-radius: 10px;
 	/* 角丸       */
@@ -116,6 +124,8 @@ td {
 }
 
 a.btn_12 {
+	font-family: 'Yu Mincho Light', 'YuMincho', 'Yu Mincho', '游明朝体', sans-serif;
+    font-weight: bold;
 	display: flex;
     justify-content: space-evenly;
     align-items: center;
