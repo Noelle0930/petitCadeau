@@ -17,8 +17,8 @@
 		</div>
 	</header>
 
-	<div class="event-block">
-		<div class="block-right">
+	<div class="item-block">
+		<div class="block-left">
 			<h1>商品一覧</h1>
 		</div>
 
@@ -26,8 +26,7 @@
 		<!--		<a th:each="c:${categories}" th:href="|/items/${@event.id}?categoryId=${c.id}">-->
 		<!--			<span th:text="${c.name}" style="padding-left: 10px;"></span>-->
 		<!--		</a>-->
-		<br><br>
-		<div class="block-left">
+		<div class="block-right">
 			<a th:href="|/items/${@event.id}|">全商品</a>
 			<form th:action="|/items/${@event.id}|" method="get">
 				<input type="hidden" name="categoryId" th:value="${categoryId}">
@@ -35,7 +34,7 @@
 				円以下
 				<button>検索</button>
 			</form>
-			<table border="1">
+			<table class="item-body">
 				<tr>
 					<th>カテゴリID</th>
 					<th>商品名</th>
