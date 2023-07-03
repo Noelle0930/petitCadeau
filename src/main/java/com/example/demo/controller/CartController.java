@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,12 +20,22 @@ public class CartController {
 	@Autowired
 	ItemRepository itemRepository;
 
-	// カート内容を表示
 	@GetMapping("/cart")
-	public String index() {
-		// cart.htmlの出力
+	public String index(
+			Model m) {
+		
+		String error=null;
+		
+		if(cart==null) {
+			error="カートに商品がありません";
+		}
+		
+		m.addAttribute("error", error);
+
 		return "cart";
 	}
+	
+
 
 	// 指定した商品をカートに追加する
 	// 数量が未指定の場合は1とする
@@ -52,6 +63,7 @@ public class CartController {
 
 		// カート情報から削除
 		cart.delete(itemId);
+
 
 		// 「/cart」にリダイレクト
 		return "redirect:/cart";

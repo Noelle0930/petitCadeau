@@ -4,7 +4,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Cart</title>
-	<link rel="stylesheet" type="text/css" href="/css/styleAfter.css">
+	<link rel="stylesheet" type="text/css" href="/css/cart.css">
 </head>
 
 <body>
@@ -17,12 +17,21 @@
 			<a href="/login">ログアウト</a>
 		</div>
 		</header>
-
+<th:block th:if="${@cart.items.size() <= 0}">
+	<div class="contents">
+			<a th:href="|/items/${@event.id}|">商品一覧へ</a>
+			<div class="event-block">
+			<h1 class="event-title">カート情報</h1>
+カートに商品がありません
+</div></div>
+</th:block>
+<th:block th:if="${@cart.items.size() > 0}">
 		<div class="contents">
-			<h1>カート情報</h1>
-			<hr>
-			<table border="1">
-				<tr>
+			<a th:href="|/items/${@event.id}|">商品一覧へ</a>
+			<div class="event-block">
+			<h1 class="event-title">カート情報</h1>
+			<table class="event-body">
+							<tr>
 					<th>NO</th>
 					<th>商品名</th>
 					<th>値段</th>
@@ -39,7 +48,7 @@
 					<td>
 						<form action="/cart/delete" method="post">
 							<input type="hidden" name="itemId" th:value="${item.id}">
-							<button>削除</button>
+							<button class="button">削除</button>
 						</form>
 					</td>
 				</tr>
@@ -48,13 +57,13 @@
 					<td></td>
 				</tr>
 			</table>
-			<a th:href="|/items/${@event.id}|">商品一覧へ</a>
-			<br>
+			
 			<form action="/order" method="get">
-				<button>注文を確認する</button>
+				<input type="submit" value="注文を確認する" class="button">
 			</form>
 		</div>
 	</div>
+	</th:block>
 </body>
 
 </html>
