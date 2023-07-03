@@ -59,6 +59,20 @@ public class OrderController {
 			@RequestParam("message") String message,
 			@RequestParam("sendTo") String sendTo,
 			Model model) {
+		
+		List<String> error = new ArrayList<>();
+
+		if (name.equals("")) {
+			error.add("名前は必須です");
+		}
+		if (address.equals("")) {
+			error.add("住所は必須です");
+		}
+		
+		if (error.size() != 0) {
+			model.addAttribute("error", error);
+			return "order";
+		}
 
 		model.addAttribute("name", name);
 		model.addAttribute("address", address);
