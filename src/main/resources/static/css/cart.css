@@ -26,7 +26,7 @@ header {
 
 .account {
 	font-family: 'Yu Mincho Light', 'YuMincho', 'Yu Mincho', '游明朝体', sans-serif;
-    font-weight: bold;
+	font-weight: bold;
 	display: inline-block;
 	text-align: right;
 	padding: 10px;
@@ -40,7 +40,7 @@ header {
 }
 
 .block-right {
-	margin-left:50px;
+	margin-left: 50px;
 	margin-top: 35px;
 
 }
@@ -48,11 +48,10 @@ header {
 
 .cart-block {
 	font-family: 'Yu Mincho Light', 'YuMincho', 'Yu Mincho', '游明朝体', sans-serif;
-    font-weight: bold;
+	font-weight: bold;
 	text-align: center;
 	display: flex;
 	width: 700px;
-	margin-top: 50px;
 	margin-right: auto;
 	margin-left: auto;
 	padding: 50px 150px 50px 60px;
@@ -74,7 +73,7 @@ header {
 
 table {
 	font-family: 'Yu Mincho Light', 'YuMincho', 'Yu Mincho', '游明朝体', sans-serif;
-    font-weight: bold;
+	font-weight: bold;
 	white-space: nowrap;
 	border-collapse: collapse;
 	margin-top: 15px;
@@ -93,7 +92,7 @@ td {
 
 .button {
 	font-family: 'Yu Mincho Light', 'YuMincho', 'Yu Mincho', '游明朝体', sans-serif;
-    font-weight: bold;
+	font-weight: bold;
 	display: inline-block;
 	border-radius: 10px;
 	/* 角丸       */

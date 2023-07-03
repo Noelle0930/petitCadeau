@@ -16,4 +16,3 @@ public class Event {
 		this.id = id;
 	}
 }
-

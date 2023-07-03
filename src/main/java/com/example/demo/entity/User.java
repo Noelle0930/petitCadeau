@@ -16,23 +16,23 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	
+
 	private String name;
-	
+
 	private String address;
-	
+
 	private String email;
-	
+
 	private String tel;
-	
+
 	private String password;
-	
+
 	private LocalDate birthday;
-	
+
 	public User() {
-		
+
 	}
-	
+
 	public User(String name, String address, String email, String tel, String password, LocalDate birthday) {
 		this.name = name;
 		this.address = address;
@@ -41,5 +41,5 @@ public class User {
 		this.password = password;
 		this.birthday = birthday;
 	}
-	
+
 }

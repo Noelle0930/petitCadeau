@@ -15,19 +15,19 @@ public class OrderDetail {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	
+
 	@Column(name = "order_id")
 	private Integer orderId;
-	
+
 	@Column(name = "item_id")
 	private Integer itemId;
-	
+
 	private Integer quantity;
-	
+
 	public OrderDetail() {
-		
+
 	}
-	
+
 	public OrderDetail(Integer orderId, Integer itemId, Integer quantity) {
 		this.orderId = orderId;
 		this.itemId = itemId;

@@ -6,6 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.example.demo.entity.Event;
 
-public interface EventRepository extends JpaRepository<Event, Integer>{
+public interface EventRepository extends JpaRepository<Event, Integer> {
 	List<Event> findByUserId(Integer userId);
 }

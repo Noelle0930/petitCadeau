@@ -27,7 +27,7 @@ header {
 
 .account {
 	font-family: 'Yu Mincho Light', 'YuMincho', 'Yu Mincho', '游明朝体', sans-serif;
-    font-weight: bold;
+	font-weight: bold;
 	display: inline-block;
 	text-align: right;
 	padding: 10px;
@@ -54,7 +54,7 @@ header {
 .order-table {
 	margin-right: auto;
 	margin-left: auto;
-    font-weight: bold;
+	font-weight: bold;
 	white-space: nowrap;
 	border-collapse: collapse;
 	margin-top: 15px;
@@ -71,7 +71,7 @@ header {
 }
 
 .deliform {
-    font-weight: bold;
+	font-weight: bold;
 	white-space: nowrap;
 	border-collapse: collapse;
 	margin-top: 15px;
@@ -95,8 +95,9 @@ header {
 	position: relative;
 	width: 80%;
 	margin: 1px 3%;
-	padding-left:10px;
+	padding-left: 10px;
 }
+
 .cp_iptxt input[type='text'] {
 	font: 15px/22px sans-serif;
 	box-sizing: border-box;
@@ -109,6 +110,7 @@ header {
 	border-bottom: 2px solid #1b2538;
 	background: transparent;
 }
+
 .ef input[type='text']:focus {
 	border-bottom: 2px solid #da3c41;
 	outline: none;

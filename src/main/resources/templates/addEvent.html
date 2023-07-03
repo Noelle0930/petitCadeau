@@ -12,13 +12,14 @@
 		<header>
 			<div class="theme">Petit Cadeau</div>
 			<div class="account">
-			<span th:text="${@account.name}+' さんがログイン中'"></span>
-			<br>
-			<a href="/login">ログアウト</a>
-		</div>
+				<span th:text="${@account.name}+' さんがログイン中'"></span>
+				<br>
+				<a href="/login">ログアウト</a>
+			</div>
 		</header>
-		
-		<a href="/events"class="btn bgright"><span> < イベント一覧へ</span></a>
+
+		<a href="/events" class="btn bgright">
+			<span>< イベント一覧へ</span></a>
 
 		<div class="contents">
 			<h1>イベント登録</h1>
@@ -30,21 +31,27 @@
 				<table border="0">
 					<tr>
 						<th>イベント名</th>
-						<td><div class="cp_iptxt">
-	<label class="ef"><input type="text" name="name" th:value="${name}"></label></div></td>
+						<td>
+							<div class="cp_iptxt">
+								<label class="ef"><input type="text" name="name" th:value="${name}"></label>
+							</div>
+						</td>
 					</tr>
 					<tr>
 						<th>イベント日</th>
-						<td><div class="cp_iptxt">
-	<label class="ef"><input type="date" name="eventDate" th:value="${eventDate}"></label></div></td>
+						<td>
+							<div class="cp_iptxt">
+								<label class="ef"><input type="date" name="eventDate" th:value="${eventDate}"></label>
+							</div>
+						</td>
 					</tr>
 				</table>
 				<br>
 				<input type="submit" value="登録" class="button">
 				<br>
-				
+
 			</form>
 		</div>
-		</body>
+</body>
 
 </html>

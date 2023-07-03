@@ -17,7 +17,8 @@
 		</div>
 	</header>
 
-	<a href="/cart" class="btn bgright"><span>
+	<a href="/cart" class="btn bgright">
+		<span>
 			< カートへ戻る</span></a>
 
 	<div class="order-block">
@@ -26,14 +27,12 @@
 			<h3>-ご注文商品-</h3>
 			<table class="order-table">
 				<tr>
-					<th>NO</th>
 					<th>商品名</th>
 					<th>値段</th>
 					<th>個数</th>
 					<th>小計</th>
 				</tr>
 				<tr th:each="item : ${@cart.items}">
-					<td th:text="${item.id}"></td>
 					<td th:text="${item.name}"></td>
 					<td th:text="${item.price}"></td>
 					<td th:text="${item.quantity}"></td>
@@ -97,7 +96,8 @@
 						<input type="hidden" name="sendTo" value="you">
 						●相手の住所に送る場合
 						<th:block th:if="${error}" th:each="error:${error}">
-							<br><font color="red">[[${error}]]</font>
+							<br>
+							<font color="red">[[${error}]]</font>
 						</th:block>
 						<table border="0" class="deliform">
 							<tr>

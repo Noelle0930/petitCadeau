@@ -23,19 +23,17 @@ public class CartController {
 	@GetMapping("/cart")
 	public String index(
 			Model m) {
-		
-		String error=null;
-		
-		if(cart==null) {
-			error="カートに商品がありません";
+
+		String error = null;
+
+		if (cart == null) {
+			error = "カートに商品がありません";
 		}
-		
+
 		m.addAttribute("error", error);
 
 		return "cart";
 	}
-	
-
 
 	// 指定した商品をカートに追加する
 	// 数量が未指定の場合は1とする
@@ -63,7 +61,6 @@ public class CartController {
 
 		// カート情報から削除
 		cart.delete(itemId);
-
 
 		// 「/cart」にリダイレクト
 		return "redirect:/cart";

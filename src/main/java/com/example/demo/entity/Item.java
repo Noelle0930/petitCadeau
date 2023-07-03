@@ -16,14 +16,14 @@ public class Item {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	
+
 	@Column(name = "category_id")
 	private Integer categoryId;
-	
+
 	private String name;
-	
+
 	private Integer price;
-	
+
 	@Transient // 永続化対象外
-	private Integer quantity; 
+	private Integer quantity;
 }

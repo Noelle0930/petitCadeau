@@ -17,17 +17,15 @@
 		</div>
 	</header>
 
-	<a href="/events" class="btn bgright"><span> < イベント一覧へ</span></a>
-	
+	<a href="/events" class="btn bgright">
+		<span>
+			< イベント一覧へ</span></a>
+
 	<div class="item-block">
 		<div class="block-left">
 			<h1>商品一覧</h1>
 		</div>
 
-		<!--		<a th:href="|/items/${@event.id}|">全商品</a>-->
-		<!--		<a th:each="c:${categories}" th:href="|/items/${@event.id}?categoryId=${c.id}">-->
-		<!--			<span th:text="${c.name}" style="padding-left: 10px;"></span>-->
-		<!--		</a>-->
 		<div class="block-right">
 			<div class="right-top">
 				<a class="allitems" th:href="|/items/${@event.id}|">全商品を表示</a>
@@ -59,7 +57,7 @@
 			</table>
 		</div>
 	</div>
-	
+
 
 </body>
 

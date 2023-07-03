@@ -24,7 +24,7 @@ public class Cart {
 	public int getTotalPrice() {
 		// 合計金額
 		int total = 0;
-		
+
 		for (Item item : items) {
 			total += item.getPrice() * item.getQuantity();
 		}

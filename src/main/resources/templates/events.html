@@ -23,7 +23,8 @@
 			<table class="event-body">
 				<tr th:each="list : ${list}">
 					<td th:with="month = ${list.eventDate.getMonthValue()}, date = ${list.eventDate.getDayOfMonth()}">
-						[[${month.toString().length() == 1 ? '0' + month : month}]]月[[${date.toString().length() == 1 ? '0' + date : date}]]日
+						[[${month.toString().length() == 1 ? '0' + month : month}]]月[[${date.toString().length() == 1 ?
+						'0' + date : date}]]日
 						[[${#temporals.dayOfWeekName(list.eventDate)}]]
 					</td>
 					<td><a class="event-name" th:href="|/items/${list.id}|">[[${list.name}]]</a></td>

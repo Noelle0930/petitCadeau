@@ -21,7 +21,7 @@ public class ItemController {
 
 	@Autowired
 	Account account;
-	
+
 	@Autowired
 	Event event;
 
@@ -30,7 +30,7 @@ public class ItemController {
 
 	@Autowired
 	ItemRepository itemRepository;
-	
+
 	@GetMapping("/items/{id}")
 	public String index2(
 			@PathVariable("id") Integer id,
@@ -58,7 +58,7 @@ public class ItemController {
 			itemList = itemRepository.findAll();
 
 		}
-		
+
 		event.setId(id);
 
 		model.addAttribute("items", itemList);

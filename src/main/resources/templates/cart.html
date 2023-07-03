@@ -12,66 +12,67 @@
 		<header>
 			<div class="theme">Petit Cadeau</div>
 			<div class="account">
-			<span th:text="${@account.name}+' さんがログイン中'"></span>
-			<br>
-			<a href="/login">ログアウト</a>
-		</div>
+				<span th:text="${@account.name}+' さんがログイン中'"></span>
+				<br>
+				<a href="/login">ログアウト</a>
+			</div>
 		</header>
-		
-			<a th:href="|/items/${@event.id}|" class="btn bgright"><span>< 商品一覧へ</span></a>
-    <th:block th:if="${@cart.items.size() <= 0}">
-	<div class="contents">
-						<div class="cart-block">
-				<div class="block-left">
-			    <h1>カート情報</h1>
-	     	    </div>
-			<div class="block-right">
-          カートに商品がありません
-          </div>
-    </div></div>
-    </th:block>
-    <th:block th:if="${@cart.items.size() > 0}">
-		<div class="contents">
-			
-			<div class="cart-block">
-				<div class="block-left">
-			    <h1>カート情報</h1>
-	     	    </div>
-	     	    <div class="block-right">
-			<table class="cart-body">
+
+		<a th:href="|/items/${@event.id}|" class="btn bgright">
+			<span>
+				< 商品一覧へ</span></a>
+		<th:block th:if="${@cart.items.size() <= 0}">
+			<div class="contents">
+				<div class="cart-block">
+					<div class="block-left">
+						<h1>カート情報</h1>
+					</div>
+					<div class="block-right">
+						カートに商品がありません
+					</div>
+				</div>
+			</div>
+		</th:block>
+		<th:block th:if="${@cart.items.size() > 0}">
+			<div class="contents">
+
+				<div class="cart-block">
+					<div class="block-left">
+						<h1>カート情報</h1>
+					</div>
+					<div class="block-right">
+						<table class="cart-body">
 							<tr>
-					<th>NO</th>
-					<th>商品名</th>
-					<th>値段</th>
-					<th>個数</th>
-					<th>小計</th>
-					<th></th>
-				</tr>
-				<tr th:each="item : ${@cart.items}">
-					<td th:text="${item.id}"></td>
-					<td th:text="${item.name}"></td>
-					<td th:text="${item.price}"></td>
-					<td th:text="${item.quantity}"></td>
-					<td th:text="${item.price * item.quantity}"></td>
-					<td>
-						<form action="/cart/delete" method="post">
-							<input type="hidden" name="itemId" th:value="${item.id}">
-							<button class="button">削除</button>
+								<th>商品名</th>
+								<th>値段</th>
+								<th>個数</th>
+								<th>小計</th>
+								<th></th>
+							</tr>
+							<tr th:each="item : ${@cart.items}">
+								<td th:text="${item.name}"></td>
+								<td th:text="${item.price}"></td>
+								<td th:text="${item.quantity}"></td>
+								<td th:text="${item.price * item.quantity}"></td>
+								<td>
+									<form action="/cart/delete" method="post">
+										<input type="hidden" name="itemId" th:value="${item.id}">
+										<button class="button">削除</button>
+									</form>
+								</td>
+							</tr>
+							<tr>
+								<td align="right" colspan="5" th:text="'総計：'+${@cart.totalPrice}"></td>
+								<td></td>
+							</tr>
+						</table>
+						<br>
+						<form action="/order" method="get">
+							<input type="submit" value="注文を確認する" class="button">
 						</form>
-					</td>
-				</tr>
-				<tr>
-					<td align="right" colspan="5" th:text="'総計：'+${@cart.totalPrice}"></td>
-					<td></td>
-				</tr>
-			</table>
-			<br>
-			<form action="/order" method="get">
-				<input type="submit" value="注文を確認する" class="button">
-			</form>
-		</div>
-	</div>
-	</th:block>
+					</div>
+				</div>
+		</th:block>
 </body>
 
 </html>

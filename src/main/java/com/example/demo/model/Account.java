@@ -18,4 +18,3 @@ public class Account {
 	private String tel;
 	private LocalDate birthday;
 }
-

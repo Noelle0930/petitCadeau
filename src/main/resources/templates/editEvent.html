@@ -12,10 +12,10 @@
 		<header>
 			<div class="theme">Petit Cadeau</div>
 			<div class="account">
-			<span th:text="${@account.name}+' さんがログイン中'"></span>
-			<br>
-			<a href="/login">ログアウト</a>
-		</div>
+				<span th:text="${@account.name}+' さんがログイン中'"></span>
+				<br>
+				<a href="/login">ログアウト</a>
+			</div>
 		</header>
 
 		<div class="contents">
@@ -25,13 +25,20 @@
 
 					<tr>
 						<th>イベント名</th>
-						<td><div class="cp_iptxt">
-	<label class="ef"><input type="text" name="name" th:value="${event.name}"></label></div></td>
+						<td>
+							<div class="cp_iptxt">
+								<label class="ef"><input type="text" name="name" th:value="${event.name}"></label>
+							</div>
+						</td>
 					</tr>
 					<tr>
 						<th>イベント日</th>
-						<td><div class="cp_iptxt">
-	<label class="ef"><input type="date" name="eventDate" th:value="${event.eventDate}"></label></div></td>
+						<td>
+							<div class="cp_iptxt">
+								<label class="ef"><input type="date" name="eventDate"
+										th:value="${event.eventDate}"></label>
+							</div>
+						</td>
 					</tr>
 
 				</table>
