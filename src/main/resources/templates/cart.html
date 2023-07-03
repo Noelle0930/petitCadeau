@@ -18,10 +18,10 @@
 		</div>
 		</header>
 		
+			<a th:href="|/items/${@event.id}|" class="btn bgright"><span>< 商品一覧へ</span></a>
     <th:block th:if="${@cart.items.size() <= 0}">
 	<div class="contents">
-			<a th:href="|/items/${@event.id}|">商品一覧へ</a>
-			<div class="event-block">
+						<div class="cart-block">
 				<div class="block-left">
 			    <h1>カート情報</h1>
 	     	    </div>
@@ -32,10 +32,13 @@
     </th:block>
     <th:block th:if="${@cart.items.size() > 0}">
 		<div class="contents">
-			<a th:href="|/items/${@event.id}|">商品一覧へ</a>
-			<div class="event-block">
-			<h1 class="event-title">カート情報</h1>
-			<table class="event-body">
+			
+			<div class="cart-block">
+				<div class="block-left">
+			    <h1>カート情報</h1>
+	     	    </div>
+	     	    <div class="block-right">
+			<table class="cart-body">
 							<tr>
 					<th>NO</th>
 					<th>商品名</th>
@@ -62,7 +65,7 @@
 					<td></td>
 				</tr>
 			</table>
-			
+			<br>
 			<form action="/order" method="get">
 				<input type="submit" value="注文を確認する" class="button">
 			</form>
