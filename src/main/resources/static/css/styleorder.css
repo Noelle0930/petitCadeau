@@ -1,0 +1,64 @@
+body {
+	background-image: url(background-bokashi.png);
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: 100% 100%;
+	margin: 0;
+}
+
+/*---------------------------------------------------------------*/
+
+header {
+	display: flex;
+	background-color: rgb(255, 208, 253);
+	padding: 15px;
+	min-width: 97.4%;
+}
+
+.theme {
+	display: inline-block;
+	font-family: 'Segoe Script', sans-serif;
+	font-size: 40px;
+	padding: 10px;
+	margin-right: auto;
+}
+
+.account {
+	font-family: 'Yu Mincho Light', 'YuMincho', 'Yu Mincho', '游明朝体', sans-serif;
+    font-weight: bold;
+	display: inline-block;
+	text-align: right;
+	padding: 10px;
+}
+
+
+/*---------------------------------------------------------------*/
+
+.order-block {
+	text-align: center;
+	width: 900px;
+	margin-top: 50px;
+	margin-right: auto;
+	margin-left: auto;
+	padding: 30px 60px 50px 60px;
+	background-color: rgba(255, 255, 255, 0.9);
+	border-radius: 10px;
+}
+
+.order-item {
+	margin-top: 50px;
+}
+
+.order-table {
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.deliver-box {
+	display: flex;
+}
+
+.deliver-left {
+	margin-right: 100px;
+}
