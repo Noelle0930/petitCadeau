@@ -30,19 +30,22 @@
 				<tr>
 					<th>NO</th>
 					<th>商品名</th>
-					<th>値段</th>
+					<th>値段(円)</th>
 					<th>個数</th>
-					<th>小計</th>
+					<th>小計(円)</th>
 				</tr>
 				<tr th:each="item : ${@cart.items}">
 					<td th:text="${item.id}"></td>
 					<td th:text="${item.name}"></td>
-					<td th:text="${item.price}"></td>
+					<td th:with="price=${item.price}" th:text="${#numbers.formatInteger(price, 3, 'COMMA')}"></td>
+
 					<td th:text="${item.quantity}"></td>
-					<td th:text="${item.price * item.quantity}"></td>
+					<td th:with="price=${item.price * item.quantity}"
+						th:text="${#numbers.formatInteger(price, 3, 'COMMA')}"></td>
 				</tr>
 				<tr>
-					<td align="right" colspan="5" th:text="'総計：'+${@cart.totalPrice}"></td>
+					<td align="right" colspan="5" th:with="total=${@cart.totalPrice}"
+						th:text="'総計：'+${#numbers.formatInteger(total, 3, 'COMMA')}+'円'"></td>
 				</tr>
 			</table>
 

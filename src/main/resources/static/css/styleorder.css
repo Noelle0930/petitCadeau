@@ -169,7 +169,7 @@ textarea {
 	/*アニメーションの指定*/
 	transition: ease .2s;
 	margin-top: 50px;
-	margin-left: 140px;
+	margin-left: 65px;
 	border-radius: 10px;
 	background-color: white;
 }

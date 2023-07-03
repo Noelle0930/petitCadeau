@@ -139,7 +139,7 @@ td {
 	/*アニメーションの指定*/
 	transition: ease .2s;
 	margin-top: 50px;
-	margin-left: 300px;
+	margin-left: 225px;
 	border-radius: 10px;
 	background-color: white;
 }
