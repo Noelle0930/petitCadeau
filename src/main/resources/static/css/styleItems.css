@@ -49,6 +49,7 @@ header {
 
 .block-left {
 	margin-right: 100px;
+	white-space: nowrap;
 }
 
 .block-right {

@@ -39,6 +39,7 @@ table {
 	display: flex;
 	margin-top: 80px;
 	font-family: 'Yu Mincho Light', 'YuMincho', 'Yu Mincho', '游明朝体', sans-serif;
+	font-weight: bold;
 }
 
 .contents1,
@@ -63,7 +64,7 @@ table {
 	width: 2px;
 	top: 0%;
 	height: 400px;
-	background-color: gray;
+	background-color: grey;
 	left: 90%;
 }
 
@@ -120,7 +121,7 @@ table {
 	padding: 0.3em;
 	transition: 0.3s;
 	letter-spacing: 1px;
-	color: #aaaaaa;
+	color: rgb(0, 0, 0);
 	border: none;
 	border-bottom: 2px solid #1b2538;
 	background: transparent;
