@@ -5,6 +5,7 @@ body {
 	background-attachment: fixed;
 	background-size: 100% 100%;
 	margin: 0;
+	font-family: 'Yu Mincho Light', 'YuMincho', 'Yu Mincho', '游明朝体', sans-serif;
 }
 
 /*---------------------------------------------------------------*/
@@ -50,7 +51,6 @@ header {
 
 .event-title {
 	font-family: 'Yu Mincho Light', 'YuMincho', 'Yu Mincho', '游明朝体', sans-serif;
-
 	white-space: nowrap;
 	font-size: 35px;
 }
@@ -123,35 +123,23 @@ td {
 	/* 文字色     */
 }
 
-a.btn_12 {
-	font-family: 'Yu Mincho Light', 'YuMincho', 'Yu Mincho', '游明朝体', sans-serif;
-	font-weight: bold;
-	display: flex;
-	justify-content: space-evenly;
-	align-items: center;
-	text-align: center;
-	text-decoration: none;
-	width: 120px;
-	margin: auto;
-	padding: 1rem 4rem 1rem 4rem;
-	font-weight: bold;
-	background: #27acd9;
-	color: #fff;
-	border-radius: 100vh;
-	position: relative;
-	transition: 0.5s;
+.button-036 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 250px;
+    margin: 0 auto;
+    padding: .9em 2em;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.9);
+    color: #000000;
+    font-size: 1em;
 }
 
-a.btn_12::before {
-	content: '';
-	width: 7px;
-	height: 7px;
-	border-top: 2px solid #fff;
-	border-right: 2px solid #fff;
-	transform: rotate(45deg);
-}
-
-a.btn_12:hover {
-	background: #44c6f2;
-	color: #fff;
+.button-036:hover {
+    border: none;
+    background-color: #000000;
+    color: #fff;
+    font-weight: 600;
 }

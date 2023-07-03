@@ -4,7 +4,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Confirmation</title>
-	<link rel="stylesheet" type="text/css" href="/css/styleAfter.css">
+	<link rel="stylesheet" type="text/css" href="/css/styleorder_conform.css">
 </head>
 
 <body>
@@ -18,38 +18,41 @@
 			</div>
 		</header>
 
-		<div class="contents">
+		<a href="/cart" class="btn bgright">
+			<span>
+				< カートへ戻る</span></a>
+
+		<div class="order-block">
 			<h1>注文最終確認</h1>
-			<hr>
-			<main>
-				<h3>下記の内容で注文を行いますか？</h3>
-				<h3>ご注文商品</h3>
-				<table border="1">
-					<tr>
-						<th>NO</th>
-						<th>商品名</th>
-						<th>値段</th>
-						<th>個数</th>
-						<th>小計</th>
-					</tr>
-					<tr th:each="item : ${@cart.items}">
-						<td th:text="${item.id}"></td>
-						<td th:text="${item.name}"></td>
-						<td th:text="${item.price}"></td>
-						<td th:text="${item.quantity}"></td>
-						<td th:text="${item.price * item.quantity}"></td>
-					</tr>
-					<tr>
-						<td align="right" colspan="5" th:text="'総計：'+${@cart.totalPrice}"></td>
-					</tr>
-				</table>
-				<a href="/cart">カートを見る</a>
-				<hr>
-				<h3>配送情報</h3>
+			<h3>下記の内容で注文を行いますか？</h3>
+			<h3>-ご注文商品-</h3>
+			<table class="order-table">
+				<tr>
+					<th>NO</th>
+					<th>商品名</th>
+					<th>値段</th>
+					<th>個数</th>
+					<th>小計</th>
+				</tr>
+				<tr th:each="item : ${@cart.items}">
+					<td th:text="${item.id}"></td>
+					<td th:text="${item.name}"></td>
+					<td th:text="${item.price}"></td>
+					<td th:text="${item.quantity}"></td>
+					<td th:text="${item.price * item.quantity}"></td>
+				</tr>
+				<tr>
+					<td align="right" colspan="5" th:text="'総計：'+${@cart.totalPrice}"></td>
+				</tr>
+			</table>
+
+
+			<div class="deliinfo">
+				<h3>-配送情報-</h3>
 
 				<th:block th:if="${sendTo} == me">
 					<form action="/order" method="post">
-						<table border="1">
+						<table class="order-table">
 							<tr>
 								<th>お名前</th>
 								<td th:text="${name}"></td>
@@ -82,12 +85,12 @@
 						</table>
 
 
-						<button>この内容で確定する</button>
+						<button class="button">この内容で確定する</button>
 				</th:block>
 
 				<th:block th:if="${sendTo} == you">
 					<form action="/order" method="post">
-						<table border="1">
+						<table class="order-table">
 							<tr>
 								<th>宛名</th>
 								<td th:text="${name}">
@@ -118,10 +121,10 @@
 						</table>
 
 
-						<button>この内容で確定する</button>
+						<button class="button">この内容で確定する</button>
 					</form>
 				</th:block>
-			</main>
+			</div>
 		</div>
 	</div>
 </body>

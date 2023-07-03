@@ -4,29 +4,20 @@
 <head>
 	<meta charset="UTF-8">
 	<title>注文完了</title>
-	<link rel="stylesheet" type="text/css" href="/css/styleAfter.css">
+	<link rel="stylesheet" type="text/css" href="/css/ordered.css">
 </head>
 
 <body>
-	<div class="contents-frame">
-		<header>
-			<div class="theme">Petit Cadeau</div>
-			<div class="account">
-				<span th:text="${@account.name}+' さんがログイン中'"></span>
-				<br>
-				<a href="/login">ログアウト</a>
-			</div>
-		</header>
-
-		<div class="contents">
-			<h1>注文完了</h1>
-			<hr>
-			<main>
-				<h3>ご注文ありがとうございました。</h3>
-
-			</main>
+	<header>
+		<div class="theme">Petit Cadeau</div>
+		<div class="account">
+			<span th:text="${@account.name}+' さんがログイン中'"></span>
+			<br>
+			<a href="/login">ログアウト</a>
 		</div>
-	</div>
+	</header>
+
+	<h3>ご注文ありがとうございました。</h3>
 
 </body>
 
