@@ -35,8 +35,18 @@ header {
 
 /*---------------------------------------------------------------*/
 
+.block-left {
+	margin-right: 100px;
+}
+
+.block-right {
+	margin-top: 10px;
+}
+
 
 .event-block {
+	font-family: 'Yu Mincho Light', 'YuMincho', 'Yu Mincho', '游明朝体', sans-serif;
+
 	text-align: center;
 	display: flex;
 	width: 700px;
