@@ -30,6 +30,17 @@ public class Cart {
 		}
 		return total;
 	}
+	
+	//割引用ゲッター
+	public int getTotalPrice2() {
+		int total =0;
+		
+		for(Item item : items) {
+			total += item.getPrice() * 0.5 * item.getQuantity();
+		}
+		return total;
+	}
+	
 
 	// カート追加
 	public void add(Item newItem) {

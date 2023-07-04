@@ -149,9 +149,22 @@ public class OrderController {
 		} else if (payment2 != null) {
 			payment = payment2;
 		}
+		
+		Order order;
 
+		if (event.getName().equals("Happy Birthday!!")) {
+			order = new Order(
+						event.getId(),
+						LocalDate.now(),
+						address,
+						cart.getTotalPrice2(),
+						message,
+						payment);
+				orderRepository.save(order);
+		}
+		
 		// 2. 注文情報をDBに格納する
-		Order order = new Order(
+		else{order = new Order(
 				event.getId(),
 				LocalDate.now(),
 				address,
@@ -159,7 +172,8 @@ public class OrderController {
 				message,
 				payment);
 		orderRepository.save(order);//orderのidを取得
-
+	    }
+		
 		// 3. 注文詳細情報をDBに格納する
 		List<Item> itemList = cart.getItems();//カートの中の商品を取得
 		List<OrderDetail> orderDetails = new ArrayList<>();
