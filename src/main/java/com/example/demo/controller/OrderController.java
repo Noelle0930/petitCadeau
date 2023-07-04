@@ -60,7 +60,7 @@ public class OrderController {
 			@RequestParam("sendTo") String sendTo,
 			Model model) {
 		
-		List<String> error = new ArrayList<>();
+		List<String> error1 = new ArrayList<>();
 		
 		model.addAttribute("name", name);
 		model.addAttribute("address", address);
@@ -70,19 +70,19 @@ public class OrderController {
 		model.addAttribute("sendTo", sendTo);
 		
 		if (name.equals("")) {
-			error.add("名前は必須です");
+			error1.add("名前は必須です");
 		}
 		if (address.equals("")) {
-			error.add("住所は必須です");
+			error1.add("住所は必須です");
 		}
 		if(!(message.equals(""))) {
 			if(message.length()>=30) {
-			error.add("30字以内で入力してください");	
+			error1.add("30字以内で入力してください");	
 			}
 		}
 		
-		if (error.size() != 0) {
-			model.addAttribute("error", error);
+		if (error1.size() != 0) {
+			model.addAttribute("error1", error1);
 			return "order";
 		}
 
@@ -102,7 +102,7 @@ public class OrderController {
 				@RequestParam("sendTo") String sendTo,
 				Model model) {
 			
-			List<String> error = new ArrayList<>();
+			List<String> error2 = new ArrayList<>();
 
 
 			model.addAttribute("toname", toname);
@@ -113,20 +113,20 @@ public class OrderController {
 			model.addAttribute("sendTo", sendTo);
 			
 			if (toname.equals("")) {
-				error.add("宛名は必須です");
+				error2.add("宛名は必須です");
 			}
 			if (toaddress.equals("")) {
-				error.add("送り先住所は必須です");
+				error2.add("送り先住所は必須です");
 			}
 			if(!(tomessage.equals(""))) {
 				if(tomessage.length()>=30) {
-					error.add("30字以内で入力してください");	
+					error2.add("30字以内で入力してください");	
 				}
 			}
 			
 			
-			if (error.size() != 0) {
-				model.addAttribute("error", error);
+			if (error2.size() != 0) {
+				model.addAttribute("error2", error2);
 				return "order";
 			}
 			

@@ -59,9 +59,9 @@
 					<form action="/order/confirmme" method="post">
 						<input type="hidden" name="sendTo" value="me">
 						●自分の住所に送る場合
-						<th:block th:if="${error}" th:each="error:${error}">
+						<th:block th:if="${error1}" th:each="error1:${error1}">
 							<br>
-							<font color="red">[[${error}]]</font>
+							<font color="red">[[${error1}]]</font>
 						</th:block>
 						<table border="0" class="deliform">
 							<tr>
@@ -103,9 +103,9 @@
 					<form action="/order/confirmyou" method="post">
 						<input type="hidden" name="sendTo" value="you">
 						●相手の住所に送る場合
-						<th:block th:if="${error}" th:each="error:${error}">
+						<th:block th:if="${error2}" th:each="error2:${error2}">
 							<br>
-							<font color="red">[[${error}]]</font>
+							<font color="red">[[${error2}]]</font>
 						</th:block>
 						<table border="0" class="deliform">
 							<tr>
