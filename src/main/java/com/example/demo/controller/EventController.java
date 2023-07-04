@@ -140,7 +140,9 @@ public class EventController {
 		return "redirect:/events";
 		}
 		
-		//model.addAttribute("id", id);
+		Event event = eventRepository.findById(id).get();
+		model.addAttribute("event", event);
+		
 		return "editEvent";
 	}
 
