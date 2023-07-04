@@ -96,12 +96,12 @@
 						<table class="order-table">
 							<tr>
 								<th>宛名</th>
-								<td th:text="${name}">
+								<td th:text="${toname}">
 								</td>
 							</tr>
 							<tr>
 								<th>送り先住所</th>
-								<td th:text="${address}">
+								<td th:text="${toaddress}">
 								</td>
 								<input type="hidden" name="address" th:value="${address}">
 							</tr>
@@ -117,7 +117,7 @@
 							</tr>
 							<tr>
 								<th>メッセージ</th>
-								<td th:text="${message}">
+								<td th:text="${tomessage}">
 								</td>
 								<input type="hidden" name="message" th:value="${message}">
 							</tr>
