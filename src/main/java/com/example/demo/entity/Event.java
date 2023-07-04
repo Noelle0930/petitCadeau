@@ -2,6 +2,9 @@ package com.example.demo.entity;
 
 import java.time.LocalDate;
 
+import org.springframework.stereotype.Component;
+import org.springframework.web.context.annotation.SessionScope;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -10,8 +13,10 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.Data;
 
+@Component
 @Data
 @Entity
+@SessionScope
 @Table(name = "events")
 public class Event {
 	@Id

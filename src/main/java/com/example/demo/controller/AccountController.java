@@ -130,8 +130,10 @@ public class AccountController {
 			userRepository.save(user);
 
 			Integer userId = user.getId();
+			
+			LocalDate addBirthday = LocalDate.of(2023, birthday.getMonthValue(), birthday.getDayOfMonth());
 
-			Event event = new Event(userId, "Happy Birthday!!", birthday);
+			Event event = new Event(userId, "Happy Birthday!!", addBirthday);
 			eventRepository.save(event);
 			
 			return "redirect:/login";

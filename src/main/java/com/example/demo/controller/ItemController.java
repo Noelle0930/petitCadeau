@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,10 +11,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.entity.Category;
+import com.example.demo.entity.Event;
 import com.example.demo.entity.Item;
 import com.example.demo.model.Account;
-import com.example.demo.model.Event;
 import com.example.demo.repository.CategoryRepository;
+import com.example.demo.repository.EventRepository;
 import com.example.demo.repository.ItemRepository;
 
 @Controller
@@ -30,6 +32,9 @@ public class ItemController {
 
 	@Autowired
 	ItemRepository itemRepository;
+	
+	@Autowired
+	EventRepository eventRepository;
 
 	@GetMapping("/items/{id}")
 	public String index2(
@@ -60,6 +65,13 @@ public class ItemController {
 		}
 
 		event.setId(id);
+		
+		Optional<Event> list = eventRepository.findById(id);
+		
+		Event ev = list.get();
+		
+		event.setName(ev.getName());
+		event.setEventDate(ev.getEventDate());
 
 		model.addAttribute("items", itemList);
 		model.addAttribute("maxPrice", maxPrice);

@@ -31,7 +31,7 @@ public class EventController {
 
 		Integer userId = account.getId();
 
-		List<Event> eventList = eventRepository.findByUserId(userId);
+		List<Event> eventList = eventRepository.findByUserIdOrderByEventDate(userId);
 
 		model.addAttribute("list", eventList);
 
