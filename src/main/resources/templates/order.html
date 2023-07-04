@@ -11,9 +11,21 @@
 	<header>
 		<div class="theme">Petit Cadeau</div>
 		<div class="account">
-			<span th:text="${@account.name}+' さんがログイン中'"></span>
-			<br>
-			<a href="/login">ログアウト</a>
+			<div class="login" th:text="${@account.name}+' さんがログイン中'"></div>
+			<div class="hamburger-menu">
+				<input type="checkbox" id="menu_btn_check">
+				<label for="menu_btn_check" class="menu-btn"><span></span></label>
+				<label for="menu_btn_check" class="menu-mask"></label>
+				<div class="hamburger-contents">
+					<label for="menu_btn_check" class="menu-close"><i
+							class="fas fa-times"></i><span>close</span></label>
+					<div class="link-menu">
+						<div class="link"><a href="mypage">マイページ</a></div>
+						<br>
+						<div class="link"><a href="logout">ログアウト</a></div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</header>
 
@@ -34,16 +46,15 @@
 				</tr>
 				<tr th:each="item : ${@cart.items}">
 					<td th:text="${item.name}"></td>
-					<td th:with="price=${item.price}"
-									th:text="${#numbers.formatInteger(price, 3, 'COMMA')}"></td>
+					<td th:with="price=${item.price}" th:text="${#numbers.formatInteger(price, 3, 'COMMA')}"></td>
 					<td th:text="${item.quantity}"></td>
 					<td th:with="price=${item.price * item.quantity}"
-									th:text="${#numbers.formatInteger(price, 3, 'COMMA')}"></td>
+						th:text="${#numbers.formatInteger(price, 3, 'COMMA')}"></td>
 				</tr>
 				<tr>
 					<td align="right" colspan="5" th:with="total=${@cart.totalPrice}"
-									th:text="'総計：'+${#numbers.formatInteger(total, 3, 'COMMA')}+'円'"></td>
-								<td></td>
+						th:text="'総計：'+${#numbers.formatInteger(total, 3, 'COMMA')}+'円'"></td>
+					<td></td>
 				</tr>
 			</table>
 		</div>
@@ -87,8 +98,8 @@
 								<td>
 									<div class="cp_iptxt">
 										<label class="ef">
-											<textarea name="message" placeholder="誕生日おめでとう！" cols="30"
-												rows="4" th:value="${message}"></textarea>
+											<textarea name="message" placeholder="誕生日おめでとう！" cols="30" rows="4"
+												th:value="${message}"></textarea>
 										</label>
 									</div>
 								</td>
@@ -140,8 +151,8 @@
 								<td>
 									<div class="cp_iptxt">
 										<label class="ef">
-											<textarea name="tomessage" placeholder="誕生日おめでとう！" cols="30"
-												rows="4" th:value="${tomessage}"></textarea>
+											<textarea name="tomessage" placeholder="誕生日おめでとう！" cols="30" rows="4"
+												th:value="${tomessage}"></textarea>
 										</label>
 									</div>
 								</td>

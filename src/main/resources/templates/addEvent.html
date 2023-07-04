@@ -12,14 +12,27 @@
 		<header>
 			<div class="theme">Petit Cadeau</div>
 			<div class="account">
-				<span th:text="${@account.name}+' さんがログイン中'"></span>
-				<br>
-				<a href="/login">ログアウト</a>
+				<div class="login" th:text="${@account.name}+' さんがログイン中'"></div>
+				<div class="hamburger-menu">
+					<input type="checkbox" id="menu_btn_check">
+					<label for="menu_btn_check" class="menu-btn"><span></span></label>
+					<label for="menu_btn_check" class="menu-mask"></label>
+					<div class="hamburger-contents">
+						<label for="menu_btn_check" class="menu-close"><i
+								class="fas fa-times"></i><span>close</span></label>
+						<div class="link-menu">
+							<div class="link"><a href="mypage">マイページ</a></div>
+							<br>
+							<div class="link"><a href="logout">ログアウト</a></div>
+						</div>
+					</div>
+				</div>
 			</div>
 		</header>
 
 		<a href="/events" class="btn bgright">
-			<span>< イベント一覧へ</span></a>
+			<span>
+				< イベント一覧へ</span></a>
 
 		<div class="contents">
 			<h1>イベント登録</h1>
