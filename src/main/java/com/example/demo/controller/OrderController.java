@@ -76,7 +76,7 @@ public class OrderController {
 			error1.add("住所は必須です");
 		}
 		if(!(message.equals(""))) {
-			if(message.length()>=30) {
+			if(message.length()>30) {
 			error1.add("30字以内で入力してください");	
 			}
 		}
@@ -119,7 +119,7 @@ public class OrderController {
 				error2.add("送り先住所は必須です");
 			}
 			if(!(tomessage.equals(""))) {
-				if(tomessage.length()>=30) {
+				if(tomessage.length()>30) {
 					error2.add("30字以内で入力してください");	
 				}
 			}
