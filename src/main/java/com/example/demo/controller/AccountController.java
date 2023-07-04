@@ -48,11 +48,11 @@ public class AccountController {
 
 	@PostMapping("/login")
 	public String login(
-			@RequestParam(name = "email", required = false) String email,
+			@RequestParam(name = "email1", required = false) String email1,
 			@RequestParam(name = "password", required = false) String password,
 			Model m) {
 
-		Optional<User> login = userRepository.findByEmailAndPassword(email, password);
+		Optional<User> login = userRepository.findByEmailAndPassword(email1, password);
 
 		String page;
 		String message = null;
@@ -71,7 +71,7 @@ public class AccountController {
 			page = "redirect:/events";
 		}
 
-		m.addAttribute("email", email);
+		m.addAttribute("email1", email1);
 
 		return page;
 	}
@@ -85,13 +85,13 @@ public class AccountController {
 	public String storeUser(
 			@RequestParam(name = "name", defaultValue = "") String name,
 			@RequestParam(name = "address", defaultValue = "") String address,
-			@RequestParam(name = "email", defaultValue = "") String email,
+			@RequestParam(name = "email2", defaultValue = "") String email2,
 			@RequestParam(name = "tel", defaultValue = "") String tel,
 			@RequestParam(name = "password", defaultValue = "") String password,
 			@RequestParam(name = "birthday", required = false) LocalDate birthday,
 			Model model) {
 
-		Optional<User> record = userRepository.findByEmail(email);
+		Optional<User> record = userRepository.findByEmail(email2);
 
 		List<String> error = new ArrayList<>();
 
@@ -104,7 +104,7 @@ public class AccountController {
 		if (tel.equals("")) {
 			error.add("電話番号は必須です");
 		}
-		if (email.equals("")) {
+		if (email2.equals("")) {
 			error.add("メールアドレスは必須です");
 		}
 		if (record.isEmpty() == false) {
@@ -116,17 +116,24 @@ public class AccountController {
 		if (birthday == null) {
 			error.add("誕生日は必須です");
 		}
+		
+		LocalDate now = LocalDate.now();
+		
+		if (birthday != null) {
+		if (birthday.isAfter(now) || birthday.compareTo(now) == 0) {
+			error.add("誕生日は当日以前を指定してください");
+		}}
 
 		model.addAttribute("name", name);
 		model.addAttribute("address", address);
 		model.addAttribute("tel", tel);
-		model.addAttribute("email", email);
+		model.addAttribute("email2", email2);
 		model.addAttribute("password", password);
 		model.addAttribute("birthday", birthday);
 		model.addAttribute("List", error);
 
 		if (error.size() == 0) {
-			User user = new User(name, address, email, tel, password, birthday);
+			User user = new User(name, address, email2, tel, password, birthday);
 			userRepository.save(user);
 
 			Integer userId = user.getId();
