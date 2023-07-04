@@ -28,17 +28,19 @@
 
 		<div class="block-right">
 			<div class="right-top">
-				<a class="allitems" th:href="|/items/${@event.id}|">全商品を表示</a>
 				<form th:action="|/items/${@event.id}|" method="get" class="search_container">
 					<input type="hidden" name="categoryId" th:value="${categoryId}">
 					<input type="text" name="maxPrice" th:value="${maxPrice}" placeholder="価格">
 					円以下
 					<input type="submit" value="検索">
 				</form>
+				<a class="allitems" th:href="|/items/${@event.id}|">全商品を表示</a>
+				<a class="allitems" th:each="c:${categories}" th:href="|/items/${@event.id}?categoryId=${c.id}|">
+					<span th:text="${c.name}" style="padding-left: 10px;"></span>
+				</a>
 			</div>
 			<table class="item-body">
 				<tr>
-					<th>カテゴリID</th>
 					<th>商品名</th>
 					<th>数量</th>
 					<th>値段(円)</th>
@@ -46,7 +48,6 @@
 				</tr>
 				<tr th:each="item : ${items}">
 					<form action="/cart/add" method="post">
-						<td th:text="${item.categoryId}"></td>
 						<td th:text="${item.name}"></a></td>
 						<td>
 							<select name="quantity">
@@ -65,7 +66,7 @@
 						<td th:with="price=${item.price}" th:text="${#numbers.formatInteger(price, 3, 'COMMA')}"></td>
 						<td>
 							<input type="hidden" name="itemId" th:value="${item.id}">
-								<button class="button">カートに追加</button>
+							<button class="button">カートに追加</button>
 
 						</td>
 					</form>
