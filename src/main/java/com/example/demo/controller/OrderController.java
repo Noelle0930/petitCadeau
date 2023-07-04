@@ -50,8 +50,8 @@ public class OrderController {
 	}
 
 	// 注文内容およびお客様情報内容の確認画面を表示
-	@PostMapping({ "/order/confirmme", "/order/confirmyou" })
-	public String confirm(
+	@PostMapping("/order/confirmme")
+	public String confirmme(
 			@RequestParam("name") String name,
 			@RequestParam("address") String address,
 			@RequestParam(name = "payment1", required = false) String payment1,
@@ -61,12 +61,24 @@ public class OrderController {
 			Model model) {
 		
 		List<String> error = new ArrayList<>();
-
+		
+		model.addAttribute("name", name);
+		model.addAttribute("address", address);
+		model.addAttribute("payment1", payment1);
+		model.addAttribute("payment2", payment2);
+		model.addAttribute("message", message);
+		model.addAttribute("sendTo", sendTo);
+		
 		if (name.equals("")) {
 			error.add("名前は必須です");
 		}
 		if (address.equals("")) {
 			error.add("住所は必須です");
+		}
+		if(!(message.equals(""))) {
+			if(message.length()>=30) {
+			error.add("30字以内で入力してください");	
+			}
 		}
 		
 		if (error.size() != 0) {
@@ -74,16 +86,53 @@ public class OrderController {
 			return "order";
 		}
 
-		model.addAttribute("name", name);
-		model.addAttribute("address", address);
-		model.addAttribute("payment1", payment1);
-		model.addAttribute("payment2", payment2);
-		model.addAttribute("message", message);
-		model.addAttribute("sendTo", sendTo);
-
+		
 		return "orderConfirm";
 	}
 
+	
+	// 注文内容およびお客様情報内容の確認画面を表示
+		@PostMapping("/order/confirmyou")
+		public String confirmyou(
+				@RequestParam(name="toname",defaultValue="") String toname,
+				@RequestParam(name="toaddress",defaultValue="") String toaddress,
+				@RequestParam(name = "payment1", required = false) String payment1,
+				@RequestParam(name = "payment2", required = false) String payment2,
+				@RequestParam("tomessage") String tomessage,
+				@RequestParam("sendTo") String sendTo,
+				Model model) {
+			
+			List<String> error = new ArrayList<>();
+
+
+			model.addAttribute("toname", toname);
+			model.addAttribute("toaddress", toaddress);
+			model.addAttribute("payment1", payment1);
+			model.addAttribute("payment2", payment2);
+			model.addAttribute("tomessage", tomessage);
+			model.addAttribute("sendTo", sendTo);
+			
+			if (toname.equals("")) {
+				error.add("宛名は必須です");
+			}
+			if (toaddress.equals("")) {
+				error.add("送り先住所は必須です");
+			}
+			if(!(tomessage.equals(""))) {
+				if(tomessage.length()>=30) {
+					error.add("30字以内で入力してください");	
+				}
+			}
+			
+			
+			if (error.size() != 0) {
+				model.addAttribute("error", error);
+				return "order";
+			}
+			
+			return "orderConfirm";
+		}
+	
 	// 注文を確定する
 	@PostMapping("/order")
 	public String order(

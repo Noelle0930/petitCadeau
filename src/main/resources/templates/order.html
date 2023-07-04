@@ -59,6 +59,10 @@
 					<form action="/order/confirmme" method="post">
 						<input type="hidden" name="sendTo" value="me">
 						●自分の住所に送る場合
+						<th:block th:if="${error}" th:each="error:${error}">
+							<br>
+							<font color="red">[[${error}]]</font>
+						</th:block>
 						<table border="0" class="deliform">
 							<tr>
 								<th>お名前</th>
@@ -84,7 +88,7 @@
 									<div class="cp_iptxt">
 										<label class="ef">
 											<textarea name="message" placeholder="誕生日おめでとう！" cols="30"
-												rows="4"></textarea>
+												rows="4" th:value="${message}"></textarea>
 										</label>
 									</div>
 								</td>
@@ -109,7 +113,7 @@
 								<td>
 									<div class="cp_iptxt">
 										<label class="ef">
-											<input type="text" name="name">
+											<input type="text" name="toname" th:value="${toname}">
 										</label>
 									</div>
 								</td>
@@ -119,7 +123,7 @@
 								<td>
 									<div class="cp_iptxt">
 										<label class="ef">
-											<input type="text" name="address">
+											<input type="text" name="toaddress" th:value="${toaddress}">
 										</label>
 									</div>
 								</td>
@@ -127,8 +131,8 @@
 							<tr>
 								<th>お支払方法</th>
 								<td>
-									<input type="radio" name="payment2" value="credit" checked>クレジット
-									<input type="radio" name="payment2" value="conbini">コンビニ支払い
+									<input type="radio" name="payment2" th:value="credit" checked>クレジット
+									<input type="radio" name="payment2" th:value="conbini">コンビニ支払い
 								</td>
 							</tr>
 							<tr>
@@ -136,8 +140,8 @@
 								<td>
 									<div class="cp_iptxt">
 										<label class="ef">
-											<textarea name="message" placeholder="誕生日おめでとう！" cols="30"
-												rows="4"></textarea>
+											<textarea name="tomessage" placeholder="誕生日おめでとう！" cols="30"
+												rows="4" th:value="${tomessage}"></textarea>
 										</label>
 									</div>
 								</td>
