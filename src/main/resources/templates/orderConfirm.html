@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>Confirmation</title>
+	<title>注文最終確認</title>
 	<link rel="stylesheet" type="text/css" href="/css/styleorder_conform.css">
 </head>
 
@@ -21,9 +21,9 @@
 						<label for="menu_btn_check" class="menu-close"><i
 								class="fas fa-times"></i><span>close</span></label>
 						<div class="link-menu">
-							<div class="link"><a href="mypage">マイページ</a></div>
+							<div class="link"><a href="/mypage">マイページ</a></div>
 							<br>
-							<div class="link"><a href="logout">ログアウト</a></div>
+							<div class="link"><a href="/logout">ログアウト</a></div>
 						</div>
 					</div>
 				</div>
@@ -47,15 +47,45 @@
 				</tr>
 				<tr th:each="item : ${@cart.items}">
 					<td th:text="${item.name}"></td>
-					<td th:with="price=${item.price}" th:text="${#numbers.formatInteger(price, 3, 'COMMA')}"></td>
+
+					<th:block th:if="${@event.name}=='Happy Birthday!!'">
+						<td style="color: red;" th:with="price=${item.price}*0.5"
+							th:text="${#numbers.formatInteger(price, 3, 'COMMA')}">
+						</td>
+					</th:block>
+
+					<th:block th:if="${@event.name}!='Happy Birthday!!'">
+						<td th:with="price=${item.price}" th:text="${#numbers.formatInteger(price, 3, 'COMMA')}">
+						</td>
+					</th:block>
 
 					<td th:text="${item.quantity}"></td>
-					<td th:with="price=${item.price * item.quantity}"
-						th:text="${#numbers.formatInteger(price, 3, 'COMMA')}"></td>
+
+					<th:block th:if="${@event.name}=='Happy Birthday!!'">
+						<td style="color: red;" th:with="price=${item.price *0.5 * item.quantity}"
+							th:text="${#numbers.formatInteger(price, 3, 'COMMA')}">
+						</td>
+					</th:block>
+
+					<th:block th:if="${@event.name}!='Happy Birthday!!'">
+						<td th:with="price=${item.price * item.quantity}"
+							th:text="${#numbers.formatInteger(price, 3, 'COMMA')}">
+						</td>
+					</th:block>
 				</tr>
 				<tr>
-					<td align="right" colspan="5" th:with="total=${@cart.totalPrice}"
-						th:text="'総計：'+${#numbers.formatInteger(total, 3, 'COMMA')}+'円'"></td>
+					<th:block th:if="${@event.name}=='Happy Birthday!!'">
+						<td style="color: red;" align="right" colspan="5" th:with="total=${@cart.totalPrice * 0.5}"
+							th:text="'総計：'+${#numbers.formatInteger(total, 3, 'COMMA')}+'円'">
+						</td>
+					</th:block>
+
+					<th:block th:if="${@event.name}!='Happy Birthday!!'">
+						<td align="right" colspan="5" th:with="total=${@cart.totalPrice}"
+							th:text="'総計：'+${#numbers.formatInteger(total, 3, 'COMMA')}+'円'">
+						</td>
+					</th:block>
+					<td></td>
 				</tr>
 			</table>
 
