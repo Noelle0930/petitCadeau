@@ -148,4 +148,9 @@ public class AccountController {
 
 		return "/login";
 	}
+	
+	@GetMapping("/mypage")
+	public String mypage() {
+		return "myPage";
+	}
 }

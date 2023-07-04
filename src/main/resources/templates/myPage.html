@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>イベント編集</title>
+	<link rel="stylesheet" type="text/css" href="/css/editEvent.css">
+</head>
+
+<body>
+	<header>
+		<div class="theme">Petit Cadeau</div>
+		<div class="account">
+			<div class="login" th:text="${@account.name}+' さんがログイン中'"></div>
+			<div class="hamburger-menu">
+				<input type="checkbox" id="menu_btn_check">
+				<label for="menu_btn_check" class="menu-btn"><span></span></label>
+				<label for="menu_btn_check" class="menu-mask"></label>
+				<div class="hamburger-contents">
+					<label for="menu_btn_check" class="menu-close"><i
+							class="fas fa-times"></i><span>close</span></label>
+					<div class="link-menu">
+						<div class="link"><a href="/mypage">マイページ</a></div>
+						<br>
+						<div class="link"><a href="/logout">ログアウト</a></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<div class="contents">
+
+		<form action="/mypage" method="post">
+			<h1>マイページ</h1>
+			<input type="submit" value="更新" class="button">
+		</form>
+	</div>
+
+
+</body>
+
+</html>
