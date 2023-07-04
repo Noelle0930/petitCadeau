@@ -108,13 +108,40 @@ public class EventController {
 	public String update(
 			@PathVariable(name = "id", required = false) Integer id,
 			@RequestParam(name = "name", defaultValue = "") String name,
-			@RequestParam(name = "eventDate", required = false) LocalDate eventDate) {
+			@RequestParam(name = "eventDate", required = false) LocalDate eventDate,
+			Model model) {
+		
+		List<String> error = new ArrayList<>();
 
+		if (name.equals("")) {
+			error.add("イベント名を入力してください");
+		}
+		if (eventDate == null) {
+			error.add("日付を指定してください");
+		}
+
+		LocalDate now = LocalDate.now();
+
+		if (eventDate != null) {
+			if (eventDate.isBefore(now) || eventDate.compareTo(now) == 0) {
+				error.add("イベント日は翌日以降を指定してください");
+			}
+		}
+
+		model.addAttribute("name", name);
+		model.addAttribute("eventDate", eventDate);
+		model.addAttribute("List", error);
+		
+		if (error.size() == 0) {
 		Event event = new Event(id, account.getId(), name, eventDate);
 
 		eventRepository.save(event);
 
 		return "redirect:/events";
+		}
+		
+		//model.addAttribute("id", id);
+		return "editEvent";
 	}
 
 	@PostMapping("/events/{id}/delete")

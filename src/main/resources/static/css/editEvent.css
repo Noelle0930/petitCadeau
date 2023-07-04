@@ -31,6 +31,7 @@ header {
 }
 
 .contents {
+	margin-top:5px;
 	text-align: center;
 	background-color: rgba(255, 255, 255, 0.9);
 	font-family: 'Yu Mincho Light', 'YuMincho', 'Yu Mincho', '游明朝体', sans-serif;
@@ -125,7 +126,7 @@ table {
 	/*アニメーションの指定*/
 	transition: ease .2s;
 	margin-top: 50px;
-	margin-left: 390px;
+	margin-left: 310px;
 	border-radius: 10px;
 	background-color: rgba(255, 255, 255, 0.9);
 }

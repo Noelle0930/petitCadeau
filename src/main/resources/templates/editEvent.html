@@ -17,10 +17,17 @@
 				<a href="/login">ログアウト</a>
 			</div>
 		</header>
+		
+		<a href="/events" class="btn bgright">
+			<span>< イベント一覧へ</span></a>
 
 		<div class="contents">
+			
 			<form th:action="|/events/${event.id}/edit|" method="post">
 				<h1>イベント編集</h1>
+				<th:block th:each="item:${List}">
+					<font color="red">[[${item}]]<br></font>
+				</th:block>
 				<table border="0">
 
 					<tr>
