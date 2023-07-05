@@ -20,7 +20,7 @@
 					<label for="menu_btn_check" class="menu-close"><i
 							class="fas fa-times"></i><span>close</span></label>
 					<div class="link-menu">
-						<div class="link"><a href="/mypage">マイページ</a></div>
+						<div class="link"><a th:href="|/mypage/${@account.id}|">マイページ</a></div>
 						<br>
 						<div class="link"><a href="/logout">ログアウト</a></div>
 					</div>
@@ -96,13 +96,12 @@
 								th:text="'総計：'+${#numbers.formatInteger(total, 3, 'COMMA')}+'円'">
 							</td>
 						</th:block>
-
+					</th:block>
 						<th:block th:if="${@event.name}!='Happy Birthday!!'">
 							<td align="right" colspan="5" th:with="total=${@cart.totalPrice}"
 								th:text="'総計：'+${#numbers.formatInteger(total, 3, 'COMMA')}+'円'">
 							</td>
 						</th:block>
-					</th:block>
 				</tr>
 			</table>
 		</div>
@@ -112,107 +111,261 @@
 		<br>
 
 		<div class="deliverly">
-			<h3>-配送方法-</h3>
-			<div class="deliver-box">
-				<div class="deliver-left">
-					<form action="/order/confirmme" method="post">
-						<input type="hidden" name="sendTo" value="me">
-						●自分の住所に送る場合
-						<th:block th:if="${error1}" th:each="error1:${error1}">
-							<br>
-							<font color="red">[[${error1}]]</font>
-						</th:block>
-						<table border="0" class="deliform">
-							<tr>
-								<th>お名前</th>
-								<td th:text="${name}"></td>
-								<input type="hidden" name="name" th:value="${name}">
-							</tr>
-							<tr>
-								<th>住所</th>
-								<td th:text="${address}"></td>
-								<input type="hidden" name="address" th:value="${address}">
-							</tr>
-							<tr>
-								<th>お支払方法</th>
-								<td>
-									<input type="radio" name="payment1" value="cash" checked>着払い
-									<input type="radio" name="payment1" value="credit">クレジット
-									<input type="radio" name="payment1" value="conbini">コンビニ支払い
-								</td>
-							</tr>
-							<tr>
-								<th>メッセージ</th>
-								<td>
-									<div class="cp_iptxt">
-										<label class="ef">
-											<textarea name="message" placeholder="誕生日おめでとう！" cols="30" rows="4"
-												th:value="${message}"></textarea>
-										</label>
-									</div>
-								</td>
-							</tr>
-						</table>
-						<button class="button">最終確認する</button>
-						<br>
-					</form>
-				</div>
+			<!--                   HappyBirthday 当日だったら-->
+			<th:block th:if="${@event.name}=='Happy Birthday!!'">
+				<th:block th:if="${birthday}==${now}">
+					<h3>-配送方法-</h3>
+					<div class="deliver-box">
+						<div class="deliver-myself">
+							<form action="/order/confirmme" method="post">
+								<input type="hidden" name="sendTo" value="me">
+								
+								<th:block th:if="${error1}" th:each="error1:${error1}">
+									<br>
+									<font color="red">[[${error1}]]</font>
+								</th:block>
+								<table border="0" class="deliform">
+									<tr>
+										<th>お名前</th>
+										<td th:text="${name}"></td>
+										<input type="hidden" name="name" th:value="${name}">
+									</tr>
+									<tr>
+										<th>住所</th>
+										<td th:text="${address}"></td>
+										<input type="hidden" name="address" th:value="${address}">
+									</tr>
+									<tr>
+										<th>お支払方法</th>
+										<td>
+											<input type="radio" name="payment1" value="cash" checked>着払い
+											<input type="radio" name="payment1" value="credit">クレジット
+											<input type="radio" name="payment1" value="conbini">コンビニ支払い
+										</td>
+									</tr>
+									<tr>
+										<th>メッセージ</th>
+										<td>
+											<div class="cp_iptxt">
+												<label class="ef">
+													<textarea name="message" placeholder="誕生日おめでとう！" cols="30" rows="4"
+														th:value="${message}"></textarea>
+												</label>
+											</div>
+										</td>
+									</tr>
+								</table>
+								<button class="button">最終確認する</button>
+								<br>
+							</form>
+						</div>
+				</th:block>
+				<th:block th:if="${birthday}!=${now}">
+					<h3>-配送方法-</h3>
+					<div class="deliver-box">
+						<div class="deliver-left">
+							<form action="/order/confirmme" method="post">
+								<input type="hidden" name="sendTo" value="me">
+								●自分の住所に送る場合
+								<th:block th:if="${error1}" th:each="error1:${error1}">
+									<br>
+									<font color="red">[[${error1}]]</font>
+								</th:block>
+								<table border="0" class="deliform">
+									<tr>
+										<th>お名前</th>
+										<td th:text="${name}"></td>
+										<input type="hidden" name="name" th:value="${name}">
+									</tr>
+									<tr>
+										<th>住所</th>
+										<td th:text="${address}"></td>
+										<input type="hidden" name="address" th:value="${address}">
+									</tr>
+									<tr>
+										<th>お支払方法</th>
+										<td>
+											<input type="radio" name="payment1" value="cash" checked>着払い
+											<input type="radio" name="payment1" value="credit">クレジット
+											<input type="radio" name="payment1" value="conbini">コンビニ支払い
+										</td>
+									</tr>
+									<tr>
+										<th>メッセージ</th>
+										<td>
+											<div class="cp_iptxt">
+												<label class="ef">
+													<textarea name="message" placeholder="誕生日おめでとう！" cols="30" rows="4"
+														th:value="${message}"></textarea>
+												</label>
+											</div>
+										</td>
+									</tr>
+								</table>
+								<button class="button">最終確認する</button>
+								<br>
+							</form>
+						</div>
 
-				<div class="deliver-right">
-					<form action="/order/confirmyou" method="post">
-						<input type="hidden" name="sendTo" value="you">
-						●相手の住所に送る場合
-						<th:block th:if="${error2}" th:each="error2:${error2}">
-							<br>
-							<font color="red">[[${error2}]]</font>
-						</th:block>
-						<table border="0" class="deliform">
-							<tr>
-								<th>宛名</th>
-								<td>
-									<div class="cp_iptxt">
-										<label class="ef">
-											<input type="text" name="toname" th:value="${toname}">
-										</label>
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<th>送り先住所</th>
-								<td>
-									<div class="cp_iptxt">
-										<label class="ef">
-											<input type="text" name="toaddress" th:value="${toaddress}">
-										</label>
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<th>お支払方法</th>
-								<td>
-									<input type="radio" name="payment2" th:value="credit" checked>クレジット
-									<input type="radio" name="payment2" th:value="conbini">コンビニ支払い
-								</td>
-							</tr>
-							<tr>
-								<th>メッセージ</th>
-								<td>
-									<div class="cp_iptxt">
-										<label class="ef">
-											<textarea name="tomessage" placeholder="誕生日おめでとう！" cols="30" rows="4"
-												th:value="${tomessage}"></textarea>
-										</label>
-									</div>
-								</td>
-							</tr>
-						</table>
+						<div class="deliver-right">
+							<form action="/order/confirmyou" method="post">
+								<input type="hidden" name="sendTo" value="you">
+								●相手の住所に送る場合
+								<th:block th:if="${error2}" th:each="error2:${error2}">
+									<br>
+									<font color="red">[[${error2}]]</font>
+								</th:block>
+								<table border="0" class="deliform">
+									<tr>
+										<th>宛名</th>
+										<td>
+											<div class="cp_iptxt">
+												<label class="ef">
+													<input type="text" name="toname" th:value="${toname}">
+												</label>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<th>送り先住所</th>
+										<td>
+											<div class="cp_iptxt">
+												<label class="ef">
+													<input type="text" name="toaddress" th:value="${toaddress}">
+												</label>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<th>お支払方法</th>
+										<td>
+											<input type="radio" name="payment2" th:value="credit" checked>クレジット
+											<input type="radio" name="payment2" th:value="conbini">コンビニ支払い
+										</td>
+									</tr>
+									<tr>
+										<th>メッセージ</th>
+										<td>
+											<div class="cp_iptxt">
+												<label class="ef">
+													<textarea name="tomessage" placeholder="誕生日おめでとう！" cols="30"
+														rows="4" th:value="${tomessage}"></textarea>
+												</label>
+											</div>
+										</td>
+									</tr>
+								</table>
 
-						<button class="button">最終確認する</button>
-					</form>
-				</div>
-			</div>
+								<button class="button">最終確認する</button>
+							</form>
+						</div>
+				</th:block>
+			</th:block>
+
+
+			<th:block th:if="${@event.name}!='Happy Birthday!!'">
+				<h3>-配送方法-</h3>
+				<div class="deliver-box">
+					<div class="deliver-left">
+						<form action="/order/confirmme" method="post">
+							<input type="hidden" name="sendTo" value="me">
+							●自分の住所に送る場合
+							<th:block th:if="${error1}" th:each="error1:${error1}">
+								<br>
+								<font color="red">[[${error1}]]</font>
+							</th:block>
+							<table border="0" class="deliform">
+								<tr>
+									<th>お名前</th>
+									<td th:text="${name}"></td>
+									<input type="hidden" name="name" th:value="${name}">
+								</tr>
+								<tr>
+									<th>住所</th>
+									<td th:text="${address}"></td>
+									<input type="hidden" name="address" th:value="${address}">
+								</tr>
+								<tr>
+									<th>お支払方法</th>
+									<td>
+										<input type="radio" name="payment1" value="cash" checked>着払い
+										<input type="radio" name="payment1" value="credit">クレジット
+										<input type="radio" name="payment1" value="conbini">コンビニ支払い
+									</td>
+								</tr>
+								<tr>
+									<th>メッセージ</th>
+									<td>
+										<div class="cp_iptxt">
+											<label class="ef">
+												<textarea name="message" placeholder="誕生日おめでとう！" cols="30" rows="4"
+													th:value="${message}"></textarea>
+											</label>
+										</div>
+									</td>
+								</tr>
+							</table>
+							<button class="button">最終確認する</button>
+							<br>
+						</form>
+					</div>
+
+					<div class="deliver-right">
+						<form action="/order/confirmyou" method="post">
+							<input type="hidden" name="sendTo" value="you">
+							●相手の住所に送る場合
+							<th:block th:if="${error2}" th:each="error2:${error2}">
+								<br>
+								<font color="red">[[${error2}]]</font>
+							</th:block>
+							<table border="0" class="deliform">
+								<tr>
+									<th>宛名</th>
+									<td>
+										<div class="cp_iptxt">
+											<label class="ef">
+												<input type="text" name="toname" th:value="${toname}">
+											</label>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<th>送り先住所</th>
+									<td>
+										<div class="cp_iptxt">
+											<label class="ef">
+												<input type="text" name="toaddress" th:value="${toaddress}">
+											</label>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<th>お支払方法</th>
+									<td>
+										<input type="radio" name="payment2" th:value="credit" checked>クレジット
+										<input type="radio" name="payment2" th:value="conbini">コンビニ支払い
+									</td>
+								</tr>
+								<tr>
+									<th>メッセージ</th>
+									<td>
+										<div class="cp_iptxt">
+											<label class="ef">
+												<textarea name="tomessage" placeholder="誕生日おめでとう！" cols="30" rows="4"
+													th:value="${tomessage}"></textarea>
+											</label>
+										</div>
+									</td>
+								</tr>
+							</table>
+
+							<button class="button">最終確認する</button>
+						</form>
+					</div>
+			</th:block>
 		</div>
 	</div>
+
 </body>
 
 </html>

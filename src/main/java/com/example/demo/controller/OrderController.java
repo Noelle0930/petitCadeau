@@ -176,7 +176,7 @@ public class OrderController {
 		
 		Order order;
 
-		if (event.getName().equals("Happy Birthday!!")&&toBirthday==LocalDate.now()) {
+		if (event.getName().equals("Happy Birthday!!")&&toBirthday.equals(LocalDate.now())) {
 			order = new Order(
 						event.getId(),
 						LocalDate.now(),

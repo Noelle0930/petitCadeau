@@ -21,7 +21,7 @@
 						<label for="menu_btn_check" class="menu-close"><i
 								class="fas fa-times"></i><span>close</span></label>
 						<div class="link-menu">
-							<div class="link"><a href="/mypage">マイページ</a></div>
+							<div class="link"><a th:href="|/mypage/${@account.id}|">マイページ</a></div>
 							<br>
 							<div class="link"><a href="/logout">ログアウト</a></div>
 						</div>

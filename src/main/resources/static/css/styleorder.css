@@ -215,6 +215,11 @@ a {
 	display: flex;
 }
 
+.deliver-myself{
+	margin-left: 300px;
+
+}
+
 .deliver-left {
 	margin-left: 20px;
 	margin-right: 110px;
