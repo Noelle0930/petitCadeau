@@ -45,6 +45,12 @@
 				&emsp;
 				[[${@event.name}]]
 			</h2>
+			</div>
+			<div class="coupon">
+			<th:block th:if="${@event.name}=='Happy Birthday!!'">
+						<font color="red">―クーポン適用中―</font>
+							</th:block>
+			
 		</div>
 		<hr>
 		<div class="block-bottom">

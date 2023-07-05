@@ -177,6 +177,10 @@ a {
 	border-radius: 10px;
 }
 
+.coupon{
+	font-size: 15pt;
+}
+
 .ribbon1 {
   display: inline-block;
   position: relative;

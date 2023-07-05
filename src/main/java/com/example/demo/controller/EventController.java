@@ -57,6 +57,9 @@ public class EventController {
 		if (eventDate == null) {
 			error.add("日付を指定してください");
 		}
+		if (name.equals("Happy Birthday!!")) {
+			error.add("「Happy Birthday!!」は使用できません");
+		}
 
 		LocalDate now = LocalDate.now();
 
@@ -98,6 +101,7 @@ public class EventController {
 		if (event == null) {
 			return "redirect:/events";
 		}
+		
 
 		model.addAttribute("event", event);
 
@@ -118,6 +122,9 @@ public class EventController {
 		}
 		if (eventDate == null) {
 			error.add("日付を指定してください");
+		}
+		if (name.equals("Happy Birthday!!")) {
+			error.add("「Happy Birthday!!」は使用できません");
 		}
 
 		LocalDate now = LocalDate.now();
