@@ -49,6 +49,7 @@ header {
     z-index: 90;
     background-color: #333;
     transition-duration: 0.3s;
+    border-radius: 50px;
 }
 .menu-btn span,
 .menu-btn span:before,
@@ -120,6 +121,7 @@ header {
 
 .hamburger-contents{
     overflow: auto;
+    border-radius: 10px;
 }
 
 .hamburger-menu input[type="checkbox"]{
@@ -288,4 +290,9 @@ td {
   text-shadow: 3px 3px deepskyblue;
   margin: 0px;
   margin-left: 100px;
+}
+
+h1 {
+  text-decoration: underline rgb(255, 208, 253);
+  text-decoration-thickness: 10px;
 }

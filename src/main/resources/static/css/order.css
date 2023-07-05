@@ -51,6 +51,7 @@ header {
     z-index: 90;
     background-color: #333;
     transition-duration: 0.3s;
+    border-radius: 50px;
 }
 .menu-btn span,
 .menu-btn span:before,
@@ -122,6 +123,7 @@ header {
 
 .hamburger-contents{
     overflow: auto;
+    border-radius: 10px;
 }
 
 .hamburger-menu input[type="checkbox"]{
@@ -352,4 +354,9 @@ textarea {
 
 h3 {
 	font-size: 25px;
+}
+
+h1 {
+  text-decoration: underline rgb(255, 208, 253);
+  text-decoration-thickness: 10px;
 }
