@@ -34,6 +34,10 @@ public class EventController {
 		List<Event> eventList = eventRepository.findByUserIdOrderByEventDate(userId);
 
 		model.addAttribute("list", eventList);
+		
+		LocalDate toBirthday = LocalDate.of(2023, account.getBirthday().getMonthValue(), account.getBirthday().getDayOfMonth());
+		model.addAttribute("birthday", toBirthday);
+		model.addAttribute("now", LocalDate.now());
 
 		return "events";
 	}

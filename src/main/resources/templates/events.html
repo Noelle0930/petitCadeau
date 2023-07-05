@@ -5,6 +5,8 @@
 	<meta charset="UTF-8">
 	<title>イベント一覧</title>
 	<link rel="stylesheet" type="text/css" href="/css/events.css">
+	<link rel="stylesheet" href="//fonts.googleapis.com/earlyaccess/notosansjapanese.css">
+
 </head>
 
 <body>
@@ -31,27 +33,43 @@
 
 	<div class="contents">
 		<div class="event-block">
-			<h1 class="event-title">イベント一覧</h1>
-			<table class="event-body">
-				<tr th:each="list : ${list}">
-					<td th:with="month = ${list.eventDate.getMonthValue()}, date = ${list.eventDate.getDayOfMonth()}">
-						[[${month.toString().length() == 1 ? '0' + month : month}]]月[[${date.toString().length() == 1 ?
-						'0' + date : date}]]日
-						[[${#temporals.dayOfWeekName(list.eventDate)}]]
-					</td>
-					<td><a class="event-name" th:href="|/items/${list.id}|">[[${list.name}]]</a></td>
-					<td>
-						<form th:action="|/events/${list.id}/edit|" method="get">
-							<button class="button">編集</button>
-						</form>
-					</td>
-					<td>
-						<form th:action="|/events/${list.id}/delete|" method="post">
-							<button class="button">削除</button>
-						</form>
-					</td>
-				</tr>
-			</table>
+			<div class="event-top">
+				<th:block th:if="${birthday}==${now}">
+					<p class="title-cute">誕生日おめでとう！</p>
+				</th:block>
+			</div>
+			<div class="event-bottom">
+				<h1 class="event-title">イベント一覧</h1>
+				<table class="event-body">
+					<tr th:each="list : ${list}">
+						<td
+							th:with="month = ${list.eventDate.getMonthValue()}, date = ${list.eventDate.getDayOfMonth()}">
+							[[${month.toString().length() == 1 ? '0' + month : month}]]月[[${date.toString().length() ==
+							1 ?
+							'0' + date : date}]]日
+							[[${#temporals.dayOfWeekName(list.eventDate)}]]
+						</td>
+						<td><a class="event-name" th:href="|/items/${list.id}|">[[${list.name}]]</a></td>
+
+						<th:block th:if="${list.name}=='Happy Birthday!!'">
+							<td></td>
+							<td></td>
+						</th:block>
+						<th:block th:if="${list.name}!='Happy Birthday!!'">
+							<td>
+								<form th:action="|/events/${list.id}/edit|" method="get">
+									<button class="button">編集</button>
+								</form>
+							</td>
+							<td>
+								<form th:action="|/events/${list.id}/delete|" method="post">
+									<button class="button">削除</button>
+								</form>
+							</td>
+						</th:block>
+					</tr>
+				</table>
+			</div>
 		</div>
 		<br>
 		<form action="/events/add" method="get">
