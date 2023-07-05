@@ -41,6 +41,12 @@ public class OrderController {
 	// 注文内容確認とお客様情報入力画面を表示
 	@GetMapping("/order")
 	public String index(Model model) {
+		
+		LocalDate toBirthday = LocalDate.of(2023, account.getBirthday().getMonthValue(),
+				account.getBirthday().getDayOfMonth());
+
+		model.addAttribute("birthday", toBirthday);
+		model.addAttribute("now", LocalDate.now());
 
 		model.addAttribute("name", account.getName());
 		model.addAttribute("address", account.getAddress());
@@ -59,6 +65,12 @@ public class OrderController {
 			@RequestParam("message") String message,
 			@RequestParam("sendTo") String sendTo,
 			Model model) {
+		
+		LocalDate toBirthday = LocalDate.of(2023, account.getBirthday().getMonthValue(),
+				account.getBirthday().getDayOfMonth());
+
+		model.addAttribute("birthday", toBirthday);
+		model.addAttribute("now", LocalDate.now());
 		
 		List<String> error1 = new ArrayList<>();
 		
@@ -102,6 +114,12 @@ public class OrderController {
 				@RequestParam("sendTo") String sendTo,
 				Model model) {
 			
+			LocalDate toBirthday = LocalDate.of(2023, account.getBirthday().getMonthValue(),
+					account.getBirthday().getDayOfMonth());
+
+			model.addAttribute("birthday", toBirthday);
+			model.addAttribute("now", LocalDate.now());
+			
 			List<String> error2 = new ArrayList<>();
 
 
@@ -141,6 +159,12 @@ public class OrderController {
 			@RequestParam(name = "payment2", required = false) String payment2,
 			@RequestParam("message") String message,
 			Model model) {
+		
+		LocalDate toBirthday = LocalDate.of(2023, account.getBirthday().getMonthValue(),
+				account.getBirthday().getDayOfMonth());
+
+		model.addAttribute("birthday", toBirthday);
+		model.addAttribute("now", LocalDate.now());
 
 		String payment = null;
 
@@ -152,7 +176,7 @@ public class OrderController {
 		
 		Order order;
 
-		if (event.getName().equals("Happy Birthday!!")) {
+		if (event.getName().equals("Happy Birthday!!")&&toBirthday==LocalDate.now()) {
 			order = new Order(
 						event.getId(),
 						LocalDate.now(),

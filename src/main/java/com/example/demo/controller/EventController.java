@@ -62,10 +62,11 @@ public class EventController {
 		}
 
 		LocalDate now = LocalDate.now();
+		LocalDate yesterday= now.minusDays(1);
 
 		if (eventDate != null) {
-			if (eventDate.isBefore(now) || eventDate.compareTo(now) == 0) {
-				error.add("イベント日は翌日以降を指定してください");
+			if (eventDate.isBefore(yesterday)) {
+				error.add("イベント日は当日以降を指定してください");
 			}
 		}
 

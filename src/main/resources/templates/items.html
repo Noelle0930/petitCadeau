@@ -48,7 +48,9 @@
 		</div>
 		<div class="coupon">
 			<th:block th:if="${@event.name}=='Happy Birthday!!'">
+				<th:block th:if="${birthday}==${now}">
 				<font color="red">―クーポン適用中―</font>
+				</th:block>
 			</th:block>
 
 		</div>
