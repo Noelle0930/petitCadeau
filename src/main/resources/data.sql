@@ -4,7 +4,8 @@ INSERT INTO categories(name) VALUES('食品');
 INSERT INTO categories(name) VALUES('生活用品');
 -- 商品テーブルデータ
 INSERT INTO items(category_id, name, price) VALUES(1, 'amazouカード', 1000);
-INSERT INTO items(category_id, name, price) VALUES(1, 'スタパカード', 1000);
+INSERT INTO items(category_id, name, price) VALUES(1, 'スタパカード', 1500);
+INSERT INTO items(category_id, name, price) VALUES(1, '図書カード', 3000);
 INSERT INTO items(category_id, name, price) VALUES(2, 'ケーキ', 2500);
 INSERT INTO items(category_id, name, price) VALUES(2, 'シャンパン', 2600);
 INSERT INTO items(category_id, name, price) VALUES(2, 'クッキー', 2200);
