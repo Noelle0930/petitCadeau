@@ -97,11 +97,11 @@
 							</td>
 						</th:block>
 					</th:block>
-						<th:block th:if="${@event.name}!='Happy Birthday!!'">
-							<td align="right" colspan="5" th:with="total=${@cart.totalPrice}"
-								th:text="'総計：'+${#numbers.formatInteger(total, 3, 'COMMA')}+'円'">
-							</td>
-						</th:block>
+					<th:block th:if="${@event.name}!='Happy Birthday!!'">
+						<td align="right" colspan="5" th:with="total=${@cart.totalPrice}"
+							th:text="'総計：'+${#numbers.formatInteger(total, 3, 'COMMA')}+'円'">
+						</td>
+					</th:block>
 				</tr>
 			</table>
 		</div>
@@ -119,7 +119,7 @@
 						<div class="deliver-myself">
 							<form action="/order/confirmme" method="post">
 								<input type="hidden" name="sendTo" value="me">
-								
+
 								<th:block th:if="${error1}" th:each="error1:${error1}">
 									<br>
 									<font color="red">[[${error1}]]</font>
@@ -138,9 +138,9 @@
 									<tr>
 										<th>お支払方法</th>
 										<td>
-											<input type="radio" name="payment1" value="cash" checked>着払い
-											<input type="radio" name="payment1" value="credit">クレジット
-											<input type="radio" name="payment1" value="conbini">コンビニ支払い
+											<input type="radio" name="payment1" value="cash" checked>着払い<br>
+											<input type="radio" name="payment1" value="credit">クレジットカード払い<br>
+											<input type="radio" name="payment1" value="conbini">コンビニ払い
 										</td>
 									</tr>
 									<tr>
@@ -185,9 +185,9 @@
 									<tr>
 										<th>お支払方法</th>
 										<td>
-											<input type="radio" name="payment1" value="cash" checked>着払い
-											<input type="radio" name="payment1" value="credit">クレジット
-											<input type="radio" name="payment1" value="conbini">コンビニ支払い
+											<input type="radio" name="payment1" value="cash" checked>着払い<br>
+											<input type="radio" name="payment1" value="credit">クレジットカード<br>
+											<input type="radio" name="payment1" value="conbini">コンビニ払い
 										</td>
 									</tr>
 									<tr>
@@ -239,8 +239,8 @@
 									<tr>
 										<th>お支払方法</th>
 										<td>
-											<input type="radio" name="payment2" th:value="credit" checked>クレジット
-											<input type="radio" name="payment2" th:value="conbini">コンビニ支払い
+											<input type="radio" name="payment2" th:value="credit" checked>クレジットカード払い<br>
+											<input type="radio" name="payment2" th:value="conbini">コンビニ払い
 										</td>
 									</tr>
 									<tr>
@@ -288,9 +288,9 @@
 								<tr>
 									<th>お支払方法</th>
 									<td>
-										<input type="radio" name="payment1" value="cash" checked>着払い
-										<input type="radio" name="payment1" value="credit">クレジット
-										<input type="radio" name="payment1" value="conbini">コンビニ支払い
+										<input type="radio" name="payment1" value="cash" checked>着払い<br>
+										<input type="radio" name="payment1" value="credit">クレジットカード払い<br>
+										<input type="radio" name="payment1" value="conbini">コンビニ払い
 									</td>
 								</tr>
 								<tr>
@@ -342,8 +342,8 @@
 								<tr>
 									<th>お支払方法</th>
 									<td>
-										<input type="radio" name="payment2" th:value="credit" checked>クレジット
-										<input type="radio" name="payment2" th:value="conbini">コンビニ支払い
+										<input type="radio" name="payment2" th:value="credit" checked>クレジットカード払い<br>
+										<input type="radio" name="payment2" th:value="conbini">コンビニ払い
 									</td>
 								</tr>
 								<tr>

@@ -213,6 +213,8 @@ a {
 
 .deliver-box {
 	display: flex;
+	margin-left: 50px;
+	margin-right: auto;
 }
 
 .deliver-myself{
@@ -221,7 +223,7 @@ a {
 }
 
 .deliver-left {
-	margin-left: 20px;
+	margin-left: 90px;
 	margin-right: 110px;
 }
 
