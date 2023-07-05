@@ -20,7 +20,7 @@
 					<label for="menu_btn_check" class="menu-close"><i
 							class="fas fa-times"></i><span>close</span></label>
 					<div class="link-menu">
-						<div class="link"><a th:href="|/mypage/${@account.id}|">マイページ</a></div>
+						<div class="link"><a th:href="|/mypage/${@account.id}|">マイページ<br>※注文情報は保持されません</a></div>
 						<br>
 						<div class="link"><a href="/logout">ログアウト</a></div>
 					</div>
@@ -127,13 +127,13 @@
 								<table border="0" class="deliform">
 									<tr>
 										<th>お名前</th>
-										<td th:text="${name}"></td>
-										<input type="hidden" name="name" th:value="${name}">
+										<td th:text="${@account.name}"></td>
+										<input type="hidden" name="name" th:value="${@account.name}">
 									</tr>
 									<tr>
 										<th>住所</th>
-										<td th:text="${address}"></td>
-										<input type="hidden" name="address" th:value="${address}">
+										<td th:text="${@account.address}"></td>
+										<input type="hidden" name="address" th:value="${@account.address}">
 									</tr>
 									<tr>
 										<th>お支払方法</th>
@@ -174,13 +174,13 @@
 								<table border="0" class="deliform">
 									<tr>
 										<th>お名前</th>
-										<td th:text="${name}"></td>
-										<input type="hidden" name="name" th:value="${name}">
+										<td th:text="$@account.{name}"></td>
+										<input type="hidden" name="name" th:value="${@account.name}">
 									</tr>
 									<tr>
 										<th>住所</th>
-										<td th:text="${address}"></td>
-										<input type="hidden" name="address" th:value="${address}">
+										<td th:text="${@account.address}"></td>
+										<input type="hidden" name="address" th:value="${@account.address}">
 									</tr>
 									<tr>
 										<th>お支払方法</th>
@@ -277,13 +277,13 @@
 							<table border="0" class="deliform">
 								<tr>
 									<th>お名前</th>
-									<td th:text="${name}"></td>
-									<input type="hidden" name="name" th:value="${name}">
+									<td th:text="${@account.name}"></td>
+									<input type="hidden" name="name" th:value="${@account.name}">
 								</tr>
 								<tr>
 									<th>住所</th>
-									<td th:text="${address}"></td>
-									<input type="hidden" name="address" th:value="${address}">
+									<td th:text="${@account.address}"></td>
+									<input type="hidden" name="address" th:value="${@account.address}">
 								</tr>
 								<tr>
 									<th>お支払方法</th>
