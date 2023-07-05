@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -72,11 +73,15 @@ public class ItemController {
 		
 		event.setName(ev.getName());
 		event.setEventDate(ev.getEventDate());
+		
+		LocalDate toBirthday = LocalDate.of(2023, account.getBirthday().getMonthValue(), account.getBirthday().getDayOfMonth());
 
 		model.addAttribute("items", itemList);
 		model.addAttribute("maxPrice", maxPrice);
 		model.addAttribute("categoryId", categoryId == null ? "" : categoryId);
 		model.addAttribute("id", id);
+		model.addAttribute("birthday", toBirthday);
+		model.addAttribute("now", LocalDate.now());
 
 		/*
 		 * 三項演算子
