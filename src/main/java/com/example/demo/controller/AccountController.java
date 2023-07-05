@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -68,6 +69,7 @@ public class AccountController {
 			account.setAddress(user.getAddress());
 			account.setEmail(user.getEmail());
 			account.setTel(user.getTel());
+			account.setBirthday(user.getBirthday());
 			page = "redirect:/events";
 		}
 
@@ -149,8 +151,27 @@ public class AccountController {
 		return "/login";
 	}
 	
-	@GetMapping("/mypage")
+	@GetMapping("/mypage/{id}")
 	public String mypage() {
 		return "myPage";
+	}
+	
+	@PostMapping("/mypage/{id}")
+	public String update(
+			@PathVariable("id") Integer id,
+			@RequestParam(name = "name", defaultValue = "") String name,
+			@RequestParam(name = "address", defaultValue = "") String address,
+			@RequestParam(name = "email", defaultValue = "") String email,
+			@RequestParam(name = "tel", defaultValue = "") String tel,
+			@RequestParam(name = "password", defaultValue = "") String password,
+			@RequestParam(name = "birthday", required = false) LocalDate birthday,
+			Model model) {
+		
+		User user = new User(id, name, address, email, tel, password, birthday);
+		
+		userRepository.save(user);
+		
+		
+		return "redirect:/login";
 	}
 }
