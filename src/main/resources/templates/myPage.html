@@ -33,6 +33,11 @@
 
 		<form th:action="|/mypage/${@account.id}|" method="post">
 			<h1>マイページ</h1>
+
+			<th:block th:each="item:${List}">
+				<font color="red">[[${item}]]<br></font>
+			</th:block>
+
 			<table border="0">
 				<tr>
 					<th>名前</th>
@@ -54,7 +59,7 @@
 					<th>メールアドレス</th>
 					<td>
 						<div class="cp_iptxt">
-							<label class="ef"><input type="text" name="email2" th:value="${@account.email}"></label>
+							<label class="ef"><input type="text" name="email" th:value="${@account.email}"></label>
 						</div>
 					</td>
 				</tr>

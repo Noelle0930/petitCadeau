@@ -50,6 +50,9 @@
 				<th:block th:each="item:${List}">
 					<font color="red">[[${item}]]<br></font>
 				</th:block>
+				
+				<th:block th:if="${addmessage}">[[${addmessage}]]</th:block>
+				
 				<table border="0">
 					<tr>
 						<th>名前</th>

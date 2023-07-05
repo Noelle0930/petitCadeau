@@ -32,14 +32,14 @@ public class AccountController {
 
 	@Autowired
 	UserRepository userRepository;
-	
+
 	@Autowired
 	EventRepository eventRepository;
-	
+
 	@GetMapping("/")
-	 public String start() {
-		 return "top";
-	 }
+	public String start() {
+		return "top";
+	}
 
 	@GetMapping({ "/login", "/logout" })
 	public String index() {
@@ -96,6 +96,7 @@ public class AccountController {
 		Optional<User> record = userRepository.findByEmail(email2);
 
 		List<String> error = new ArrayList<>();
+		String addmessage = "登録完了しました！";
 
 		if (name.equals("")) {
 			error.add("名前は必須です");
@@ -118,13 +119,14 @@ public class AccountController {
 		if (birthday == null) {
 			error.add("誕生日は必須です");
 		}
-		
+
 		LocalDate now = LocalDate.now();
-		
+
 		if (birthday != null) {
-		if (birthday.isAfter(now) || birthday.compareTo(now) == 0) {
-			error.add("誕生日は当日以前を指定してください");
-		}}
+			if (birthday.isAfter(now) || birthday.compareTo(now) == 0) {
+				error.add("誕生日は当日以前を指定してください");
+			}
+		}
 
 		model.addAttribute("name", name);
 		model.addAttribute("address", address);
@@ -139,23 +141,25 @@ public class AccountController {
 			userRepository.save(user);
 
 			Integer userId = user.getId();
-			
+
 			LocalDate addBirthday = LocalDate.of(2023, birthday.getMonthValue(), birthday.getDayOfMonth());
 
 			Event event = new Event(userId, "Happy Birthday!!", addBirthday);
 			eventRepository.save(event);
 			
-			return "redirect:/login";
-		}
+			model.addAttribute("addmessage", addmessage);
 
+//			return "redirect:/login";
+		}
+		
 		return "/login";
 	}
-	
+
 	@GetMapping("/mypage/{id}")
 	public String mypage() {
 		return "myPage";
 	}
-	
+
 	@PostMapping("/mypage/{id}")
 	public String update(
 			@PathVariable("id") Integer id,
@@ -166,12 +170,56 @@ public class AccountController {
 			@RequestParam(name = "password", defaultValue = "") String password,
 			@RequestParam(name = "birthday", required = false) LocalDate birthday,
 			Model model) {
-		
-		User user = new User(id, name, address, email, tel, password, birthday);
-		
-		userRepository.save(user);
-		
-		
-		return "redirect:/login";
+
+		Optional<User> record = userRepository.findByEmail(email);
+
+		User checkuser = record.get();
+
+		List<String> error = new ArrayList<>();
+
+		if (name.equals("")) {
+			error.add("名前は必須です");
+		}
+		if (address.equals("")) {
+			error.add("住所は必須です");
+		}
+		if (tel.equals("")) {
+			error.add("電話番号は必須です");
+		}
+		if (email.equals("")) {
+			error.add("メールアドレスは必須です");
+		}
+		if (record.isEmpty() == false) {
+			if (checkuser.getEmail().equals(account.getEmail())) {
+				
+			} else {
+				error.add("登録済みメールアドレスは登録できません");
+			}
+			
+		}
+		if (password.equals("")) {
+			error.add("パスワードは必須です");
+		}
+		if (birthday == null) {
+			error.add("誕生日は必須です");
+		}
+
+		LocalDate now = LocalDate.now();
+
+		if (birthday != null) {
+			if (birthday.isAfter(now) || birthday.compareTo(now) == 0) {
+				error.add("誕生日は当日以前を指定してください");
+			}
+		}
+
+		model.addAttribute("List", error);
+
+		if (error.size() == 0) {
+			User user = new User(id, name, address, email, tel, password, birthday);
+			userRepository.save(user);
+			return "redirect:/login";
+		}
+
+		return "myPage";
 	}
 }
