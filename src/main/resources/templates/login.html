@@ -47,12 +47,15 @@
 		<div class="contents2">
 			<h1>会員登録</h1>
 			<form action="/account/add" method="post">
+
 				<th:block th:each="item:${List}">
 					<font color="red">[[${item}]]<br></font>
 				</th:block>
 				
-				<th:block th:if="${addmessage}">[[${addmessage}]]</th:block>
-				
+				<th:block th:if="${addmessage}">
+					<div class="complete">[[${addmessage}]]</div>
+				</th:block>
+
 				<table border="0">
 					<tr>
 						<th>名前</th>
@@ -103,6 +106,8 @@
 						</td>
 					</tr>
 				</table>
+
+
 				<br>
 				<input type="submit" value="Sign Up" class="button">
 			</form>

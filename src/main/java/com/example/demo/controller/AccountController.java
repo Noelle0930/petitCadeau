@@ -148,8 +148,14 @@ public class AccountController {
 			eventRepository.save(event);
 			
 			model.addAttribute("addmessage", addmessage);
+			model.addAttribute("name", "");
+			model.addAttribute("address", "");
+			model.addAttribute("tel", "");
+			model.addAttribute("email2", "");
+			model.addAttribute("password", "");
+			model.addAttribute("birthday", "");
 
-//			return "redirect:/login";
+
 		}
 		
 		return "/login";
