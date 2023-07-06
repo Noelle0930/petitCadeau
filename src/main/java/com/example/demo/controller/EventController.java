@@ -35,7 +35,13 @@ public class EventController {
 
 		model.addAttribute("list", eventList);
 		
+		LocalDate now = LocalDate.now();
 		LocalDate toBirthday = LocalDate.of(2023, account.getBirthday().getMonthValue(), account.getBirthday().getDayOfMonth());
+		
+		if (now.toString().equals(toBirthday.toString())) {
+			model.addAttribute("birth", "誕生日おめでとう！");
+		}
+		
 		model.addAttribute("birthday", toBirthday);
 		model.addAttribute("now", LocalDate.now());
 
