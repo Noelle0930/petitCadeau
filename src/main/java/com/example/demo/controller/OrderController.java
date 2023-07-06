@@ -150,6 +150,7 @@ public class OrderController {
 	// 注文を確定する
 	@PostMapping("/order")
 	public String order(
+			@RequestParam(name = "name", required = false) String name,
 			@RequestParam(name = "address", required = false) String address,
 			@RequestParam(name = "payment1", required = false) String payment1,
 			@RequestParam(name = "payment2", required = false) String payment2,
@@ -176,6 +177,7 @@ public class OrderController {
 			order = new Order(
 					event.getId(),
 					LocalDate.now(),
+					name,
 					address,
 					cart.getTotalPrice2(),
 					message,
@@ -188,6 +190,7 @@ public class OrderController {
 			order = new Order(
 					event.getId(),
 					LocalDate.now(),
+					name,
 					address,
 					cart.getTotalPrice(),
 					message,

@@ -23,6 +23,9 @@ public class Order {
 
 	@Column(name = "ordered_on")
 	private LocalDate orderedOn;
+	
+	@Column(name = "send_name")
+	private String sendName;
 
 	@Column(name = "send_address")
 	private String sendAddress;
@@ -38,10 +41,11 @@ public class Order {
 
 	}
 
-	public Order(Integer eventId, LocalDate orderedOn, String sendAddress, Integer totalPrice, String message,
+	public Order(Integer eventId, LocalDate orderedOn, String sendName, String sendAddress, Integer totalPrice, String message,
 			String payment) {
 		this.eventId = eventId;
 		this.orderedOn = orderedOn;
+		this.sendName = sendName;
 		this.sendAddress = sendAddress;
 		this.totalPrice = totalPrice;
 		this.message = message;

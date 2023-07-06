@@ -47,6 +47,7 @@ CREATE TABLE orders
   id SERIAL PRIMARY KEY,
   event_id INTEGER,
   ordered_on DATE,
+  send_name TEXT,
   send_address TEXT,
   total_price INTEGER,
   message TEXT,
