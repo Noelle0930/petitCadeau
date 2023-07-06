@@ -104,14 +104,14 @@ public class AccountController {
 		if (address.equals("")) {
 			error.add("住所は必須です");
 		}
-		if (tel.equals("")) {
-			error.add("電話番号は必須です");
-		}
 		if (email2.equals("")) {
 			error.add("メールアドレスは必須です");
 		}
 		if (record.isEmpty() == false) {
 			error.add("登録済みメールアドレスは登録できません");
+		}
+		if (tel.equals("")) {
+			error.add("電話番号は必須です");
 		}
 		if (password.equals("")) {
 			error.add("パスワードは必須です");

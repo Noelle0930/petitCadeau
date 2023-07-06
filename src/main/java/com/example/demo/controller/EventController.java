@@ -58,6 +58,9 @@ public class EventController {
 		if (name.equals("")) {
 			error.add("イベント名を入力してください");
 		}
+		if (name.length()>10) {
+			error.add("10字以内で入力してください");
+		}
 		if (eventDate == null) {
 			error.add("日付を指定してください");
 		}
@@ -66,7 +69,7 @@ public class EventController {
 		}
 
 		LocalDate now = LocalDate.now();
-		LocalDate yesterday= now.minusDays(1);
+		LocalDate yesterday= now.minusDays(0);
 
 		if (eventDate != null) {
 			if (eventDate.isBefore(yesterday)) {
@@ -125,6 +128,9 @@ public class EventController {
 		if (name.equals("")) {
 			error.add("イベント名を入力してください");
 		}
+		if (name.length()>10) {
+			error.add("10字以内で入力してください");
+		}
 		if (eventDate == null) {
 			error.add("日付を指定してください");
 		}
@@ -133,13 +139,14 @@ public class EventController {
 		}
 
 		LocalDate now = LocalDate.now();
+		LocalDate yesterday= now.minusDays(0);
 
 		if (eventDate != null) {
-			if (eventDate.isBefore(now) || eventDate.compareTo(now) == 0) {
-				error.add("イベント日は翌日以降を指定してください");
+			if (eventDate.isBefore(yesterday)) {
+				error.add("イベント日は当日以降を指定してください");
 			}
 		}
-
+		
 		model.addAttribute("name", name);
 		model.addAttribute("eventDate", eventDate);
 		model.addAttribute("List", error);
