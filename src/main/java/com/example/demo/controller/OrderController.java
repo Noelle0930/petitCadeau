@@ -28,7 +28,7 @@ public class OrderController {
 
 	@Autowired
 	Account account;
-	
+
 	@Autowired
 	Event event;
 
@@ -41,7 +41,7 @@ public class OrderController {
 	// 注文内容確認とお客様情報入力画面を表示
 	@GetMapping("/order")
 	public String index(Model model) {
-		
+
 		LocalDate toBirthday = LocalDate.of(2023, account.getBirthday().getMonthValue(),
 				account.getBirthday().getDayOfMonth());
 
@@ -65,92 +65,88 @@ public class OrderController {
 			@RequestParam("message") String message,
 			@RequestParam("sendTo") String sendTo,
 			Model model) {
-		
+
 		LocalDate toBirthday = LocalDate.of(2023, account.getBirthday().getMonthValue(),
 				account.getBirthday().getDayOfMonth());
 
 		model.addAttribute("birthday", toBirthday);
 		model.addAttribute("now", LocalDate.now());
-		
+
 		List<String> error1 = new ArrayList<>();
-		
+
 		model.addAttribute("name", name);
 		model.addAttribute("address", address);
 		model.addAttribute("payment1", payment1);
 		model.addAttribute("payment2", payment2);
 		model.addAttribute("message", message);
 		model.addAttribute("sendTo", sendTo);
-		
+
 		if (name.equals("")) {
 			error1.add("名前は必須です");
 		}
 		if (address.equals("")) {
 			error1.add("住所は必須です");
 		}
-		if(!(message.equals(""))) {
-			if(message.length()>30) {
-			error1.add("30字以内で入力してください");	
+		if (!(message.equals(""))) {
+			if (message.length() > 30) {
+				error1.add("30字以内で入力してください");
 			}
 		}
-		
+
 		if (error1.size() != 0) {
 			model.addAttribute("error1", error1);
 			return "order";
 		}
 
-		
 		return "orderConfirm";
 	}
 
-	
 	// 注文内容およびお客様情報内容の確認画面を表示
-		@PostMapping("/order/confirmyou")
-		public String confirmyou(
-				@RequestParam(name="toname",defaultValue="") String toname,
-				@RequestParam(name="toaddress",defaultValue="") String toaddress,
-				@RequestParam(name = "payment1", required = false) String payment1,
-				@RequestParam(name = "payment2", required = false) String payment2,
-				@RequestParam("tomessage") String tomessage,
-				@RequestParam("sendTo") String sendTo,
-				Model model) {
-			
-			LocalDate toBirthday = LocalDate.of(2023, account.getBirthday().getMonthValue(),
-					account.getBirthday().getDayOfMonth());
+	@PostMapping("/order/confirmyou")
+	public String confirmyou(
+			@RequestParam(name = "toname", defaultValue = "") String toname,
+			@RequestParam(name = "toaddress", defaultValue = "") String toaddress,
+			@RequestParam(name = "payment1", required = false) String payment1,
+			@RequestParam(name = "payment2", required = false) String payment2,
+			@RequestParam("tomessage") String tomessage,
+			@RequestParam("sendTo") String sendTo,
+			Model model) {
 
-			model.addAttribute("birthday", toBirthday);
-			model.addAttribute("now", LocalDate.now());
-			
-			List<String> error2 = new ArrayList<>();
+		LocalDate toBirthday = LocalDate.of(2023, account.getBirthday().getMonthValue(),
+				account.getBirthday().getDayOfMonth());
 
+		model.addAttribute("birthday", toBirthday);
+		model.addAttribute("now", LocalDate.now());
 
-			model.addAttribute("toname", toname);
-			model.addAttribute("toaddress", toaddress);
-			model.addAttribute("payment1", payment1);
-			model.addAttribute("payment2", payment2);
-			model.addAttribute("tomessage", tomessage);
-			model.addAttribute("sendTo", sendTo);
-			
-			if (toname.equals("")) {
-				error2.add("宛名は必須です");
-			}
-			if (toaddress.equals("")) {
-				error2.add("送り先住所は必須です");
-			}
-			if(!(tomessage.equals(""))) {
-				if(tomessage.length()>30) {
-					error2.add("30字以内で入力してください");	
-				}
-			}
-			
-			
-			if (error2.size() != 0) {
-				model.addAttribute("error2", error2);
-				return "order";
-			}
-			
-			return "orderConfirm";
+		List<String> error2 = new ArrayList<>();
+
+		model.addAttribute("toname", toname);
+		model.addAttribute("toaddress", toaddress);
+		model.addAttribute("payment1", payment1);
+		model.addAttribute("payment2", payment2);
+		model.addAttribute("tomessage", tomessage);
+		model.addAttribute("sendTo", sendTo);
+
+		if (toname.equals("")) {
+			error2.add("宛名は必須です");
 		}
-	
+		if (toaddress.equals("")) {
+			error2.add("送り先住所は必須です");
+		}
+		if (!(tomessage.equals(""))) {
+			if (tomessage.length() > 30) {
+				error2.add("30字以内で入力してください");
+			}
+		}
+
+		if (error2.size() != 0) {
+			model.addAttribute("error2", error2);
+			return "order";
+		}
+
+		return "orderConfirm";
+	}
+
 	// 注文を確定する
 	@PostMapping("/order")
 	public String order(
@@ -159,7 +155,7 @@ public class OrderController {
 			@RequestParam(name = "payment2", required = false) String payment2,
 			@RequestParam("message") String message,
 			Model model) {
-		
+
 		LocalDate toBirthday = LocalDate.of(2023, account.getBirthday().getMonthValue(),
 				account.getBirthday().getDayOfMonth());
 
@@ -173,31 +169,32 @@ public class OrderController {
 		} else if (payment2 != null) {
 			payment = payment2;
 		}
-		
+
 		Order order;
 
-		if (event.getName().equals("Happy Birthday!!")&&toBirthday.equals(LocalDate.now())) {
+		if (event.getName().equals("Happy Birthday!!") && toBirthday.equals(LocalDate.now())) {
 			order = new Order(
-						event.getId(),
-						LocalDate.now(),
-						address,
-						cart.getTotalPrice2(),
-						message,
-						payment);
-				orderRepository.save(order);
+					event.getId(),
+					LocalDate.now(),
+					address,
+					cart.getTotalPrice2(),
+					message,
+					payment);
+			orderRepository.save(order);
 		}
-		
+
 		// 2. 注文情報をDBに格納する
-		else{order = new Order(
-				event.getId(),
-				LocalDate.now(),
-				address,
-				cart.getTotalPrice(),
-				message,
-				payment);
-		orderRepository.save(order);//orderのidを取得
-	    }
-		
+		else {
+			order = new Order(
+					event.getId(),
+					LocalDate.now(),
+					address,
+					cart.getTotalPrice(),
+					message,
+					payment);
+			orderRepository.save(order);//orderのidを取得
+		}
+
 		// 3. 注文詳細情報をDBに格納する
 		List<Item> itemList = cart.getItems();//カートの中の商品を取得
 		List<OrderDetail> orderDetails = new ArrayList<>();

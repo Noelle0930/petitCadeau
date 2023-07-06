@@ -155,12 +155,13 @@
 								<th>宛名</th>
 								<td th:text="${toname}">
 								</td>
+								<input type="hidden" name="name" th:value="${toname}">
 							</tr>
 							<tr>
 								<th>送り先住所</th>
 								<td th:text="${toaddress}">
 								</td>
-								<input type="hidden" name="address" th:value="${address}">
+								<input type="hidden" name="address" th:value="${toaddress}">
 							</tr>
 							<tr>
 								<th>お支払方法</th>
@@ -176,7 +177,7 @@
 								<th>メッセージ</th>
 								<td th:text="${tomessage}">
 								</td>
-								<input type="hidden" name="message" th:value="${message}">
+								<input type="hidden" name="message" th:value="${tomessage}">
 							</tr>
 						</table>
 

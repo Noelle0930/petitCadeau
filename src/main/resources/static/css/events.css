@@ -288,8 +288,9 @@ td {
   text-align: center;
   -webkit-text-stroke: 2px #000;
   text-shadow: 3px 3px deepskyblue;
-  margin: 0px;
-  margin-left: 100px;
+  margin: 0 auto 0 auto;
+  padding-left: 65px;
+  white-space: nowrap;
 }
 
 h1 {

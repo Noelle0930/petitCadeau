@@ -34,6 +34,11 @@
 	<div class="contents">
 		<div class="event-block">
 			<div class="event-top">
+				<th:block th:each="list:${list}">
+					<th:block th:if="${list.eventDate}==${now}">
+						<p class="title-cute" style="font-size: 35px;">今日は　[[${list.name}]]　です！</p>
+					</th:block>
+				</th:block>
 				<th:block th:if="${birthday}==${now}">
 					<p class="title-cute">誕生日おめでとう！</p>
 				</th:block>
