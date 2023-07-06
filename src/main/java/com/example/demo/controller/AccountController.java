@@ -94,6 +94,7 @@ public class AccountController {
 			Model model) {
 
 		Optional<User> record = userRepository.findByEmail(email2);
+		Optional<User> recordtel = userRepository.findByTel(tel);
 
 		List<String> error = new ArrayList<>();
 		String addmessage = "登録完了しました！";
@@ -110,6 +111,9 @@ public class AccountController {
 		if (record.isEmpty() == false) {
 			error.add("登録済みメールアドレスは登録できません");
 		}
+		if (recordtel.isEmpty() == false) {
+			error.add("登録済み電話番号は登録できません");
+		}
 		if (tel.equals("")) {
 			error.add("電話番号は必須です");
 		}
@@ -122,7 +126,6 @@ public class AccountController {
 
 		LocalDate now = LocalDate.now();
 		LocalDate tomorrow = now.minusDays(0);
-		
 
 		if (birthday != null) {
 			if (birthday.isAfter(tomorrow)) {
@@ -148,7 +151,7 @@ public class AccountController {
 
 			Event event = new Event(userId, "Happy Birthday!!", addBirthday);
 			eventRepository.save(event);
-			
+
 			model.addAttribute("addmessage", addmessage);
 			model.addAttribute("name", "");
 			model.addAttribute("address", "");
@@ -157,9 +160,8 @@ public class AccountController {
 			model.addAttribute("password", "");
 			model.addAttribute("birthday", "");
 
-
 		}
-		
+
 		return "/login";
 	}
 
@@ -180,9 +182,18 @@ public class AccountController {
 			Model model) {
 
 		Optional<User> record = userRepository.findByEmail(email);
+		Optional<User> recordtel = userRepository.findByTel(tel);
+		User checkuser = null;
+		User checkusertel = null;
 
-		User checkuser = record.get();
-
+		if (!(record.isEmpty())) {
+			checkuser = record.get();
+		}
+		
+		if (!(recordtel.isEmpty())) {
+			checkusertel = recordtel.get();
+		}
+		
 		List<String> error = new ArrayList<>();
 
 		if (name.equals("")) {
@@ -197,14 +208,26 @@ public class AccountController {
 		if (email.equals("")) {
 			error.add("メールアドレスは必須です");
 		}
+		
+		
 		if (record.isEmpty() == false) {
 			if (checkuser.getEmail().equals(account.getEmail())) {
-				
+
 			} else {
 				error.add("登録済みメールアドレスは登録できません");
 			}
-			
+
 		}
+		
+		if (recordtel.isEmpty() == false) {
+			if (checkusertel.getTel().equals(account.getTel())) {
+
+			} else {
+				error.add("登録済み電話番号は登録できません");
+			}
+
+		}
+		
 		if (password.equals("")) {
 			error.add("パスワードは必須です");
 		}
