@@ -121,9 +121,11 @@ public class AccountController {
 		}
 
 		LocalDate now = LocalDate.now();
+		LocalDate tomorrow = now.minusDays(0);
+		
 
 		if (birthday != null) {
-			if (birthday.isAfter(now) || birthday.compareTo(now) == 0) {
+			if (birthday.isAfter(tomorrow)) {
 				error.add("誕生日は当日以前を指定してください");
 			}
 		}

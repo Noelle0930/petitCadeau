@@ -59,13 +59,13 @@ public class EventController {
 			error.add("イベント名を入力してください");
 		}
 		if (name.length()>10) {
-			error.add("10字以内で入力してください");
+			error.add("イベント名は10字以内で入力してください");
 		}
 		if (eventDate == null) {
 			error.add("日付を指定してください");
 		}
 		if (name.equals("Happy Birthday!!")) {
-			error.add("「Happy Birthday!!」は使用できません");
+			error.add("イベント名に「Happy Birthday!!」は使用できません");
 		}
 
 		LocalDate now = LocalDate.now();
@@ -129,13 +129,13 @@ public class EventController {
 			error.add("イベント名を入力してください");
 		}
 		if (name.length()>10) {
-			error.add("10字以内で入力してください");
+			error.add("イベント名は10字以内で入力してください");
 		}
 		if (eventDate == null) {
 			error.add("日付を指定してください");
 		}
 		if (name.equals("Happy Birthday!!")) {
-			error.add("「Happy Birthday!!」は使用できません");
+			error.add("イベント名に「Happy Birthday!!」は使用できません");
 		}
 
 		LocalDate now = LocalDate.now();
