@@ -20,9 +20,9 @@ INSERT INTO users(name,address,tel,email,password,birthday) VALUES('佐藤花子
 INSERT INTO users(name,address,tel,email,password,birthday) VALUES('田中太郎','千葉県浦安市','222-333-444','tanaka@aaa.com','himitu','2001-09-30');
 
 -- イベントテーブルデータ
-INSERT INTO events (user_id, name, event_date) VALUES (1,'田中さん誕生日', '2023-07-26');
+INSERT INTO events (user_id, name, event_date) VALUES (1,'田中さん誕生日', '2023-07-06');
 INSERT INTO events (user_id, name, event_date) VALUES (1,'佐藤さん誕生日', '2023-07-30');
-INSERT INTO events (user_id, name, event_date) VALUES (1,'佐藤さん誕生日', '2023-08-15');
+INSERT INTO events (user_id, name, event_date) VALUES (1,'結婚記念日', '2023-11-22');
 INSERT INTO events (user_id, name, event_date) VALUES (1,'Happy Birthday!!', '2023-08-05');
 INSERT INTO events (user_id, name, event_date) VALUES (2,'結婚記念日', '2023-08-11');
 INSERT INTO events (user_id, name, event_date) VALUES (2,'Happy Birthday!!', '2023-12-16');
